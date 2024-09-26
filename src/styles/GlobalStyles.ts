@@ -128,7 +128,9 @@ const resetCss = css`
 
   menu,
   ol,
-  ul {
+  ul,
+  li {
+    padding-left: 0;
     list-style: none;
   }
 
@@ -149,6 +151,27 @@ const resetCss = css`
     border-collapse: collapse;
     border-spacing: 0;
   }
+
+  button {
+    outline: none;
+
+    border: none;
+    background-color: transparent;
+  }
+
+  input {
+    appearance: none;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  a {
+    color: inherit;
+
+    text-decoration: none;
+  }
 `;
 
 const gStyle = css`
@@ -168,7 +191,6 @@ const gStyle = css`
   }
 
   * {
-    max-width: 43rem;
     box-sizing: border-box;
   }
 
@@ -176,48 +198,22 @@ const gStyle = css`
     -webkit-touch-callout: none;
     -webkit-tap-highlight-color: rgb(0 0 0 / 0%);
 
-    scroll-behavior: smooth;
-
     user-select: none;
-
-    display: flex;
-    justify-content: center;
 
     font-size: 62.5%;
   }
 
-  ul,
-  li {
-    padding-left: 0;
-    list-style: none;
+  body {
+    display: flex;
+    justify-content: center;
+
+    scroll-behavior: smooth;
   }
-
-  a {
-    color: inherit;
-
-    text-decoration: none;
-  }
-
   input,
-  button {
-    outline: none;
-
-    border: none;
-    background-color: transparent;
-  }
-
   button {
     cursor: pointer;
 
     padding: 0;
-  }
-
-  input {
-    appearance: none;
-
-    &:focus {
-      outline: none;
-    }
   }
 
   // 폰트는 추후 반영 예정
