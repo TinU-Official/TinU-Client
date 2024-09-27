@@ -1,10 +1,6 @@
 import { css } from "@emotion/react";
 
 const resetCss = css`
-  :root {
-    --vh: 100%;
-  }
-
   html,
   body,
   div,
