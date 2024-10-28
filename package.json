@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@emotion/react": "^11.13.3",
+    "@emotion/styled": "^11.13.0",
     "@tanstack/react-query": "^5.56.2",
     "@tanstack/react-query-devtools": "^5.58.0",
     "ky": "^1.7.2",
