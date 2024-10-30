@@ -29,51 +29,61 @@ const fonts = {
     fontFamily: "Pretendard",
     fontWeight: 700,
     fontSize: "2.4rem",
+    lineHeight: 1.36,
   },
   title2: {
     fontFamily: "Pretendard",
     fontWeight: 600,
     fontSize: "2rem",
+    lineHeight: 1,
   },
   subtitle1: {
     fontFamily: "Pretendard",
     fontWeight: 700,
     fontSize: "1.6rem",
+    lineHeight: 1,
   },
   subtitle2: {
     fontFamily: "Pretendard",
     fontWeight: 600,
     fontSize: "1.6rem",
+    lineHeight: 1,
   },
   body1: {
     fontFamily: "Pretendard",
     fontWeight: 500,
     fontSize: "1.6rem",
+    lineHeight: 1.36,
   },
   body2: {
     fontFamily: "Pretendard",
     fontWeight: 500,
     fontSize: "1.4rem",
+    lineHeight: "normal",
   },
   body3: {
     fontFamily: "Pretendard",
     fontWeight: 400,
     fontSize: "1.4rem",
+    lineHeight: "normal",
   },
   description1: {
     fontFamily: "Pretendard",
     fontWeight: 500,
     fontSize: "1.2rem",
+    lineHeight: "normal",
   },
   description2: {
     fontFamily: "Pretendard",
     fontWeight: 600,
     fontSize: "1.2rem",
+    lineHeight: "1.36",
   },
   description3: {
     fontFamily: "Pretendard",
     fontWeight: 600,
     fontSize: "0.8rem",
+    lineHeight: "normal",
   },
 };
 
