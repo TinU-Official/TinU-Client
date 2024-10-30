@@ -180,6 +180,7 @@ const gStyle = css`
 
     background-color: #f5f5f5;
     max-width: 43rem;
+    height: 100dvh;
     -ms-overflow-style: none; /* 인터넷 익스플로러 */
     scrollbar-width: none; /* 파이어폭스 */
   }
