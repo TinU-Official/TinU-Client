@@ -173,11 +173,14 @@ const resetCss = css`
 const gStyle = css`
   ${resetCss}
 
-  #root, body, html {
+  #root,
+  body,
+  html {
     margin: 0 auto;
 
     background-color: #f5f5f5;
     max-width: 43rem;
+    height: 100dvh;
     -ms-overflow-style: none; /* 인터넷 익스플로러 */
     scrollbar-width: none; /* 파이어폭스 */
   }
@@ -211,13 +214,6 @@ const gStyle = css`
 
     padding: 0;
   }
-
-  // 폰트는 추후 반영 예정
-  /* @font-face {
-    font-family: Pretendard;
-    src: url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css") format ("woff");
-    font-display: swap;
-  } */
 `;
 
 export default gStyle;
