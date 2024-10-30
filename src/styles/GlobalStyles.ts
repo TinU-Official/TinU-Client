@@ -214,12 +214,6 @@ const gStyle = css`
 
     padding: 0;
   }
-
-  @font-face {
-    font-family: Pretendard;
-    src: url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css") format ("woff");
-    font-display: swap;
-  }
 `;
 
 export default gStyle;
