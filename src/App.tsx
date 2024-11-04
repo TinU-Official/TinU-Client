@@ -2,6 +2,8 @@ import { RouterProvider } from "react-router-dom";
 import { router } from "./Router";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import theme from "./styles/theme";
+import { ThemeProvider } from "@emotion/react";
 
 function App() {
   const queryClient = new QueryClient({
@@ -17,8 +19,10 @@ function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
-      <ReactQueryDevtools />
+      <ThemeProvider theme={theme}>
+        <RouterProvider router={router} />
+        <ReactQueryDevtools />
+      </ThemeProvider>
     </QueryClientProvider>
   );
 }
