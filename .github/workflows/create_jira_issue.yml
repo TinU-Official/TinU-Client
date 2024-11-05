@@ -22,3 +22,4 @@ jobs:
           issuetype: Task
           summary: "${{ github.event.issue.title }}"
           description: "${{ github.event.issue.html_url }}"
+          labels: "GITHUB ISSUE-FRONT"
