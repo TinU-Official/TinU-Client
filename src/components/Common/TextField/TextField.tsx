@@ -47,7 +47,7 @@ function TextField({ placeholder, rightAddOn, isError = false, errorMessage, ...
         </InputWrapper>
         {rightAddOn ?? rightAddOn}
       </TextFieldWrapper>
-      {<ErrorText>{errorMessage}</ErrorText>}
+      {isError && errorMessage && <ErrorText>{errorMessage}</ErrorText>}
     </>
   );
 }
@@ -80,9 +80,11 @@ const TextFieldWrapper = styled.div<{ showPlaceholder: boolean; isError: boolean
 
 const InputWrapper = styled.div`
   position: relative;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
+
   width: 100%;
   height: 100%;
 `;
