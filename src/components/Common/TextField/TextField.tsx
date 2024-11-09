@@ -47,7 +47,7 @@ function TextField({ placeholder, rightAddOn, isError = false, errorMessage, ...
         </InputWrapper>
         {rightAddOn ?? rightAddOn}
       </TextFieldWrapper>
-      {isError && errorMessage && <ErrorText>{errorMessage}</ErrorText>}
+      {<ErrorText>{errorMessage}</ErrorText>}
     </>
   );
 }
