@@ -66,7 +66,7 @@ const TextFieldWrapper = styled.div<{ showPlaceholder: boolean; isError: boolean
   box-shadow: inset 0 0 0 2px
     ${({ showPlaceholder, isError, theme }) => {
       if (isError) {
-        return "#F65E5E";
+        return theme.colors.red;
       }
       if (showPlaceholder) {
         return theme.colors.main_mint;
@@ -117,6 +117,6 @@ const ErrorText = styled.p`
   margin-top: 1.8rem;
   padding-left: 0.7rem;
 
-  color: #f65e5e;
+  color: ${({ theme }) => theme.colors.red};
   ${({ theme }) => theme.fonts.description1};
 `;

@@ -23,6 +23,7 @@ const colors = {
   light_3: "#FBFBFB",
   light_4: "#FFFFFF",
   blue_gray: "#F1F5F5",
+  red: "#F65E5E",
 };
 
 const fonts = {
