@@ -17,6 +17,7 @@ const colors = {
   gray_1: "#666666",
   gray_2: "#888888",
   gray_3: "#999999",
+  gray_4: "#C6C6C6",
   light_1: "#D9D9D9",
   light_2: "#F0F0F0",
   light_3: "#FBFBFB",
@@ -77,6 +78,12 @@ const fonts = {
     fontFamily: "Pretendard",
     fontWeight: 600,
     fontSize: "1.2rem",
+    lineHeight: "1.36",
+  },
+  description2_5: {
+    fontFamily: "Pretendard",
+    fontWeight: 500,
+    fontSize: "1rem",
     lineHeight: "1.36",
   },
   description3: {
