@@ -27,8 +27,6 @@ function TextField({ placeholder, rightAddOn, isError = false, errorMessage, ...
 
   const hasValue = inputProps.value !== "" && inputProps.value !== undefined;
 
-  console.log(inputProps.value);
-
   return (
     <>
       <TextFieldWrapper showPlaceholder={isFocused || hasValue} isError={isError}>
