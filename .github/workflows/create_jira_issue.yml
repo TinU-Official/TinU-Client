@@ -1,8 +1,8 @@
 name: Create Jira issue
 on:
   issues:
-    types: [opened]
-
+    types:
+      - opened
 jobs:
   create-issue:
     name: Create Jira issue
@@ -15,10 +15,93 @@ jobs:
           JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
           JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
 
+      - name: Checkout main code
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Issue Parser
+        uses: stefanbuck/github-issue-praser@v3
+        id: issue-parser
+        with:
+          template-path: .github/ISSUE_TEMPLATE/feature.yml
+
+      - name: Log Issue Parser
+        run: |
+          echo '${{ steps.issue-parser.outputs.jsonString }}'
+          echo "Branch Name : ${{ steps.issue-parser.outputs.issueparser_branch }}"
+          echo "Start date : ${{ steps.issue-parser.outputs.issueparser_start_date }}"
+          echo "Due date : ${{ steps.issue-parser.outputs.issueparser_due_date }}"
+
+      - name: Convert markdown to Jira Syntax
+        uses: peter-evans/jira2md@v1
+        id: md2jira
+        with:
+          input-text: |
+            ### Github Issue Link
+            - ${{ github.event.issue.html_url }}
+
+            ${{ github.event.issue.body }}
+          mode: md2jira
+          
+      - name: Check JIRA_USER_EMAIL
+        run: |
+          if [ -z "${{ secrets.JIRA_USER_EMAIL }}" ]; then
+            echo "JIRA_USER_EMAIL is not set or empty"
+          else
+            echo "JIRA_USER_EMAIL is set"
+          fi
+
+      - name: Check JIRA_API_TOKEN
+        run: |
+          if [ -z "${{ secrets.JIRA_API_TOKEN }}" ]; then
+            echo "JIRA_API_TOKEN is not set or empty"
+          else
+            echo "JIRA_API_TOKEN is set"
+          fi
+
+      - name: Check JIRA_BASE_URL
+        run: |
+          if [ -z "${{ secrets.JIRA_BASE_URL }}" ]; then
+            echo "JIRA_BASE_URL is not set or empty"
+          else
+            echo "JIRA_BASE_URL is set"
+          fi
+          
+      - name: List Jira Fields
+        run: |
+          curl -u ${{ secrets.JIRA_USER_EMAIL }}:${{ secrets.JIRA_API_TOKEN }} \
+          -X GET \
+          -H "Content-Type: application/json" \
+          "${{ secrets.JIRA_BASE_URL }}/rest/api/2/field"
+          
       - name: Create Issue
+        id: create
         uses: atlassian/gajira-create@v3
         with:
           project: TINU
-          issuetype: Task
+          issuetype: CLIENT
           summary: "${{ github.event.issue.title }}"
-          description: "${{ github.event.issue.html_url }}"
+          description: "${{ steps.md2jira.outputs.output-text }}"
+          fields: '{"parent": { "key": "TINU-49" }, "customfield_10015": "${{ steps.issue-parser.outputs.issueparser_start_date }}", "duedate": "${{ steps.issue-parser.outputs.issueparser_due_date }}"}'
+
+      - name: Log created issue
+        run: echo "Jira Issue ${{ steps.issue-parser.outputs.parentKey }}/${{ steps.create.outputs.issue }} was created"
+
+      - name: Checkout develop code
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Create branch with Ticket number
+        run: |
+          BRANCH_NAME="${{ steps.create.outputs.issue }}/${{ steps.issue-parser.outputs.issueparser_branch }}"
+          git checkout -b $BRANCH_NAME
+          git push origin $BRANCH_NAME
+
+      - name: Update issue title
+        uses: actions-cool/issues-helper@v3
+        with:
+          actions: "update-issue"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          title: "${{ steps.create.outputs.issue }} ${{ github.event.issue.title }}"
