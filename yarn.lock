@@ -1440,6 +1440,39 @@
     "@typescript-eslint/types" "8.3.0"
     eslint-visitor-keys "^3.4.3"
 
+"@use-funnel/browser@^0.0.7":
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/@use-funnel/browser/-/browser-0.0.7.tgz#dfff6b8a5d95564cde18e997bd97a7dc6f608f8c"
+  integrity sha512-f9MAUIglaO9b+0kMyZVaiKwPiNJLruc5GDRt2vfs6ExPb678dfpQSyPKbU8nik71hgO7GSjVwORbyx2AthWHzg==
+  dependencies:
+    "@use-funnel/core" "^0.0.7"
+
+"@use-funnel/core@^0.0.7":
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/@use-funnel/core/-/core-0.0.7.tgz#fb6779b3b669851ff1d2ce32fc1bde5600b55d45"
+  integrity sha512-aInoq3dv5MSuYIPb1w1Y1pTJEAncQghoX99suMwsqnkMGunnCOw6UAPo131oyM4H52m2rbsoBnHBreDEDYmvzg==
+
+"@use-funnel/next@^0.0.8":
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/@use-funnel/next/-/next-0.0.8.tgz#72f5413e0afa44dd6a9909c31b9e11b89fcc8208"
+  integrity sha512-04hk2kWCziEQpzd1gQ6P5VJHCPW7OpLAuxWWvYxdP+KkB3tVmdnzL1KVfU02IAFvQ42Y+Y6MmODaExb6qDy2Ag==
+  dependencies:
+    "@use-funnel/core" "^0.0.7"
+
+"@use-funnel/react-navigation-native@^0.0.7":
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/@use-funnel/react-navigation-native/-/react-navigation-native-0.0.7.tgz#5b3e44db84147262725c798ec03ace431f33b9ee"
+  integrity sha512-vp3GqPR7Pq9Ux4reVRC7NB4lNlZ4h9UA7ye0OO47SF9/+d6QLdBwNNb9+RJZ89qoKwkvqduOBOe/uVmMyiPmOw==
+  dependencies:
+    "@use-funnel/core" "^0.0.7"
+
+"@use-funnel/react-router-dom@^0.0.7":
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/@use-funnel/react-router-dom/-/react-router-dom-0.0.7.tgz#497644de957962cd555ba0f8bc959d206433871b"
+  integrity sha512-fuV7Cc3MYLeBb15hewhZc2sTY+l2y8IdOAI5PSfp+h1GSiS5C6ht/0XJj8bppTxOWpchwLnAT3yefFyXF9gFLA==
+  dependencies:
+    "@use-funnel/core" "^0.0.7"
+
 "@vitejs/plugin-react-swc@^3.5.0":
   version "3.7.0"
   resolved "https://registry.npmjs.org/@vitejs/plugin-react-swc/-/plugin-react-swc-3.7.0.tgz"
