@@ -1,0 +1,30 @@
+#!/bin/sh
+
+# 커밋 메시지 파일 경로와 커밋 타입
+COMMIT_MSG_FILE=$1
+COMMIT_MSG=$(cat $COMMIT_MSG_FILE)
+
+# 현재 브랜치 이름 가져오기
+BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
+
+# 브랜치 이름에서 '/' 앞의 내용만 추출하여 접두사로 사용
+ISSUE_TICKET=$(echo "$BRANCH_NAME" | sed 's|/.*||')
+
+# 커밋 타입
+COMMIT_SOURCE=$2
+
+# 커밋 메시지에 접두사 추가
+if [ "$COMMIT_SOURCE" != "merge" ]; then
+  if [[ "$COMMIT_MSG" != "[$ISSUE_TICKET]"* ]]; then
+    # 현재 커밋 메시지 가져오기
+    PREFIX="[$ISSUE_TICKET]"
+
+    # 메시지에 접두사 추가
+    echo "$PREFIX $COMMIT_MSG" > "$COMMIT_MSG_FILE"
+    echo "Commit message updated with prefix: $PREFIX"
+  else
+    echo "prefix already exist"
+  fi
+else
+  echo "Skipping prefix for merge commit."
+fi
