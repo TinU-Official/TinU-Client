@@ -43,4 +43,4 @@ jobs:
           key: ${{ secrets.EC2_SSH_PRIVATE_KEY }}
           script: |
             docker pull ${{ secrets.DOCKER_USERNAME }}/tinu-client
-            docker run -d -p 3000:80 ${{ secrets.DOCKER_USERNAME }}/tinu-client
+            docker run -d -p 80:80 ${{ secrets.DOCKER_USERNAME }}/tinu-client
