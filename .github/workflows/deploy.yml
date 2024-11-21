@@ -1,4 +1,4 @@
-name: Docker Build and Deploy to AWS EC2
+name: Docker Build and Deploy
 
 on:
   push:
@@ -39,7 +39,7 @@ jobs:
         uses: appleboy/ssh-action@v0.1.5
         with:
           host: ${{ secrets.EC2_PUBLIC_IP }}
-          username: ec2-user
+          username: ubuntu
           key: ${{ secrets.EC2_SSH_PRIVATE_KEY }}
           script: |
             docker pull ${{ secrets.DOCKER_USERNAME }}/tinu-client
