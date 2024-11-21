@@ -22,6 +22,7 @@ const colors = {
   light_2: "#F0F0F0",
   light_3: "#FBFBFB",
   light_4: "#FFFFFF",
+  light_6: "#F4F4F6",
   blue_gray: "#F1F5F5",
   red: "#F65E5E",
 };
