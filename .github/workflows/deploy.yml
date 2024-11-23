@@ -3,7 +3,7 @@ name: Docker Build and Deploy
 on:
   push:
     branches:
-      - TINU-81/feat/#28_docker-deploy
+      - main
 
 jobs:
   build:
