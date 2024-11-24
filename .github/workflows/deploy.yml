@@ -24,7 +24,7 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/tinu-client .
+          docker build --no-cache -t ${{ secrets.DOCKER_USERNAME }}/tinu-client .
 
       - name: Push Docker image to DockerHub
         run: |
