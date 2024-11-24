@@ -1,5 +1,5 @@
 function Home() {
-  return <span>testtesttest</span>;
+  return <span>왜 안 떠</span>;
 }
 
 export default Home;
