@@ -1,8 +1,5 @@
-
 function Home() {
-  return (
-    <></>
-  )
+  return <span>testtesttest</span>;
 }
 
-export default Home
+export default Home;
