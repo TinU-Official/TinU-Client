@@ -23,7 +23,6 @@ function App() {
       <ThemeProvider theme={theme}>
         <Global styles={gStyle} />
         <RouterProvider router={router} />
-        <span>왜 안 떠</span>
         <ReactQueryDevtools />
       </ThemeProvider>
     </QueryClientProvider>
