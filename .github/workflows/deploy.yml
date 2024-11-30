@@ -3,7 +3,7 @@ name: Docker Build and Deploy
 on:
   push:
     branches:
-      - chore/#31_yarn-berry-migration
+      - main
 
 jobs:
   build:
