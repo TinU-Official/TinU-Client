@@ -14,8 +14,8 @@ RUN yarn build
 
 FROM nginx:alpine
 
-ADD https://github.com/nginx/nginx-prometheus-exporter/releases/download/v0.11.0/nginx-prometheus-exporter /usr/local/bin/nginx-prometheus-exporter
-RUN chmod +x /usr/local/bin/nginx-prometheus-exporter
+RUN wget https://github.com/nginx/nginx-prometheus-exporter/releases/download/v0.11.0/nginx-prometheus-exporter -O /usr/local/bin/nginx-prometheus-exporter \
+    && chmod +x /usr/local/bin/nginx-prometheus-exporter
 
 COPY --from=build /app/dist /usr/share/nginx/html
 
