@@ -14,8 +14,16 @@ RUN yarn build
 
 FROM nginx:alpine
 
+ADD https://github.com/nginx/nginx-prometheus-exporter/releases/download/v0.11.0/nginx-prometheus-exporter /usr/local/bin/nginx-prometheus-exporter
+RUN chmod +x /usr/local/bin/nginx-prometheus-exporter
+
 COPY --from=build /app/dist /usr/share/nginx/html
 
-EXPOSE 8080
+COPY nginx.conf /etc/nginx/nginx.conf
 
-CMD ["nginx", "-g", "daemon off;"]
+EXPOSE 8080 9113 8081
+
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]
