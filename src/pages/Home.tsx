@@ -1,5 +1,11 @@
+import { IcRabbit } from "../assets";
+
 function Home() {
-  return <></>;
+  return (
+    <>
+      <IcRabbit />
+    </>
+  );
 }
 
 export default Home;
