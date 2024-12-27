@@ -57,7 +57,7 @@ const TextFieldWrapper = styled.div<{ showPlaceholder: boolean; isError: boolean
   align-items: center;
   gap: 2rem;
 
-  width: 33.5rem;
+  width: 100%;
   height: 6rem;
   padding: 0 1.7rem 0 2rem;
 
