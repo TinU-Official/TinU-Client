@@ -1,55 +1,47 @@
 import styled from "@emotion/styled";
 import { IcAgree, IcBack, IcCheckGrey, IcCheckWhiteGrey, IcGreyCircle } from "../../assets";
 import Button from "../Common/Button/Button";
+import { Register } from "../../constant";
 
 function Step1() {
-  // const [isDisabled, setIsDisabled] = useState(true);
-
-  // const handleClickButton = () => {
-  //   setIsDisabled(false);
-  // };
-
   return (
     <Step1Container>
-      <BackWrapper>
-        <StyledIcBack />
-      </BackWrapper>
-      <RegisterIconWrapper>
-        <StyledIcAgree />
-        <StyledIcGreyCircle />
-        <StyledIcGreyCircle />
-        <StyledIcGreyCircle />
-      </RegisterIconWrapper>
-      <TitleWrapper>Register.TEXT_STEP1</TitleWrapper>
+      <Step1Wrapper>
+        <BackWrapper>
+          <StyledIcBack />
+        </BackWrapper>
+        <RegisterIconWrapper>
+          <StyledIcAgree />
+          <StyledIcGreyCircle />
+          <StyledIcGreyCircle />
+          <StyledIcGreyCircle />
+        </RegisterIconWrapper>
+        <TitleWrapper dangerouslySetInnerHTML={{ __html: Register.TEXT_STEP1 }} />
 
-      <AgreeContainer>
-        {/* <AgreeButton>
-          <StyledIcWhiteGrey />
-          <span>네, 모두 동의합니다</span>
-        </AgreeButton> */}
-        <Button>
-          <IcCheckWhiteGrey />
-          <span>네, 모두 동의합니다</span>
-        </Button>
+        <AgreeContainer>
+          <Button>
+            <IcCheckWhiteGrey />
+            <span>네, 모두 동의합니다</span>
+          </Button>
 
-        <OptionalAgreeContainer>
-          <OptionalAgreeWrapper>
-            <StyledIcCheckGrey />
-            <AgreeText>[필수] TinU 서비스 이용약관</AgreeText>
-          </OptionalAgreeWrapper>
-          <OptionalAgreeWrapper>
-            <StyledIcCheckGrey />
-            <AgreeText>[필수] 개인정보 수집 및 이용 동의</AgreeText>
-          </OptionalAgreeWrapper>
-          <OptionalAgreeWrapper>
-            <StyledIcCheckGrey />
-            <AgreeText>[선택] 광고성 정보 수신 동의</AgreeText>
-          </OptionalAgreeWrapper>
-        </OptionalAgreeContainer>
-        <NextButton>
+          <OptionalAgreeContainer>
+            {[
+              { text: "[필수] TinU 서비스 이용약관", key: "necessary1" },
+              { text: "[필수] 개인정보 수집 및 이용 동의", key: "necessary2" },
+              { text: "[선택] 광고성 정보 수신 동의", key: "optional" },
+            ].map(({ text, key }) => (
+              <OptionalAgreeWrapper key={key}>
+                <StyledIcCheckGrey />
+                <AgreeText>{text}</AgreeText>
+              </OptionalAgreeWrapper>
+            ))}
+          </OptionalAgreeContainer>
+        </AgreeContainer>
+
+        <NextButton disabled={true}>
           <span>다음</span>
         </NextButton>
-      </AgreeContainer>
+      </Step1Wrapper>
     </Step1Container>
   );
 }
@@ -57,14 +49,21 @@ function Step1() {
 export default Step1;
 
 const Step1Container = styled.div`
-  width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: column;
   gap: 3rem;
-  padding: 2rem;
 
-  border: 1px solid grey;
+  position: relative;
+  box-sizing: border-box;
+`;
+
+const Step1Wrapper = styled.div`
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+
+  padding: 2rem;
 `;
 
 const BackWrapper = styled.div`
@@ -115,4 +114,5 @@ const StyledIcCheckGrey = styled(IcCheckGrey)`
 
 const AgreeText = styled.div`
   ${({ theme }) => theme.fonts.body2};
+  color: ${({ theme }) => theme.colors.gray_3};
 `;
