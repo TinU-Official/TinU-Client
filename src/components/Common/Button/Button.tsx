@@ -18,8 +18,6 @@ const TinUButton = styled.button<{ disabled?: boolean }>`
 
   border-radius: 1.2rem;
   background-color: ${({ theme, disabled }) => (disabled ? theme.colors.light_6 : theme.colors.main_mint)};
-
-  cursor: pointer;
 `;
 
 export default Button;
