@@ -1,5 +1,14 @@
 import styled from "@emotion/styled";
-import { IcStep1, IcBack, IcCheckGrey, IcCheckWhiteGrey, IcGreyCircle, IcNext, IcCheckMintWhite } from "../../assets";
+import {
+  IcStep1,
+  IcBack,
+  IcCheckGrey,
+  IcCheckWhiteGrey,
+  IcGreyCircle,
+  IcNext,
+  IcCheckMintWhite,
+  IcCheckMint,
+} from "../../assets";
 import Button from "../Common/Button/Button";
 import { Register } from "../../constant";
 import { useState } from "react";
@@ -10,7 +19,6 @@ interface AgreeTextProps {
 }
 
 function Step1() {
-  //const [checkItems, setCheckItems] = useState([]);
   const [isChecked, setIsChecked] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -18,38 +26,20 @@ function Step1() {
     setIsModalOpen(false);
   };
 
-  // // 체크박스 전체 선택
-  // const handleClickAllCheck = (isChecked) => {
-  //   if(isChecked) {
-  //     // 전체 선택 클릭 시 데이터의 모든 아이템(id)를 담은 배열로 checkItems 상태 업데이트
-  //     const idArray = [];
-  //     data.forEach((item) => idArray.push(item.id));
-  //     setCheckItems(idArray);
-  //   }
-  //   else {
-  //     setCheckItems([]);
-  //   }
-  // }
-
-  // // 체크박스 단일 선택
-  // const handleClickSingleCheck = (id, isChecked) => {
-  //   if (isChecked) {
-  //     setCheckItems(prev => [...prev, id]);
-  //   } else {
-  //     setCheckItems(checkItems.filter((item) => item !== id));
-  //   }
-  // };
+  const handleClickCheck = () => {
+    setIsChecked((prev) => !prev);
+  };
 
   return (
     <Step1Container>
       <Step1Wrapper>
         <IcBack />
-        <RegisterIconWrapper>
+        <StepIconWrapper>
           <IcStep1 />
           <IcGreyCircle />
           <IcGreyCircle />
           <IcGreyCircle />
-        </RegisterIconWrapper>
+        </StepIconWrapper>
         <TitleWrapper dangerouslySetInnerHTML={{ __html: Register.TEXT_STEP1 }} />
 
         <AgreeContainer>
@@ -57,7 +47,7 @@ function Step1() {
             text="네, 모두 동의합니다."
             children={isChecked ? <IcCheckMintWhite /> : <IcCheckWhiteGrey />}
             onClick={() => {
-              setIsChecked(true);
+              handleClickCheck();
               setIsModalOpen(true);
             }}
           ></CheckBox>
@@ -70,7 +60,7 @@ function Step1() {
             ].map(({ text, key }) => (
               <OptionalAgreeWrapper key={key}>
                 <AgreeWrapper>
-                  <IcCheckGrey />
+                  {isChecked ? <IcCheckMint /> : <IcCheckGrey />}
                   <AgreeText isNecessary={key.includes("necessary")}>{text}</AgreeText>
                 </AgreeWrapper>
                 <IcNext />
@@ -100,7 +90,6 @@ function Step1() {
 export default Step1;
 
 const Step1Container = styled.div`
-  width: 100vw;
   height: 100dvh;
 
   padding: 2rem;
@@ -113,7 +102,7 @@ const Step1Wrapper = styled.div`
   gap: 3rem;
 `;
 
-const RegisterIconWrapper = styled.div`
+const StepIconWrapper = styled.div`
   display: flex;
   gap: 0.5rem;
 `;
@@ -129,11 +118,9 @@ const AgreeContainer = styled.div`
 `;
 
 const NextButton = styled(Button)<{ disabled?: boolean }>`
+  width: calc(100% - 4rem);
   position: absolute;
   bottom: 3rem;
-  left: 50%;
-  transform: translateX(-50%);
-  width: calc(100% - 4rem);
 `;
 
 const OptionalAgreeContainer = styled.div`
