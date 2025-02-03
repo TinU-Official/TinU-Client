@@ -1,66 +1,61 @@
 import styled from "@emotion/styled";
-import {
-  IcStep1,
-  IcBack,
-  IcCheckGrey,
-  IcCheckWhiteGrey,
-  IcGreyCircle,
-  IcNext,
-  IcCheckMintWhite,
-  IcCheckMint,
-} from "../../assets";
+import { IcBack, IcCheckGrey, IcCheckWhiteGrey, IcNext, IcCheckMintWhite, IcCheckMint } from "../../assets";
 import Button from "../Common/Button/Button";
 import { Register } from "../../constant";
 import { useState } from "react";
-import CheckBox from "../Common/CheckBox";
+import CheckBox from "./CheckBox";
+import StepIcon from "../../utils/StepIcon";
+import { useNavigate } from "react-router-dom";
 
 interface AgreeTextProps {
   isNecessary: boolean;
 }
 
 function Step1() {
-  const [isChecked, setIsChecked] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const navigate = useNavigate();
+  const [checkedItems, setCheckedItems] = useState<string[]>([]);
 
-  const closeModal = () => {
-    setIsModalOpen(false);
+  const data = [
+    { text: "[필수] TinU 서비스 이용약관", key: "necessary1" },
+    { text: "[필수] 개인정보 수집 및 이용 동의", key: "necessary2" },
+    { text: "[선택] 광고성 정보 수신 동의", key: "optional" },
+  ];
+
+  const handleNextStep = () => {
+    navigate("/register/step2");
   };
 
-  const handleClickCheck = () => {
-    setIsChecked((prev) => !prev);
+  // 전체 선택
+  const handleAllChecked = (checked: boolean) => {
+    setCheckedItems(checked ? data.map((item) => item.key) : []);
+  };
+
+  // 개별 선택
+  const handleSingleChecked = (checked: boolean, key: string) => {
+    setCheckedItems((prev) => (checked ? [...prev, key] : prev.filter((item) => item !== key)));
   };
 
   return (
     <Step1Container>
       <Step1Wrapper>
         <IcBack />
-        <StepIconWrapper>
-          <IcStep1 />
-          <IcGreyCircle />
-          <IcGreyCircle />
-          <IcGreyCircle />
-        </StepIconWrapper>
+        <StepIcon step={1} />
         <TitleWrapper dangerouslySetInnerHTML={{ __html: Register.TEXT_STEP1 }} />
 
         <AgreeContainer>
           <CheckBox
             text="네, 모두 동의합니다."
-            children={isChecked ? <IcCheckMintWhite /> : <IcCheckWhiteGrey />}
-            onClick={() => {
-              handleClickCheck();
-              setIsModalOpen(true);
-            }}
-          ></CheckBox>
+            onClick={() => handleAllChecked(checkedItems.length !== data.length)}
+            checked={checkedItems.length === data.length}
+          >
+            {checkedItems.length === data.length ? <IcCheckMintWhite /> : <IcCheckWhiteGrey />}
+          </CheckBox>
 
           <OptionalAgreeContainer>
-            {[
-              { text: "[필수] TinU 서비스 이용약관", key: "necessary1" },
-              { text: "[필수] 개인정보 수집 및 이용 동의", key: "necessary2" },
-              { text: "[선택] 광고성 정보 수신 동의", key: "optional" },
-            ].map(({ text, key }) => (
-              <OptionalAgreeWrapper key={key}>
+            {data.map(({ text, key }) => (
+              <OptionalAgreeWrapper key={key} onClick={() => handleSingleChecked(!checkedItems.includes(key), key)}>
                 <AgreeWrapper>
-                  {isChecked ? <IcCheckMint /> : <IcCheckGrey />}
+                  {checkedItems.includes(key) ? <IcCheckMint /> : <IcCheckGrey />}
                   <AgreeText isNecessary={key.includes("necessary")}>{text}</AgreeText>
                 </AgreeWrapper>
                 <IcNext />
@@ -69,20 +64,13 @@ function Step1() {
           </OptionalAgreeContainer>
         </AgreeContainer>
 
-        <NextButton disabled={true}>
+        <NextButton
+          disabled={data.some(({ key }) => key.includes("necessary") && !checkedItems.includes(key))}
+          onClick={handleNextStep}
+        >
           <span>다음</span>
         </NextButton>
       </Step1Wrapper>
-
-      {isModalOpen && (
-        <Modal>
-          <ModalContent>
-            <h1>[전체] 이용약관</h1>
-            <p>이용약관에 대한 설명입니다다ㅏ다ㅏ다다닫다다</p>
-            <CloseButton onClick={closeModal}>닫기</CloseButton>
-          </ModalContent>
-        </Modal>
-      )}
     </Step1Container>
   );
 }
@@ -102,12 +90,8 @@ const Step1Wrapper = styled.div`
   gap: 3rem;
 `;
 
-const StepIconWrapper = styled.div`
-  display: flex;
-  gap: 0.5rem;
-`;
-
 const TitleWrapper = styled.div`
+  margin-left: 1rem;
   ${({ theme }) => theme.fonts.title1};
 `;
 
@@ -132,6 +116,7 @@ const OptionalAgreeContainer = styled.div`
 
 const OptionalAgreeWrapper = styled.div`
   display: flex;
+  align-items: center;
   justify-content: space-between;
 `;
 
@@ -145,37 +130,4 @@ const AgreeText = styled.div<AgreeTextProps>`
   ${({ theme }) => theme.fonts.body2};
 
   color: ${({ theme, isNecessary }) => (isNecessary ? theme.colors.main_mint : theme.colors.gray_3)};
-`;
-
-const Modal = styled.div`
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 30rem;
-  background-color: white;
-  border-radius: 1.5rem 1.5rem 0 0;
-  box-shadow: 0px -4px 20px rgba(0, 0, 0, 0.1);
-  animation: slide-up 0.5s ease-out;
-
-  @keyframes slide-up {
-    0% {
-      transform: translateY(100%);
-    }
-    100% {
-      transform: translateY(0);
-    }
-  }
-`;
-
-const ModalContent = styled.div`
-  padding: 2rem;
-`;
-
-const CloseButton = styled.button`
-  padding: 1rem;
-  margin-top: 1.5rem;
-
-  background-color: ${({ theme }) => theme.colors.light_2};
-  border-radius: 0.5rem;
 `;
