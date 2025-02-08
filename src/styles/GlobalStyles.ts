@@ -200,9 +200,6 @@ const gStyle = css`
   }
 
   body {
-    /* display: flex;
-    justify-content: center; */
-
     scroll-behavior: smooth;
   }
   input,
