@@ -1,61 +1,40 @@
 import styled from "@emotion/styled";
-import React from "react";
+import { memo } from "react";
 import { IcStep1, IcStep2, IcStep3, IcStep4, IcCheckTransparent, IcGreyCircle } from "../assets";
 
 interface StepIconProps {
   step: 1 | 2 | 3 | 4;
 }
 
-const StepIcon: React.FC<StepIconProps> = ({ step }) => {
-  return (
-    <StepIconContainer>
-      {step === 1 && (
-        <>
-          <StepIconWrapper>
-            <IcStep1 />
-            <StepText>약관동의</StepText>
-          </StepIconWrapper>
-          <IcGreyCircle />
-          <IcGreyCircle />
-          <IcGreyCircle />
-        </>
-      )}
-      {step === 2 && (
-        <>
-          <IcCheckTransparent />
-          <StepIconWrapper>
-            <IcStep2 />
-            <StepText>메일인증</StepText>
-          </StepIconWrapper>
-          <IcGreyCircle />
-          <IcGreyCircle />
-        </>
-      )}
-      {step === 3 && (
-        <>
-          <IcCheckTransparent />
-          <IcCheckTransparent />
-          <StepIconWrapper>
-            <IcStep3 />
-            <StepText>정보입력</StepText>
-          </StepIconWrapper>
-          <IcGreyCircle />
-        </>
-      )}
-      {step === 4 && (
-        <>
-          <IcCheckTransparent />
-          <IcCheckTransparent />
-          <IcCheckTransparent />
-          <StepIconWrapper>
-            <IcStep4 />
-            <StepText>상세정보</StepText>
-          </StepIconWrapper>
-        </>
-      )}
-    </StepIconContainer>
-  );
-};
+const STEP_CONFIG = {
+  1: { text: "약관동의", Icon: IcStep1 },
+  2: { text: "메일인증", Icon: IcStep2 },
+  3: { text: "정보입력", Icon: IcStep3 },
+  4: { text: "상세정보", Icon: IcStep4 },
+} as const;
+
+function StepIcon({ step }: StepIconProps) {
+  const renderIcons = () => {
+    return Array(4)
+      .fill(null)
+      .map((_, index) => {
+        const currentStep = index + 1;
+
+        if (currentStep === step) {
+          const StepComponent = STEP_CONFIG[step].Icon;
+          return (
+            <StepIconWrapper key={index}>
+              <StepComponent />
+              <StepText>{STEP_CONFIG[step].text}</StepText>
+            </StepIconWrapper>
+          );
+        }
+
+        return currentStep < step ? <IcCheckTransparent key={index} /> : <IcGreyCircle key={index} />;
+      });
+  };
+  return <StepIconContainer>{renderIcons()}</StepIconContainer>;
+}
 
 const StepIconContainer = styled.div`
   display: flex;
@@ -74,4 +53,4 @@ const StepText = styled.span`
   color: ${({ theme }) => theme.colors.gray_3};
 `;
 
-export default StepIcon;
+export default memo(StepIcon);
