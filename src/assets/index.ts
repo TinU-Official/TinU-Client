@@ -3,7 +3,7 @@
 import IcRabbit from "./icons/ic_rabbit.svg?react";
 import IcCheckGrey from "./svg/check/ic_check-grey.svg?react";
 import IcCheckMint from "./svg/check/ic_check-mint.svg?react";
-import IcCheckMintWhite from "./svg/check/ic_check-mintwhite.svg?react";
+import IcCheckComplete from "./svg/check/ic_check-complete.svg?react";
 import IcCheckWhiteGrey from "./svg/check/ic_check-whitegrey.svg?react";
 import IcCheckTransparent from "./svg/check/ic_check-transparent.svg?react";
 
@@ -19,7 +19,7 @@ export {
   IcRabbit,
   IcCheckGrey,
   IcCheckMint,
-  IcCheckMintWhite,
+  IcCheckComplete,
   IcCheckWhiteGrey,
   IcCheckTransparent,
   IcStep1,
