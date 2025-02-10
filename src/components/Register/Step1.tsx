@@ -1,33 +1,27 @@
 import styled from "@emotion/styled";
-import { IcBack, IcCheckGrey, IcCheckWhiteGrey, IcNext, IcCheckMintWhite, IcCheckMint } from "../../assets";
+import { IcBack, IcCheckGrey, IcCheckWhiteGrey, IcNext, IcCheckComplete, IcCheckMint } from "../../assets";
 import Button from "../Common/Button/Button";
-import { Register } from "../../constant";
+import { AGREE_DATA, REGISTER_TEXT } from "../../constant";
 import { useState } from "react";
 import CheckBox from "./CheckBox";
 import StepIcon from "../../utils/StepIcon";
 import { useNavigate } from "react-router-dom";
 
 interface AgreeTextProps {
-  isNecessary: boolean;
+  isRequired: boolean;
 }
 
 function Step1() {
   const navigate = useNavigate();
   const [checkedItems, setCheckedItems] = useState<string[]>([]);
 
-  const data = [
-    { text: "[필수] TinU 서비스 이용약관", key: "necessary1" },
-    { text: "[필수] 개인정보 수집 및 이용 동의", key: "necessary2" },
-    { text: "[선택] 광고성 정보 수신 동의", key: "optional" },
-  ];
-
-  const handleNextStep = () => {
+  const handleClickNextButton = () => {
     navigate("/register/step2");
   };
 
   // 전체 선택
   const handleAllChecked = (checked: boolean) => {
-    setCheckedItems(checked ? data.map((item) => item.key) : []);
+    setCheckedItems(checked ? AGREE_DATA.map((item) => item.key) : []);
   };
 
   // 개별 선택
@@ -40,23 +34,25 @@ function Step1() {
       <Step1Wrapper>
         <IcBack />
         <StepIcon step={1} />
-        <TitleWrapper dangerouslySetInnerHTML={{ __html: Register.TEXT_STEP1 }} />
+        <TitleWrapper dangerouslySetInnerHTML={{ __html: REGISTER_TEXT.STEP1 }} />
 
         <AgreeContainer>
           <CheckBox
-            text="네, 모두 동의합니다."
-            onClick={() => handleAllChecked(checkedItems.length !== data.length)}
-            checked={checkedItems.length === data.length}
+            onClick={() => handleAllChecked(checkedItems.length !== AGREE_DATA.length)}
+            checked={checkedItems.length === AGREE_DATA.length}
           >
-            {checkedItems.length === data.length ? <IcCheckMintWhite /> : <IcCheckWhiteGrey />}
+            {checkedItems.length === AGREE_DATA.length ? <IcCheckComplete /> : <IcCheckWhiteGrey />}
           </CheckBox>
 
           <OptionalAgreeContainer>
-            {data.map(({ text, key }) => (
-              <OptionalAgreeWrapper key={key} onClick={() => handleSingleChecked(!checkedItems.includes(key), key)}>
+            {AGREE_DATA.map((data) => (
+              <OptionalAgreeWrapper
+                key={data.text}
+                onClick={() => handleSingleChecked(!checkedItems.includes(data.key), data.key)}
+              >
                 <AgreeWrapper>
-                  {checkedItems.includes(key) ? <IcCheckMint /> : <IcCheckGrey />}
-                  <AgreeText isNecessary={key.includes("necessary")}>{text}</AgreeText>
+                  {checkedItems.includes(data.key) ? <IcCheckMint /> : <IcCheckGrey />}
+                  <AgreeText isRequired={data.key === "required"}>{data.text}</AgreeText>
                 </AgreeWrapper>
                 <IcNext />
               </OptionalAgreeWrapper>
@@ -65,8 +61,8 @@ function Step1() {
         </AgreeContainer>
 
         <NextButton
-          disabled={data.some(({ key }) => key.includes("necessary") && !checkedItems.includes(key))}
-          onClick={handleNextStep}
+          disabled={AGREE_DATA.some(({ key }) => key.includes("required") && !checkedItems.includes(key))}
+          onClick={handleClickNextButton}
         >
           <span>다음</span>
         </NextButton>
@@ -129,5 +125,5 @@ const AgreeWrapper = styled.div`
 const AgreeText = styled.div<AgreeTextProps>`
   ${({ theme }) => theme.fonts.body2};
 
-  color: ${({ theme, isNecessary }) => (isNecessary ? theme.colors.main_mint : theme.colors.gray_3)};
+  color: ${({ theme, isRequired }) => (isRequired ? theme.colors.main_mint : theme.colors.gray_3)};
 `;
