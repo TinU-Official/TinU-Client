@@ -1,19 +1,17 @@
 import styled from "@emotion/styled";
 import { InputHTMLAttributes } from "react";
-import { IcCheckMintWhite, IcCheckWhiteGrey } from "../../assets";
+import { IcCheckComplete, IcCheckWhiteGrey } from "../../assets";
 
 interface CheckBoxProps extends InputHTMLAttributes<HTMLInputElement> {
-  text?: string;
   onClick?: () => void;
-  disabled?: boolean;
 }
 
-function CheckBox({ text, onClick, disabled, checked }: CheckBoxProps): JSX.Element {
+function CheckBox({ onClick, checked }: CheckBoxProps): JSX.Element {
   return (
-    <CheckBoxWrapper isChecked={checked} disabled={disabled} onClick={onClick}>
+    <CheckBoxWrapper isChecked={checked} onClick={onClick}>
       <CheckBoxContent>
-        {checked ? <IcCheckMintWhite /> : <IcCheckWhiteGrey />}
-        {text && <CheckBoxText>{text}</CheckBoxText>}
+        {checked ? <IcCheckComplete /> : <IcCheckWhiteGrey />}
+        <CheckBoxText>네, 동의합니다.</CheckBoxText>
       </CheckBoxContent>
     </CheckBoxWrapper>
   );
