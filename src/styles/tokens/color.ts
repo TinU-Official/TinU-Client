@@ -12,7 +12,7 @@ export const color = {
     mint_900: "#08524f",
 
     // greyscale
-    while: "#ffffff",
+    white: "#ffffff",
     grey_2: "#fdfdfd",
     grey_3: "#f6f6f6",
     grey_4: "#f2f2f2",
