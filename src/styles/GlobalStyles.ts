@@ -173,8 +173,6 @@ const resetCss = css`
 const gStyle = css`
   ${resetCss}
 
-  #root,
-  body,
   html {
     margin: 0 auto;
 
@@ -202,9 +200,6 @@ const gStyle = css`
   }
 
   body {
-    display: flex;
-    justify-content: center;
-
     scroll-behavior: smooth;
   }
   input,
