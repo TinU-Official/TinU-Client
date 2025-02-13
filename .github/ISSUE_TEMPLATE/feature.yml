@@ -8,7 +8,7 @@ body:
     attributes:
       label: "브랜치 이름은 무엇인가요?"
       description: "브랜치 생성을 원치 않으면 비워두세요."
-      placeholder: "chat-service"
+      placeholder: "feat/#11-chatting"
     validations:
       required: false
   - type: input
