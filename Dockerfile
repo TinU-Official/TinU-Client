@@ -30,6 +30,6 @@ ENV NEXT_TELEMETRY_DISABLED 1
 
 RUN yarn install --immutable
 
-EXPOSE 8080
+EXPOSE 3000
 
 CMD ["yarn", "start"]
