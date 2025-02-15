@@ -31,7 +31,7 @@ export const fontStyle = {
   },
   subtitle3_r_16: {
     fontSize: typography.fontSize.subtitle,
-    fontWeight: typography.fontWeight.medium,
+    fontWeight: typography.fontWeight.regular,
     lineHeight: typography.lineHeight.normal,
   },
 
