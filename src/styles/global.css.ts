@@ -90,7 +90,8 @@ globalStyle("html", {
 
 globalStyle("body", {
   display: "flex",
-  justifyContent: "center",
+  flexDirection: "column",
+  alignItems: "center",
   scrollBehavior: "smooth",
 });
 
