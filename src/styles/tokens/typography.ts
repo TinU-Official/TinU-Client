@@ -15,6 +15,10 @@ export const typography = {
     regular: "400",
   },
   lineHeight: {
-    normal: "normal",
+    auto: "normal",
+    title2: "136%",
+    title3: "140%",
+    subtitle2: "125%",
+    body2: "143%",
   },
 } as const;
