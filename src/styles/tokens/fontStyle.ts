@@ -56,6 +56,16 @@ export const fontStyle = {
     fontWeight: typography.fontWeight.semibold,
     lineHeight: typography.lineHeight.normal,
   },
+  body5_m_13: {
+    fontSize: typography.fontSize.body2,
+    fontWeight: typography.fontWeight.medium,
+    lineHeight: typography.lineHeight.normal,
+  },
+  body6_r_13: {
+    fontSize: typography.fontSize.body2,
+    fontWeight: typography.fontWeight.regular,
+    lineHeight: typography.lineHeight.normal,
+  },
 
 
   // label
