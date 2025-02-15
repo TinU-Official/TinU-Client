@@ -19,7 +19,7 @@ export const textFieldWrapper = recipe({
         boxShadow: `inset 0 0 0 2px ${vars.color.mint_500}`
       },
       false: {
-        backgroundColor: vars.color.grey_3,
+        backgroundColor: vars.color.grey_2,
       },
     },
     isError: {
@@ -55,7 +55,7 @@ export const animatedPlaceholder = recipe({
         ...vars.fontStyles.caption1_m_11,
       },
       inactive: {
-        color: vars.color.grey_7,
+        color: vars.color.grey_6,
         transform: "translateY(0)",
         ...vars.fontStyles.subtitle2_m_16,
       },

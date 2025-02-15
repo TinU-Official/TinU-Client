@@ -14,8 +14,8 @@ export const buttonStyle = style({
 
   selectors: {
     "&:disabled": {
-      background: vars.color.grey_4,
-      color: vars.color.grey_7,
+      background: vars.color.grey_3,
+      color: vars.color.grey_6,
     },
   },
 });
