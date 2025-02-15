@@ -11,7 +11,7 @@ export const color = {
     mint_800: "#0b6b67",
     mint_900: "#08524f",
 
-    // greyscale
+    // greyScale
     white: "#ffffff",
     grey_2: "#fdfdfd",
     grey_3: "#f6f6f6",
@@ -25,7 +25,7 @@ export const color = {
     grey_11: "#3c3c3c",
     grey_12: "#333333",
     grey_13: "#212121",
-    black: "000000",
+    black: "#000000",
 
     // red
     red: "#f99a9a",
