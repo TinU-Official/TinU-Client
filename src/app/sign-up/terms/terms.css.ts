@@ -12,10 +12,12 @@ export const step1Wrapper = style({
   flexDirection: "column",
 
   width: "100%",
+  height: "100%",
 });
 
 export const titleWrapper = style({
   ...vars.fontStyles.title2_sb_22,
 
-  marginLeft: "1rem",
+  marginTop: "3.5rem",
+  paddingLeft: "1rem",
 });

@@ -14,7 +14,7 @@ export const agreeWrapper = style({
   gap: "1.5rem",
 });
 
-export const agreeText = recipe({
+export const termsType = recipe({
   base: {
     ...vars.fontStyles.body2_m_14,
   },
@@ -28,6 +28,12 @@ export const agreeText = recipe({
       },
     },
   },
+});
+
+export const agreeText = style({
+  ...vars.fontStyles.body2_m_14,
+
+  color: vars.color.grey_6,
 });
 
 export const hiddenInput = style({

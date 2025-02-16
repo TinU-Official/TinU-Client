@@ -1,4 +1,3 @@
-import { REGISTER_TEXT } from "@/constants";
 import * as styles from "./terms.css";
 
 import { TermsForm } from "@/components/SignUp/Terms/TermsForm/TermsForm";
@@ -9,7 +8,10 @@ export default function page() {
     <div className={styles.step1Container}>
       <div className={styles.step1Wrapper}>
         <MemoizedStepIcon step={1} />
-        <div className={styles.titleWrapper} dangerouslySetInnerHTML={{ __html: REGISTER_TEXT.STEP1 }} />
+        <h1 className={styles.titleWrapper}>
+          간편 회원가입을 위해 <br />
+          약관 동의가 필요해요
+        </h1>
         <TermsForm />
       </div>
     </div>

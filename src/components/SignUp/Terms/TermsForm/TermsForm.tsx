@@ -57,19 +57,21 @@ export function TermsForm() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.agreeContainer}>
-      <AllAgreeCheckbox isAllChecked={isAllChecked} onClick={handleClickAllCheckBox} />
-      <div className={styles.optionalAgreeContainer}>
-        {AGREE_DATA.map((data) => (
-          <TermCheckbox
-            key={data.id}
-            id={data.id}
-            text={data.text}
-            isChecked={watch(`agree${data.id}` as keyof TermsFormData)}
-            isRequired={data.type === "required"}
-            detailLink={data.detailLink}
-            onChangeChecked={handleSingleChecked}
-          />
-        ))}
+      <div>
+        <AllAgreeCheckbox isAllChecked={isAllChecked} onClick={handleClickAllCheckBox} />
+        <div className={styles.optionalAgreeContainer}>
+          {AGREE_DATA.map((data) => (
+            <TermCheckbox
+              key={data.id}
+              id={data.id}
+              text={data.text}
+              isChecked={watch(`agree${data.id}` as keyof TermsFormData)}
+              isRequired={data.type === "required"}
+              detailLink={data.detailLink}
+              onChangeChecked={handleSingleChecked}
+            />
+          ))}
+        </div>
       </div>
       <SubmitButton disabled={!isAllRequired} />
     </form>

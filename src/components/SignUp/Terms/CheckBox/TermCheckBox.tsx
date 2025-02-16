@@ -37,7 +37,10 @@ export const TermCheckbox = memo(function TermCheckbox({
           onChange={handleChange}
         />
         <label htmlFor={`${id}`}>{isChecked ? <IcCheckMint /> : <IcCheckGrey />}</label>
-        <div className={styles.agreeText({ isRequired })}>{text}</div>
+        <p>
+          <span className={styles.termsType({ isRequired })}>{isRequired ? "[필수] " : "[선택] "}</span>
+          <span className={styles.agreeText}>{text}</span>
+        </p>
       </div>
       <Link href={detailLink}>
         <IcTermDetail />

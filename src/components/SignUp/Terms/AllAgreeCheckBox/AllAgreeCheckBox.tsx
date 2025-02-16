@@ -11,13 +11,11 @@ interface AllAgreeCheckboxProps {
 export const AllAgreeCheckbox = memo(function AllAgreeCheckbox({ isAllChecked, onClick }: AllAgreeCheckboxProps) {
   return (
     <div className={styles.checkboxWrapper}>
-      <div className={styles.checkboxContent}>
-        <input type="checkbox" id="all-check" />
-        <label htmlFor="all-check" onClick={onClick}>
-          {isAllChecked ? <IcCheckComplete /> : <IcCheckWhiteGrey />}
-        </label>
-        <span className={styles.checkboxText}>네, 동의합니다.</span>
-      </div>
+      <input className={styles.hiddenInput} type="checkbox" id="all-check" />
+      <label htmlFor="all-check" onClick={onClick}>
+        {isAllChecked ? <IcCheckComplete /> : <IcCheckWhiteGrey />}
+      </label>
+      <span className={styles.checkboxText}>네, 모두 동의합니다</span>
     </div>
   );
 });
