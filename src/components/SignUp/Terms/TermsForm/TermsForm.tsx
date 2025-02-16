@@ -53,7 +53,11 @@ export function TermsForm() {
   const isAllChecked = useMemo(() => [agree1, agree2, agree3].every(Boolean), [agree1, agree2, agree3]);
 
   const onSubmit = () => {
-    router.push("/register/step2");
+    const termsArray = [agree1, agree2, agree3];
+
+    localStorage.setItem("terms", JSON.stringify(termsArray));
+
+    router.push("/sign-up/email");
   };
 
   return (
