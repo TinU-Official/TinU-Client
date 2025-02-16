@@ -4,10 +4,11 @@ import { useForm } from "react-hook-form";
 import { AGREE_DATA } from "@/constants";
 import { useRouter } from "next/navigation";
 import * as styles from "./termsForm.css";
-import { TermCheckbox } from "../CheckBox/TermCheckBox";
+
 import { useCallback, useMemo } from "react";
-import { AllAgreeCheckbox } from "../AllAgreeCheckBox/AllAgreeCheckBox";
 import { SubmitButton } from "../SubmitButton/SubmitButton";
+import { TermCheckboxField } from "../TermCheckboxField/TermCheckboxField";
+import { AllAgreeCheckboxField } from "../AllAgreeCheckboxField/AllAgreeCheckboxField";
 
 interface TermsFormData {
   agree1: boolean;
@@ -56,12 +57,12 @@ export function TermsForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className={styles.agreeContainer}>
+    <form onSubmit={handleSubmit(onSubmit)} className={styles.termsFormWrapper}>
       <div>
-        <AllAgreeCheckbox isAllChecked={isAllChecked} onClick={handleClickAllCheckBox} />
-        <div className={styles.optionalAgreeContainer}>
+        <AllAgreeCheckboxField isAllChecked={isAllChecked} onClick={handleClickAllCheckBox} />
+        <div className={styles.termCheckboxListContainer}>
           {AGREE_DATA.map((data) => (
-            <TermCheckbox
+            <TermCheckboxField
               key={data.id}
               id={data.id}
               text={data.text}

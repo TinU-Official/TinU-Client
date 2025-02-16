@@ -2,13 +2,13 @@ import { vars } from "@/styles/theme.css";
 import { style } from "@vanilla-extract/css";
 import { recipe } from "@vanilla-extract/recipes";
 
-export const optionalAgreeWrapper = style({
+export const termCheckboxFieldWrapper = style({
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
 });
 
-export const agreeWrapper = style({
+export const termCheckboxSection = style({
   display: "flex",
   alignItems: "center",
   gap: "1.5rem",
@@ -30,7 +30,7 @@ export const termsType = recipe({
   },
 });
 
-export const agreeText = style({
+export const termText = style({
   ...vars.fontStyles.body2_m_14,
 
   color: vars.color.grey_6,

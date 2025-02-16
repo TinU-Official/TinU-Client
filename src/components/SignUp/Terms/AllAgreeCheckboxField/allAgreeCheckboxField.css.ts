@@ -1,7 +1,7 @@
 import { vars } from "@/styles/theme.css";
 import { style } from "@vanilla-extract/css";
 
-export const checkboxWrapper = style({
+export const allAgreeCheckboxWrapper = style({
   marginTop: "6.8rem",
   paddingLeft: "1.8rem",
   width: "100%",
@@ -15,7 +15,7 @@ export const checkboxWrapper = style({
   borderRadius: "1.2rem",
 });
 
-export const checkboxText = style({
+export const allAgreeCheckboxText = style({
   ...vars.fontStyles.subtitle1_sb_16,
 
   color: vars.color.grey_8,

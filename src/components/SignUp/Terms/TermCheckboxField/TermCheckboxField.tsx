@@ -1,7 +1,7 @@
 import IcCheckGrey from "@/assets/icons/ic_check-grey.svg";
 import IcCheckMint from "@/assets/icons/ic_check-mint.svg";
 import IcTermDetail from "@/assets/icons/ic_term-detail.svg";
-import * as styles from "./termCheckBox.css";
+import * as styles from "./termCheckboxField.css";
 import Link from "next/link";
 import { memo, useCallback } from "react";
 
@@ -14,7 +14,7 @@ interface TermCheckboxProps {
   onChangeChecked: (id: number, checked: boolean) => void;
 }
 
-export const TermCheckbox = memo(function TermCheckbox({
+export const TermCheckboxField = memo(function TermCheckbox({
   id,
   text,
   isChecked,
@@ -27,8 +27,8 @@ export const TermCheckbox = memo(function TermCheckbox({
   }, [id, isChecked, onChangeChecked]);
 
   return (
-    <div className={styles.optionalAgreeWrapper}>
-      <div className={styles.agreeWrapper}>
+    <div className={styles.termCheckboxFieldWrapper}>
+      <div className={styles.termCheckboxSection}>
         <input
           className={styles.hiddenInput}
           type="checkbox"
@@ -39,7 +39,7 @@ export const TermCheckbox = memo(function TermCheckbox({
         <label htmlFor={`${id}`}>{isChecked ? <IcCheckMint /> : <IcCheckGrey />}</label>
         <p>
           <span className={styles.termsType({ isRequired })}>{isRequired ? "[필수] " : "[선택] "}</span>
-          <span className={styles.agreeText}>{text}</span>
+          <span className={styles.termText}>{text}</span>
         </p>
       </div>
       <Link href={detailLink}>
