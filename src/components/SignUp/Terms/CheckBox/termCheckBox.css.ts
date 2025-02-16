@@ -2,19 +2,6 @@ import { vars } from "@/styles/theme.css";
 import { style } from "@vanilla-extract/css";
 import { recipe } from "@vanilla-extract/recipes";
 
-export const agreeContainer = style({
-  display: "flex",
-  flexDirection: "column",
-  gap: "2rem",
-});
-
-export const optionalAgreeContainer = style({
-  display: "flex",
-  flexDirection: "column",
-  gap: "1.8rem",
-  padding: "0 2rem",
-});
-
 export const optionalAgreeWrapper = style({
   display: "flex",
   alignItems: "center",
@@ -41,4 +28,8 @@ export const agreeText = recipe({
       },
     },
   },
+});
+
+export const hiddenInput = style({
+  display: "none",
 });

@@ -1,7 +1,8 @@
 import { REGISTER_TEXT } from "@/constants";
 import * as styles from "./terms.css";
-import { MemoizedStepIcon } from "@/components/SignUp/Terms/StepIcon/StepIcon";
+
 import { TermsForm } from "@/components/SignUp/Terms/TermsForm/TermsForm";
+import { MemoizedStepIcon } from "@/components/SignUp/StepIcon/StepIcon";
 
 export default function page() {
   return (
