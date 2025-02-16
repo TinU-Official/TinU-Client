@@ -14,8 +14,7 @@ export const termsFormWrapper = style({
 export const termCheckboxListContainer = style({
   display: "flex",
   flexDirection: "column",
-  gap: "1.8rem",
-  padding: "0 2rem",
+  gap: "1rem",
 
   marginTop: "2.7rem",
 });

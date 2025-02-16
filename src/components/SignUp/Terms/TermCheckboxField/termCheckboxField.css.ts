@@ -6,6 +6,8 @@ export const termCheckboxFieldWrapper = style({
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
+
+  padding: "0 0.2rem 0 1.8rem",
 });
 
 export const termCheckboxSection = style({

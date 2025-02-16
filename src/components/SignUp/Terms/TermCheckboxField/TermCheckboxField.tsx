@@ -1,6 +1,6 @@
-import IcCheckGrey from "@/assets/icons/ic_check-grey.svg";
-import IcCheckMint from "@/assets/icons/ic_check-mint.svg";
-import IcTermDetail from "@/assets/icons/ic_term-detail.svg";
+import IcCheckGrey from "@/assets/icons/ic_check_grey.svg";
+import IcCheckMint from "@/assets/icons/ic_check_mint.svg";
+import IcArrowRight from "@/assets/icons/ic_arrow_right.svg";
 import * as styles from "./termCheckboxField.css";
 import Link from "next/link";
 import { memo, useCallback } from "react";
@@ -43,7 +43,7 @@ export const TermCheckboxField = memo(function TermCheckbox({
         </p>
       </div>
       <Link href={detailLink}>
-        <IcTermDetail />
+        <IcArrowRight />
       </Link>
     </div>
   );
