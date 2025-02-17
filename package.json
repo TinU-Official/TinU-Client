@@ -16,7 +16,8 @@
     "clsx": "^2.1.1",
     "next": "15.1.7",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-hook-form": "^7.54.2"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.7.1",
@@ -29,6 +30,8 @@
     "@vanilla-extract/next-plugin": "^2.4.10",
     "eslint": "^9",
     "eslint-config-next": "15.1.7",
+    "prettier": "^3.5.1",
     "typescript": "^5"
-  }
+  },
+  "packageManager": "yarn@4.6.0"
 }
