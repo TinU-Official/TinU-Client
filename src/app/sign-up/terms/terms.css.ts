@@ -1,13 +1,7 @@
 import { vars } from "@/styles/theme.css";
 import { style } from "@vanilla-extract/css";
 
-export const step1Container = style({
-  width: "100%",
-  height: "100dvh",
-  padding: "0 2rem",
-});
-
-export const step1Wrapper = style({
+export const termsPageWrapper = style({
   display: "flex",
   flexDirection: "column",
 
