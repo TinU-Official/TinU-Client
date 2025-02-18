@@ -91,7 +91,7 @@ export const textFieldInput = recipe({
 
 export const helperText = recipe({
     base: {
-    marginTop: "1.8rem",
+    marginTop: "0.8rem",
         paddingLeft: "0.7rem",
         fontSize: "1rem",
         fontWeight: 500,
