@@ -24,6 +24,7 @@ globalStyle("body", {
   overscrollBehavior: "none",
   lineHeight: 1,
   touchAction: "manipulation",
+  fontFamily: "var(--font-pretendard)",
   WebkitFontSmoothing: "antialiased",
   MozOsxFontSmoothing: "grayscale",
 });
