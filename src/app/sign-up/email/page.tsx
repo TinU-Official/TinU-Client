@@ -1,5 +1,4 @@
 import * as styles from "./email.css";
-import React from "react";
 
 import { MemoizedStepIcon } from "@/components/SignUp/StepIcon/StepIcon";
 import EmailForm from "@/components/SignUp/Email/EmailForm/EmailForm";
