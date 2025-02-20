@@ -12,6 +12,6 @@ export const termsPageWrapper = style({
 export const titleWrapper = style({
   ...vars.fontStyles.title2_sb_22,
 
-  marginTop: "3.5rem",
+  marginTop: "5.2rem",
   paddingLeft: "1rem",
 });
