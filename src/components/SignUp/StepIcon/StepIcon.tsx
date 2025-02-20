@@ -29,19 +29,19 @@ export function StepIcon({ step }: StepIconProps) {
 
         if (currentStep === step) {
           const StepComponent = STEP_CONFIG[step].Icon;
-          return (
-            <div className={styles.stepIconWrapper} key={index}>
-              <StepComponent />
-              <span className={styles.stepText}>{STEP_CONFIG[step].text}</span>
-            </div>
-          );
+          return <StepComponent key={currentStep} />;
         }
 
-        return currentStep < step ? <IcCheckTransparent key={index} /> : <IcGreyCircle key={index} />;
+        return currentStep < step ? <IcCheckTransparent key={currentStep} /> : <IcGreyCircle key={currentStep} />;
       });
   };
 
-  return <div className={styles.stepIconContainer}>{renderIcons()}</div>;
+  return (
+    <div className={styles.stepIconWrapper}>
+      <div className={styles.stepIconListContainer}>{renderIcons()}</div>
+      <span className={styles.stepText({ step })}>{STEP_CONFIG[step].text}</span>
+    </div>
+  );
 }
 
 export const MemoizedStepIcon = memo(StepIcon);
