@@ -1,6 +1,6 @@
 import { style } from "@vanilla-extract/css";
 
-export const emailFieldContainer = style({
+export const emailFormWrapper = style({
   flex: 1,
 
   display: "flex",

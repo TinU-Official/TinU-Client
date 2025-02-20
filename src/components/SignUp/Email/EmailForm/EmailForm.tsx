@@ -7,7 +7,6 @@ import { SubmitButton } from "@/components/SignUp/Email/SubmitButton/SubmitButto
 
 function EmailForm() {
   const [email, setEmail] = useState("");
-  const [isTyping, setIsTyping] = useState(false);
 
   const isValidEmail = /^[a-zA-Z0-9._%+-]+@kyonggi\.ac\.kr$/.test(email);
 
@@ -15,13 +14,12 @@ function EmailForm() {
     const inputValue = e.target.value;
     if (/[^a-zA-Z0-9@._%+-]/.test(inputValue)) return;
     setEmail(inputValue);
-    setIsTyping(true);
   };
 
   const isError = email !== "" && !isValidEmail;
 
   return (
-    <div className={styles.emailFieldContainer}>
+    <div className={styles.emailFormWrapper}>
       <div className={styles.emailFieldWrapper}>
         <TextField
           placeholder="이메일 주소"
