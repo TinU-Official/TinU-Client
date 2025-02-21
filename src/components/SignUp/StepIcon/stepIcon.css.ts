@@ -24,9 +24,11 @@ export const stepText = recipe({
     color: vars.color.grey_6,
   },
   variants: {
-    step: Object.fromEntries([1, 2, 3, 4].map((step) => [step, { left: `${(step - 1) * 2.4}rem` }])) as Record<
-      1 | 2 | 3 | 4,
-      { left: string }
-    >,
+    step: {
+        1: { left: 0 },
+        2: { left: "2.4rem" },
+        3: { left: "4.8rem" },
+        4: { left: "7.2rem" } 
+    }
   },
 });
