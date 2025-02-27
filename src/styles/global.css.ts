@@ -68,10 +68,14 @@ globalStyle("a", {
 
 globalStyle("#root, body, html", {
   margin: "0 auto",
-  maxWidth: "43rem",
   height: "100dvh",
   msOverflowStyle: "none",
   scrollbarWidth: "none",
+  "@media": {
+    "(min-width: 768px)": {
+      maxWidth: "43rem",
+    },
+  },
 });
 
 globalStyle("#root::-webkit-scrollbar", {
