@@ -4,10 +4,19 @@ import { vars } from "@/styles/theme.css";
 export const secondBannerWrapper = style({
   display: "flex",
   flexDirection: "column",
+  justifyContent: "center",
   alignItems: "center",
 
   width: "100%",
   height: "100dvh",
+});
+
+export const secondBannerContent = style({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+
+  marginBottom: "7.5rem",
 });
 
 export const secondBannerTitleSection = style({
@@ -15,7 +24,7 @@ export const secondBannerTitleSection = style({
   flexDirection: "column",
   alignItems: "center",
 
-  margin: "14.4dvh 0 13rem 0",
+  marginBottom: "13rem",
 });
 
 export const secondBannerText = style({
