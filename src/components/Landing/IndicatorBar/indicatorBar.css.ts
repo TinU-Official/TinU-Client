@@ -13,25 +13,5 @@ export const indicatorBarWrapper = style({
 
 export const indicatorWrapper = style({
   width: "0.7rem",
-
-  borderRadius: "0.9rem",
-});
-
-export const firstIndicatorWrapper = style({
-  width: "0.7rem",
-
-  borderRadius: "0.9rem",
-});
-
-export const secondIndicatorWrapper = style({
-  width: "0.7rem",
-
-  borderRadius: "0.9rem",
-});
-
-export const thirdIndicatorWrapper = style({
-  width: "0.7rem",
-  height: "3rem",
-
   borderRadius: "0.9rem",
 });
