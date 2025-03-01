@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect } from "react";
 import { FirstBanner } from "@/components/Landing/FirstBanner/FirstBanner";
 import { IndicatorBar } from "@/components/Landing/IndicatorBar/IndicatorBar";
 import { SecondBanner } from "@/components/Landing/SecondBanner/SecondBanner";
