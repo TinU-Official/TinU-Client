@@ -1,7 +1,7 @@
 "use client";
 
 import * as styles from "./landing.css";
-
+import { useCallback } from "react";
 import Button from "@/components/Common/Button/Button";
 import { FirstBanner } from "@/components/Landing/FirstBanner/FirstBanner";
 import { IndicatorBar } from "@/components/Landing/IndicatorBar/IndicatorBar";
@@ -14,9 +14,9 @@ export default function Landing() {
   const router = useRouter();
   const { activeIndicator, firstBannerRef, secondBannerRef, thirdBannerRef } = useActiveIndicator();
 
-  const handleClickStartButton = () => {
+  const handleClickStartButton = useCallback(() => {
     router.push("/login");
-  };
+  }, [router]);
 
   return (
     <>
