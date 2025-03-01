@@ -13,24 +13,19 @@ export const indicatorBarWrapper = style({
 
 export const indicatorWrapper = style({
   width: "0.7rem",
-  height: "1.2rem", // 기본 높이
-  backgroundColor: "purple",
+
   borderRadius: "0.9rem",
 });
 
 export const firstIndicatorWrapper = style({
   width: "0.7rem",
-  height: "3rem",
 
-  backgroundColor: "purple",
   borderRadius: "0.9rem",
 });
 
 export const secondIndicatorWrapper = style({
   width: "0.7rem",
-  height: "3rem",
 
-  backgroundColor: "purple",
   borderRadius: "0.9rem",
 });
 
@@ -38,6 +33,5 @@ export const thirdIndicatorWrapper = style({
   width: "0.7rem",
   height: "3rem",
 
-  backgroundColor: "purple",
   borderRadius: "0.9rem",
 });
