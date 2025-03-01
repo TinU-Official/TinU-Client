@@ -4,7 +4,7 @@ import { FirstBanner } from "@/components/Landing/FirstBanner/FirstBanner";
 import { IndicatorBar } from "@/components/Landing/IndicatorBar/IndicatorBar";
 import { SecondBanner } from "@/components/Landing/SecondBanner/SecondBanner";
 import { ThirdBanner } from "@/components/Landing/ThirdBanner/ThirdBanner";
-import useActiveIndicator from "@/hooks/Landing/useActiveIndicator";
+import { useActiveIndicator } from "@/hooks/Landing/useActiveIndicator";
 
 export default function Landing() {
   const { activeIndicator, firstBannerRef, secondBannerRef, thirdBannerRef } = useActiveIndicator();

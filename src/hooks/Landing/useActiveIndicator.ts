@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 
-const useActiveIndicator = () => {
+export const useActiveIndicator = () => {
   const [activeIndicator, setActiveIndicator] = useState(0);
 
   const firstBannerRef = useRef<HTMLDivElement>(null);
@@ -49,5 +49,3 @@ const useActiveIndicator = () => {
 
   return { activeIndicator, firstBannerRef, secondBannerRef, thirdBannerRef };
 };
-
-export default useActiveIndicator;
