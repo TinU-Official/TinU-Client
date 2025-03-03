@@ -26,7 +26,9 @@ export const useActiveIndicator = () => {
       entries.forEach((entry) => {
         if (entry.isIntersecting && entry.target.id) {
           const index = bannerIndexMap[entry.target.id];
-          if (index) setActiveIndicator(index);
+          if (index) {
+            setActiveIndicator(index);
+          }
         }
       });
     };
@@ -35,12 +37,16 @@ export const useActiveIndicator = () => {
     const refs = [bannerRefs.first, bannerRefs.second, bannerRefs.third];
 
     refs.forEach((ref) => {
-      if (ref.current) observer.observe(ref.current);
+      if (ref.current) {
+        observer.observe(ref.current);
+      }
     });
 
     return () => {
       refs.forEach((ref) => {
-        if (ref.current) observer.unobserve(ref.current);
+        if (ref.current) {
+          observer.unobserve(ref.current);
+        }
       });
     };
   }, []);
