@@ -68,7 +68,8 @@ globalStyle("a", {
 
 globalStyle("#root, body, html", {
   margin: "0 auto",
-  height: "100dvh",
+  height: "auto",
+  minHeight: "100dvh",
   msOverflowStyle: "none",
   scrollbarWidth: "none",
   "@media": {
