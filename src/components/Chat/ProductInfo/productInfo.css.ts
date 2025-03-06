@@ -7,7 +7,7 @@ export const ProductInfoWrapper = style({
   gap: "1.7rem",
 
   width: "100%",
-  height: "6rem",
+  height: "7rem",
   paddingLeft: "2rem",
 });
 
