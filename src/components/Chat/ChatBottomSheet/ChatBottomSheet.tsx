@@ -19,6 +19,10 @@ export function ChatBottomSheet() {
     setIsOpen((isOpen) => !isOpen);
   };
 
+  const handleInputFocus = () => {
+    setIsOpen(false);
+  };
+
   return (
     <motion.div
       className={styles.chatBottomSheetWrapper}
@@ -36,6 +40,7 @@ export function ChatBottomSheet() {
             className={styles.chattingInput}
             onChange={handleChangeChattingInput}
             value={chattingInputValue}
+            onFocus={handleInputFocus}
             placeholder="메세지 보내기"
           />
           <button type="button">{chattingInputValue.length === 0 ? <IcAirplaneGrey /> : <IcAirplaneMint />}</button>

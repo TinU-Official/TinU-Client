@@ -2,6 +2,9 @@ import { vars } from "@/styles/theme.css";
 import { style } from "@vanilla-extract/css";
 
 export const ProductInfoWrapper = style({
+  position: "sticky",
+  top: "6rem",
+
   display: "flex",
   alignItems: "center",
   gap: "1.7rem",
@@ -9,6 +12,8 @@ export const ProductInfoWrapper = style({
   width: "100%",
   height: "7rem",
   paddingLeft: "2rem",
+
+  backgroundColor: vars.color.white,
 });
 
 export const ProductDetailContainer = style({
