@@ -1,15 +1,21 @@
 "use client";
 
 import * as styles from "./chatBottomSheet.css";
-import { useState, type ChangeEvent } from "react";
+import { useState, useRef, type ChangeEvent } from "react";
 import IcPlus from "@/assets/icons/ic_plus.svg";
 import IcAirplaneMint from "@/assets/icons/ic_airplane_mint.svg";
 import IcAirplaneGrey from "@/assets/icons/ic_airplane_grey.svg";
 import { motion } from "framer-motion";
+import { useKeyboardFocus } from "@/hooks/Chat/useKeyboardFocus";
 
 export function ChatBottomSheet() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [chattingInputValue, setChattingInputValue] = useState<string>("");
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const { handleInputFocus } = useKeyboardFocus({
+    inputRef,
+  });
 
   const handleChangeChattingInput = (e: ChangeEvent<HTMLInputElement>) => {
     setChattingInputValue(e.target.value);
@@ -19,7 +25,8 @@ export function ChatBottomSheet() {
     setIsOpen((isOpen) => !isOpen);
   };
 
-  const handleInputFocus = () => {
+  const handleFocus = () => {
+    handleInputFocus();
     setIsOpen(false);
   };
 
@@ -40,7 +47,7 @@ export function ChatBottomSheet() {
             className={styles.chattingInput}
             onChange={handleChangeChattingInput}
             value={chattingInputValue}
-            onFocus={handleInputFocus}
+            onFocus={handleFocus}
             placeholder="메세지 보내기"
           />
           <button type="button">{chattingInputValue.length === 0 ? <IcAirplaneGrey /> : <IcAirplaneMint />}</button>

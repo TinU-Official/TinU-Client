@@ -2,6 +2,9 @@ import { vars } from "@/styles/theme.css";
 import { style } from "@vanilla-extract/css";
 
 export const chatBottomSheetWrapper = style({
+  position: "sticky",
+  bottom: 0,
+
   width: "100%",
   height: "6.8rem",
   padding: "0 1.3rem",
