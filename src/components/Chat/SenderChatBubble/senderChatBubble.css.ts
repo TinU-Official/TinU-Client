@@ -5,13 +5,15 @@ export const senderChatBubbleWrapper = style({
   padding: "0.9rem 1.2rem",
   width: "fit-content",
   maxWidth: "24rem",
-  whiteSpace: "pre-wrap",
+
   borderRadius: "1.6rem",
-  backgroundColor: vars.color.white,
+  backgroundColor: vars.color.mint_500,
+
+  whiteSpace: "pre-wrap",
 });
 
 export const senderChatBubbleText = style({
   ...vars.fontStyles.subtitle3_r_16,
 
-  color: vars.color.black,
+  color: vars.color.white,
 });
