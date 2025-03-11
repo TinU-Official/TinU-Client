@@ -19,7 +19,7 @@ const mockChatText: ChatText[] = [
     role: "sender",
     chatType: "text",
     nickName: "틴유토끼",
-    profileImg: "url",
+    profileImg: "/sechon.png",
     time: "10:00",
     context: "사랑해",
     notRead: 1,
@@ -29,7 +29,87 @@ const mockChatText: ChatText[] = [
     role: "receiver",
     chatType: "text",
     nickName: "틴유토끼",
-    profileImg: "url",
+    profileImg: "/sechon.png",
+    time: "10:00",
+    context: "주희야",
+    notRead: 1,
+  },
+  {
+    chatTextId: 3,
+    role: "sender",
+    chatType: "text",
+    nickName: "틴유토끼",
+    profileImg: "/sechon.png",
+    time: "10:00",
+    context: "사랑해",
+    notRead: 1,
+  },
+  {
+    chatTextId: 4,
+    role: "receiver",
+    chatType: "text",
+    nickName: "틴유토끼",
+    profileImg: "/sechon.png",
+    time: "10:00",
+    context: "주희야",
+    notRead: 1,
+  },
+  {
+    chatTextId: 5,
+    role: "sender",
+    chatType: "text",
+    nickName: "틴유토끼",
+    profileImg: "/sechon.png",
+    time: "10:00",
+    context: "사랑해",
+    notRead: 1,
+  },
+  {
+    chatTextId: 6,
+    role: "receiver",
+    chatType: "text",
+    nickName: "틴유토끼",
+    profileImg: "/sechon.png",
+    time: "10:00",
+    context: "주희야",
+    notRead: 1,
+  },
+  {
+    chatTextId: 7,
+    role: "sender",
+    chatType: "text",
+    nickName: "틴유토끼",
+    profileImg: "/sechon.png",
+    time: "10:00",
+    context: "사랑해",
+    notRead: 1,
+  },
+  {
+    chatTextId: 8,
+    role: "receiver",
+    chatType: "text",
+    nickName: "틴유토끼",
+    profileImg: "/sechon.png",
+    time: "10:00",
+    context: "주희야",
+    notRead: 1,
+  },
+  {
+    chatTextId: 9,
+    role: "sender",
+    chatType: "text",
+    nickName: "틴유토끼",
+    profileImg: "/sechon.png",
+    time: "10:00",
+    context: "사랑해",
+    notRead: 1,
+  },
+  {
+    chatTextId: 10,
+    role: "receiver",
+    chatType: "text",
+    nickName: "틴유토끼",
+    profileImg: "/sechon.png",
     time: "10:00",
     context: "주희야",
     notRead: 1,
@@ -42,9 +122,9 @@ export function DailyChatGroup() {
       <span className={styles.dateText}>2024년 10월 1일 (월)</span>
       <div className={styles.chatListWrapper}>
         {mockChatText.map((chatObj) => (
-          <div className={styles.chatBubbleWrapper({ role: chatObj.role })}>
+          <div key={chatObj.chatTextId} className={styles.chatBubbleWrapper({ role: chatObj.role })}>
             {chatObj?.role === "receiver" ? (
-              <ReceiverChatBubble chatText={chatObj.context} />
+              <ReceiverChatBubble chatText={chatObj.context} profileImg={chatObj.profileImg} />
             ) : chatObj?.role === "sender" ? (
               <SenderChatBubble chatText={chatObj.context} />
             ) : (
