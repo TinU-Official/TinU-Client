@@ -4,7 +4,6 @@ import { recipe } from "@vanilla-extract/recipes";
 
 export const dailyChatGroupWrapper = style({
   width: "100%",
-  marginTop: "2.5rem",
 
   textAlign: "center",
 });
