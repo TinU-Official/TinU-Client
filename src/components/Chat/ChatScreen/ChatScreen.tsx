@@ -2,6 +2,8 @@ import { useScrollToBottom } from "@/hooks/Chat/useScrollToBottom";
 import { DailyChatGroup } from "../DailyChatGroup/DailyChatGroup";
 import * as styles from "./chatScreen.css";
 
+import { memo } from "react";
+
 interface ChatText {
   chatTextId: number;
   role: "sender" | "receiver";
@@ -15,16 +17,17 @@ interface ChatText {
 
 interface ChatScreenProps {
   chatList: ChatText[];
+  closeBottomSheet: VoidFunction;
 }
 
-export function ChatScreen({ chatList }: ChatScreenProps) {
+export const ChatScreen = memo(function ChatScreen({ chatList, closeBottomSheet }: ChatScreenProps) {
   const { scrollRef } = useScrollToBottom({
     dependencies: [chatList],
   });
 
   return (
-    <div className={styles.chatScreenWrapper} ref={scrollRef}>
+    <div className={styles.chatScreenWrapper} ref={scrollRef} onClick={closeBottomSheet}>
       <DailyChatGroup chatList={chatList} />
     </div>
   );
-}
+});

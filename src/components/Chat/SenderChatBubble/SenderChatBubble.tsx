@@ -1,4 +1,3 @@
-import Image from "next/image";
 import * as styles from "./senderChatBubble.css";
 
 interface SenderChatBubbleProps {

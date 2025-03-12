@@ -2,7 +2,9 @@ import Image from "next/image";
 import * as styles from "./productInfo.css";
 import ImgMock from "@/assets/imgs/img_mock.png";
 
-export function ProductInfo() {
+import { memo } from "react";
+
+export const ProductInfo = memo(function ProductInfo() {
   return (
     <div className={styles.ProductInfoWrapper}>
       <Image src={ImgMock} alt="상품 이미지" width={50} height={50} />
@@ -15,4 +17,4 @@ export function ProductInfo() {
       </div>
     </div>
   );
-}
+});

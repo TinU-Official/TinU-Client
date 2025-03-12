@@ -7,23 +7,19 @@ import IcCamera from "@/assets/icons/ic_camera.svg";
 import { motion } from "framer-motion";
 import { useKeyboardFocus } from "@/hooks/Chat/useKeyboardFocus";
 
-interface ChatText {
-  chatTextId: number;
-  role: "sender" | "receiver";
-  chatType: string;
-  nickName: string;
-  profileImg: string;
-  time: string;
-  context: string;
-  notRead: number;
-}
-
 interface ChatBottomSheetProps {
+  isBottomSheetOpen: boolean;
   handleSendChat: (chat: string) => void;
+  closeBottomSheet: VoidFunction;
+  toggleBottomSheet: VoidFunction;
 }
 
-export function ChatBottomSheet({ handleSendChat }: ChatBottomSheetProps) {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+export function ChatBottomSheet({
+  isBottomSheetOpen,
+  handleSendChat,
+  closeBottomSheet,
+  toggleBottomSheet,
+}: ChatBottomSheetProps) {
   const [chattingInputValue, setChattingInputValue] = useState<string>("");
   const inputRef = useRef<HTMLInputElement>(null);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
@@ -36,13 +32,13 @@ export function ChatBottomSheet({ handleSendChat }: ChatBottomSheetProps) {
     setChattingInputValue(e.target.value);
   };
 
-  const handleClickPlusButton = (e: any) => {
-    setIsOpen((isOpen) => !isOpen);
+  const handleClickPlusButton = () => {
+    toggleBottomSheet();
   };
 
   const handleFocus = () => {
     handleInputFocus();
-    setIsOpen(false);
+    closeBottomSheet();
   };
 
   const handleClickSendButton = () => {
@@ -66,7 +62,7 @@ export function ChatBottomSheet({ handleSendChat }: ChatBottomSheetProps) {
     <motion.div
       className={styles.chatBottomSheetWrapper}
       animate={{
-        height: isOpen ? "27.8rem" : "6.8rem",
+        height: isBottomSheetOpen ? "27.8rem" : "6.8rem",
       }}
       transition={{ duration: 0.2 }}
     >
@@ -87,7 +83,7 @@ export function ChatBottomSheet({ handleSendChat }: ChatBottomSheetProps) {
           </button>
         </div>
       </div>
-      {isOpen && (
+      {isBottomSheetOpen && (
         <div className={styles.buttonListWrapper}>
           <button type="button" className={styles.selectImageButton} onClick={handleClickImageUpload}>
             <div className={styles.cameraIconWrapper}>

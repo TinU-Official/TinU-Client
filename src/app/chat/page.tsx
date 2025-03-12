@@ -8,7 +8,7 @@ import { BackButton } from "@/components/Common/BackButton/BackButton";
 import { Header } from "@/components/Common/Header/Header";
 import * as styles from "./chat.css";
 
-import { useState } from "react";
+import { useState, useCallback } from "react";
 
 const mock = {
   nickname: "test",
@@ -130,6 +130,7 @@ const mockChatList: ChatText[] = [
 
 export default function Chat() {
   const [chatList, setChatList] = useState(mockChatList);
+  const [isBottomSheetOpen, setIsBottomSheetOpen] = useState<boolean>(false);
 
   // 실제 핸들러 함수
 
@@ -153,6 +154,14 @@ export default function Chat() {
     ]);
   };
 
+  const toggleBottomSheet = () => {
+    setIsBottomSheetOpen((prev) => !prev);
+  };
+
+  const closeBottomSheet = useCallback(() => {
+    setIsBottomSheetOpen(false);
+  }, []);
+
   return (
     <div className={styles.chatPageWrapper}>
       <Header
@@ -162,8 +171,13 @@ export default function Chat() {
         right={<MoreButton />}
       />
       <ProductInfo />
-      <ChatScreen chatList={chatList} />
-      <ChatBottomSheet handleSendChat={handleSendChatTest} />
+      <ChatScreen chatList={chatList} closeBottomSheet={closeBottomSheet} />
+      <ChatBottomSheet
+        handleSendChat={handleSendChatTest}
+        isBottomSheetOpen={isBottomSheetOpen}
+        closeBottomSheet={closeBottomSheet}
+        toggleBottomSheet={toggleBottomSheet}
+      />
     </div>
   );
 }
