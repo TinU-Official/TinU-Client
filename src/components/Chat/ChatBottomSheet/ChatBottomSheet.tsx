@@ -3,6 +3,7 @@ import { useState, useRef, type ChangeEvent } from "react";
 import IcPlus from "@/assets/icons/ic_plus.svg";
 import IcAirplaneMint from "@/assets/icons/ic_airplane_mint.svg";
 import IcAirplaneGrey from "@/assets/icons/ic_airplane_grey.svg";
+import IcCamera from "@/assets/icons/ic_camera.svg";
 import { motion } from "framer-motion";
 import { useKeyboardFocus } from "@/hooks/Chat/useKeyboardFocus";
 
@@ -25,6 +26,7 @@ export function ChatBottomSheet({ handleSendChat }: ChatBottomSheetProps) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [chattingInputValue, setChattingInputValue] = useState<string>("");
   const inputRef = useRef<HTMLInputElement>(null);
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const { handleInputFocus } = useKeyboardFocus({
     inputRef,
@@ -47,6 +49,17 @@ export function ChatBottomSheet({ handleSendChat }: ChatBottomSheetProps) {
     if (chattingInputValue.length !== 0) {
       handleSendChat("");
     }
+  };
+
+  const handleSelectImage = (e: ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+
+    // TODO
+    // 바이너리 file 버킷으로 전송하는 로직 구현하기
+  };
+
+  const handleClickImageUpload = () => {
+    fileInputRef.current?.click();
   };
 
   return (
@@ -75,9 +88,20 @@ export function ChatBottomSheet({ handleSendChat }: ChatBottomSheetProps) {
         </div>
       </div>
       {isOpen && (
-        <div>
-          <button type="button"></button>
-          <button type="button"></button>
+        <div className={styles.buttonListWrapper}>
+          <button type="button" className={styles.selectImageButton} onClick={handleClickImageUpload}>
+            <div className={styles.cameraIconWrapper}>
+              <IcCamera />
+            </div>
+            <span className={styles.selectImageButtonText}>이미지 전송</span>
+          </button>
+          <input
+            type="file"
+            accept="image/*"
+            ref={fileInputRef}
+            onChange={handleSelectImage}
+            className={styles.hiddenInput}
+          />
         </div>
       )}
     </motion.div>

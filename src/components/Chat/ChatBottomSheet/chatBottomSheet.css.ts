@@ -51,3 +51,37 @@ export const chattingInput = style({
   border: "none",
   backgroundColor: "transparent",
 });
+
+export const buttonListWrapper = style({
+  padding: "0 4.2rem",
+  marginTop: "2.3rem",
+});
+
+export const selectImageButton = style({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  gap: "0.8rem",
+});
+
+export const cameraIconWrapper = style({
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+
+  width: "5.6rem",
+  height: "5.6rem",
+  borderRadius: "1.2rem",
+
+  backgroundColor: vars.color.grey_3,
+});
+
+export const selectImageButtonText = style({
+  ...vars.fontStyles.body4_sb_13,
+
+  color: vars.color.grey_9,
+});
+
+export const hiddenInput = style({
+  display: "none",
+});
