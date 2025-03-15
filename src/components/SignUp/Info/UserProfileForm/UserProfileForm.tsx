@@ -44,7 +44,7 @@ function UserProfileForm() {
           />
         </div>
       </div>
-      <SubmitButton disabled={true} />
+      <SubmitButton disabled={!isAvailableNickname} />
     </div>
   );
 }
