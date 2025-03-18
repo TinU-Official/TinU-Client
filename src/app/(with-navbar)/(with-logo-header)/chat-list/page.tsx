@@ -3,16 +3,17 @@
 import { FilterButton } from "@/components/ChatList/FilterButton/FilterButton";
 import * as styles from "./chatList.css";
 
-import { useState } from "react";
-import { FilterOption } from "@/types/chatListTypes";
 import { ChatListItem } from "@/components/ChatList/ChatListItem/ChatListItem";
+import { FilterOption } from "@/types/chatListTypes";
+import { useState } from "react";
 
 const FILTER_OPTIONS: FilterOption[] = ["전체", "판매", "구매"];
 
 const mock = [
   {
     id: 1,
-    productImage: "",
+    type: "sell",
+    productImage: "/img_dummy.png",
     nickname: "테스트",
     previewMessage: "안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요",
     receiveTime: "3시간 전",
@@ -20,7 +21,8 @@ const mock = [
   },
   {
     id: 2,
-    productImage: "",
+    type: "buy",
+    productImage: "/img_dummy.png",
     nickname: "테스트",
     previewMessage: "안녕하세요",
     receiveTime: "3시간 전",
@@ -28,7 +30,8 @@ const mock = [
   },
   {
     id: 3,
-    productImage: "",
+    type: "buy",
+    productImage: "/img_dummy.png",
     nickname: "테스트",
     previewMessage: "안녕하세요안녕하세요",
     receiveTime: "3시간 전",
@@ -36,7 +39,8 @@ const mock = [
   },
   {
     id: 4,
-    productImage: "",
+    type: "buy",
+    productImage: "/img_dummy.png",
     nickname: "테스트",
     previewMessage: "안녕하세요",
     receiveTime: "3시간 전",
@@ -44,7 +48,8 @@ const mock = [
   },
   {
     id: 5,
-    productImage: "",
+    type: "sell",
+    productImage: "/img_dummy.png",
     nickname: "테스트",
     previewMessage: "안녕하세요",
     receiveTime: "3시간 전",
@@ -58,6 +63,17 @@ export default function page() {
   const handleClickFilterButton = (option: FilterOption) => {
     setFilterOption(option);
   };
+
+  const filteredChats = mock.filter((chat) => {
+    if (filterOption === "판매") {
+      return chat.type === "sell";
+    } else if (filterOption === "구매") {
+      return chat.type === "buy";
+    } else {
+      return true;
+    }
+  });
+
   return (
     <div className={styles.chatListPageWrapper}>
       <div className={styles.chatButtonList}>
@@ -71,7 +87,7 @@ export default function page() {
         ))}
       </div>
       <div>
-        {mock.map(({ id, productImage, nickname, previewMessage, receiveTime, notReadCount }) => (
+        {filteredChats.map(({ id, productImage, nickname, previewMessage, receiveTime, notReadCount }) => (
           <ChatListItem
             key={id}
             productImage={productImage}
