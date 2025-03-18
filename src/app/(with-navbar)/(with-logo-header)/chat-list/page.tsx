@@ -7,6 +7,8 @@ import { ChatListItem } from "@/components/ChatList/ChatListItem/ChatListItem";
 import { FilterOption } from "@/types/chatListTypes";
 import { useState } from "react";
 
+import ImgChatEmpty from "@/assets/imgs/img_chat_empty.svg";
+
 const FILTER_OPTIONS: FilterOption[] = ["전체", "판매", "구매"];
 
 const mock = [
@@ -55,6 +57,42 @@ const mock = [
     receiveTime: "3시간 전",
     notReadCount: 0,
   },
+  {
+    id: 6,
+    type: "sell",
+    productImage: "/img_dummy.png",
+    nickname: "테스트",
+    previewMessage: "안녕하세요",
+    receiveTime: "3시간 전",
+    notReadCount: 0,
+  },
+  {
+    id: 7,
+    type: "sell",
+    productImage: "/img_dummy.png",
+    nickname: "테스트",
+    previewMessage: "안녕하세요",
+    receiveTime: "3시간 전",
+    notReadCount: 0,
+  },
+  {
+    id: 8,
+    type: "sell",
+    productImage: "/img_dummy.png",
+    nickname: "테스트",
+    previewMessage: "안녕하세요",
+    receiveTime: "3시간 전",
+    notReadCount: 0,
+  },
+  {
+    id: 9,
+    type: "sell",
+    productImage: "/img_dummy.png",
+    nickname: "테스트",
+    previewMessage: "안녕하세요",
+    receiveTime: "3시간 전",
+    notReadCount: 0,
+  },
 ];
 
 export default function page() {
@@ -86,17 +124,27 @@ export default function page() {
           />
         ))}
       </div>
-      <div>
-        {filteredChats.map(({ id, productImage, nickname, previewMessage, receiveTime, notReadCount }) => (
-          <ChatListItem
-            key={id}
-            productImage={productImage}
-            nickname={nickname}
-            previewMessage={previewMessage}
-            receiveTime={receiveTime}
-            notReadCount={notReadCount}
-          />
-        ))}
+      <div className={styles.chatListContainer({ isEmpty: mock.length === 0 })}>
+        {filteredChats.length === 0 ? (
+          <div className={styles.emptyNoticeSection}>
+            <ImgChatEmpty />
+            <span className={styles.emptyText}>
+              아직 채팅이 없어요. <br />
+              맘에 드는 상품을 찾아보세요!
+            </span>
+          </div>
+        ) : (
+          filteredChats.map(({ id, productImage, nickname, previewMessage, receiveTime, notReadCount }) => (
+            <ChatListItem
+              key={id}
+              productImage={productImage}
+              nickname={nickname}
+              previewMessage={previewMessage}
+              receiveTime={receiveTime}
+              notReadCount={notReadCount}
+            />
+          ))
+        )}
       </div>
     </div>
   );

@@ -1,6 +1,5 @@
 import { vars } from "@/styles/theme.css";
 import { style } from "@vanilla-extract/css";
-import { relative } from "path";
 
 export const navBarWrapper = style({
   position: "sticky",
@@ -13,6 +12,7 @@ export const navBarWrapper = style({
   height: "5.8rem",
   padding: "0 2.5rem",
 
+  backgroundColor: vars.color.white,
   boxShadow: `inset 0 1px 0 0 #f1f5f5`,
 });
 
