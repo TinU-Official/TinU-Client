@@ -5,7 +5,6 @@ import IcAirplaneMint from "@/assets/icons/ic_airplane_mint.svg";
 import IcAirplaneGrey from "@/assets/icons/ic_airplane_grey.svg";
 import IcCamera from "@/assets/icons/ic_camera.svg";
 import { motion } from "framer-motion";
-import { useKeyboardFocus } from "@/hooks/Chat/useKeyboardFocus";
 
 interface ChatBottomSheetProps {
   isBottomSheetOpen: boolean;
@@ -21,12 +20,7 @@ export function ChatBottomSheet({
   toggleBottomSheet,
 }: ChatBottomSheetProps) {
   const [chattingInputValue, setChattingInputValue] = useState<string>("");
-  const inputRef = useRef<HTMLInputElement>(null);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
-
-  const { handleInputFocus } = useKeyboardFocus({
-    inputRef,
-  });
 
   const handleChangeChattingInput = (e: ChangeEvent<HTMLInputElement>) => {
     setChattingInputValue(e.target.value);
@@ -37,7 +31,6 @@ export function ChatBottomSheet({
   };
 
   const handleFocus = () => {
-    handleInputFocus();
     closeBottomSheet();
   };
 
