@@ -5,10 +5,11 @@ import IcAirplaneMint from "@/assets/icons/ic_airplane_mint.svg";
 import IcAirplaneGrey from "@/assets/icons/ic_airplane_grey.svg";
 import IcCamera from "@/assets/icons/ic_camera.svg";
 import { motion } from "framer-motion";
+import { ChatText } from "@/app/chat/page";
 
 interface ChatBottomSheetProps {
   isBottomSheetOpen: boolean;
-  handleSendChat: (chat: string) => void;
+  handleSendChat: (chat: ChatText) => void;
   closeBottomSheet: VoidFunction;
   toggleBottomSheet: VoidFunction;
 }
@@ -34,11 +35,8 @@ export function ChatBottomSheet({
     closeBottomSheet();
   };
 
-  const handleClickSendButton = () => {
-    if (chattingInputValue.length !== 0) {
-      handleSendChat("");
-    }
-  };
+  // 전송 버튼 이벤트 핸들러
+  const handleClickSendButton = () => {};
 
   const handleSelectImage = (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
