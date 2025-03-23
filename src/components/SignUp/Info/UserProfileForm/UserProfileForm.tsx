@@ -6,6 +6,7 @@ import * as styles from "./UserProfileForm.css";
 import ImageInputForm from "../ImageInputForm/ImageInputForm";
 import TextField from "@/components/Common/TextField/TextField";
 import { SubmitButton } from "../../Email/SubmitButton/SubmitButton";
+import { NICKNAME_MESSAGES } from "@/constants/message";
 
 function UserProfileForm() {
   const [nickname, setNickname] = useState("");
@@ -23,12 +24,12 @@ function UserProfileForm() {
   const isError = nickname !== "" && (!isValidNickname || isDuplicateNickname);
   const helperText =
     nickname === ""
-      ? ""
+      ? NICKNAME_MESSAGES.EMPTY
       : !isValidNickname
-        ? "닉네임은 2~15자여야 해요!"
+        ? NICKNAME_MESSAGES.INVALID_LENGTH
         : isDuplicateNickname
-          ? "이미 사용중인 닉네임이에요 :("
-          : "사용 가능한 닉네임이에요";
+          ? NICKNAME_MESSAGES.DUPLICATE
+          : NICKNAME_MESSAGES.AVAILABLE;
 
   return (
     <div className={styles.userProfileFormWrapper}>

@@ -6,5 +6,3 @@ export const ImageInputFormWrapper = style({
 
   width: "100%",
 });
-
-export const ImageInputButton = style({});
