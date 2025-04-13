@@ -24,10 +24,10 @@ COPY --from=build /app/.pnp.* ./
 COPY --from=build /app/.yarnrc.yml ./
 COPY --from=build /app/package.json ./
 
-RUN yarn install --immutable --production
-
 ENV NODE_ENV production
 ENV NEXT_TELEMETRY_DISABLED 1
+
+RUN yarn install --immutable --production
 
 EXPOSE 3000
 
