@@ -23,6 +23,7 @@ COPY --from=build /app/.yarn ./.yarn
 COPY --from=build /app/.pnp.* ./
 COPY --from=build /app/.yarnrc.yml ./
 COPY --from=build /app/package.json ./
+COPY --from=build /app/yarn.lock ./
 
 ENV NODE_ENV production
 ENV NEXT_TELEMETRY_DISABLED 1
