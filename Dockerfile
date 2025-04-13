@@ -27,7 +27,7 @@ COPY --from=build /app/package.json ./
 ENV NODE_ENV production
 ENV NEXT_TELEMETRY_DISABLED 1
 
-RUN yarn install --immutable --production
+RUN yarn install --immutable
 
 EXPOSE 3000
 
