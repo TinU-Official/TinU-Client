@@ -7,53 +7,44 @@ import { SubmitButton } from "../Terms/SubmitButton/SubmitButton";
 import IcSwap from "@/assets/icons/ic_swap.svg";
 
 function UnivInfoForm() {
-  const [univ, setUniv] = useState("");
   const [major, setMajor] = useState("");
   const [grade, setGrade] = useState("");
 
-  const disabled = false;
+  const handleResetMajor = () => setMajor("");
+  const handleResetGrade = () => setGrade("");
 
   return (
-    <>
-      <div className={styles.univInfoFormWrapper}>
-        <div className={styles.univInfoFieldWrapper}>
-          <TextField
-            placeholder="경기대학교"
-            value={univ}
-            disabled={disabled}
-            onChange={(e) => setUniv(e.target.value)}
-          />
-
-          <TextField
-            placeholder="학과"
-            value={major}
-            onChange={(e) => setMajor(e.target.value)}
-            rightAddOn={
-              // univ && !disabled ? (
-              //   <button type="button" onClick={() => setUniv("")}>
-              <IcSwap />
-              // </button>
-              // ) : null
-            }
-          />
-
-          <TextField
-            placeholder="학년"
-            value={grade}
-            onChange={(e) => setGrade(e.target.value)}
-            rightAddOn={
-              // univ && !disabled ? (
-              //   <button type="button" onClick={() => setUniv("")}>
-              <IcSwap />
-              // </button>
-              // ) : null
-            }
-          />
-        </div>
-
-        <SubmitButton disabled={false} />
+    <div className={styles.univInfoFormWrapper}>
+      <div className={styles.univInfoFieldWrapper}>
+        <TextField placeholder="경기대학교" disabled={true} />
+        <TextField
+          placeholder="학과"
+          value={major}
+          onChange={(e) => setMajor(e.target.value)}
+          rightAddOn={
+            major && (
+              <button type="button" onClick={handleResetMajor} className={styles.swapButton}>
+                <IcSwap />
+              </button>
+            )
+          }
+        />
+        <TextField
+          placeholder="학년"
+          value={grade}
+          onChange={(e) => setGrade(e.target.value)}
+          rightAddOn={
+            grade && (
+              <button type="button" onClick={handleResetGrade} className={styles.swapButton}>
+                <IcSwap />
+              </button>
+            )
+          }
+        />
       </div>
-    </>
+
+      <SubmitButton disabled={false} />
+    </div>
   );
 }
 

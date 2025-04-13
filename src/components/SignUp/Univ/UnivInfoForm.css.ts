@@ -15,3 +15,8 @@ export const univInfoFieldWrapper = style({
 
   marginTop: "3.5rem",
 });
+
+export const swapButton = style({
+  display: "flex",
+  flexShrink: 0,
+});
