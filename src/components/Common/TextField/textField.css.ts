@@ -16,7 +16,7 @@ export const textFieldWrapper = recipe({
     isTextFieldActivated: {
       true: {
         backgroundColor: vars.color.white,
-        boxShadow: `inset 0 0 0 2px ${vars.color.mint_500}`
+        boxShadow: `inset 0 0 0 2px ${vars.color.mint_500}`,
       },
       false: {
         backgroundColor: vars.color.grey_2,
@@ -25,6 +25,12 @@ export const textFieldWrapper = recipe({
     isError: {
       true: {
         boxShadow: `inset 0 0 0 2px ${vars.color.red_2}`,
+      },
+    },
+    disabled: {
+      true: {
+        backgroundColor: vars.color.grey_4,
+        boxShadow: `inset 0 0 0 1px ${vars.color.grey_5}`,
       },
     },
   },
@@ -86,25 +92,31 @@ export const textFieldInput = recipe({
         transform: "translateY(0)",
       },
     },
+    disabled: {
+      true: {
+        color: vars.color.grey_6,
+        cursor: "not-allowed",
+      },
+    },
   },
 });
 
 export const helperText = recipe({
-    base: {
+  base: {
     marginTop: "0.8rem",
-        paddingLeft: "0.7rem",
-        fontSize: "1rem",
-        fontWeight: 500,
-        lineHeight: "normal",
+    paddingLeft: "0.7rem",
+    fontSize: "1rem",
+    fontWeight: 500,
+    lineHeight: "normal",
+  },
+  variants: {
+    isError: {
+      true: {
+        color: vars.color.red_2,
+      },
+      false: {
+        color: vars.color.mint_500,
+      },
     },
-    variants: {
-        isError: {
-            true: {
-                color: vars.color.red_2,
-            },
-            false: {
-                color: vars.color.mint_500,
-            },
-        },
-    },
+  },
 });
