@@ -1,4 +1,4 @@
-FROM node:lts-alpine AS build
+FROM node:22-alpine AS build
 
 WORKDIR /app
 
@@ -12,7 +12,7 @@ RUN yarn install
 COPY . .
 RUN yarn build
 
-FROM node:lts-alpine AS runner
+FROM node:22-alpine AS runner
 
 WORKDIR /app
 
@@ -23,6 +23,8 @@ COPY --from=build /app/.yarn ./.yarn
 COPY --from=build /app/.pnp.* ./
 COPY --from=build /app/.yarnrc.yml ./
 COPY --from=build /app/package.json ./
+
+RUN yarn install --immutable --production
 
 ENV NODE_ENV production
 ENV NEXT_TELEMETRY_DISABLED 1
