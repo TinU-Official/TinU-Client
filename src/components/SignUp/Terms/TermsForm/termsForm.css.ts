@@ -1,6 +1,4 @@
-import { vars } from "@/styles/theme.css";
 import { style } from "@vanilla-extract/css";
-import { recipe } from "@vanilla-extract/recipes";
 
 export const termsFormWrapper = style({
   flex: 1,
