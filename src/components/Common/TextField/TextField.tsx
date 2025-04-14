@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { ReactNode, FocusEvent, useState } from "react";
 import * as styles from "./textField.css";
@@ -8,6 +8,7 @@ interface TextFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
   isError?: boolean;
   helperText?: string;
   rightAddOn?: ReactNode;
+  disabled?: boolean;
 }
 
 function TextField({
@@ -15,6 +16,7 @@ function TextField({
   rightAddOn,
   isError = false,
   helperText,
+  disabled = false,
   ...inputProps
 }: TextFieldProps) {
   const [isFocused, setIsFocused] = useState(false);
@@ -36,28 +38,25 @@ function TextField({
   const hasValue = inputProps.value !== "" && inputProps.value !== undefined;
   const isTextFieldActivated = isFocused || hasValue;
 
-  const placeholderState = isTextFieldActivated ? isError ? "error" : "active" : "inactive";
+  const placeholderState = isTextFieldActivated ? (isError ? "error" : "active") : "inactive";
 
   return (
     <>
-      <div className={styles.textFieldWrapper({ isTextFieldActivated, isError })}>
+      <div className={styles.textFieldWrapper({ isTextFieldActivated, isError, disabled })}>
         <div className={styles.inputWrapper}>
-          <span className={styles.animatedPlaceholder({ placeholderState })}>
-            {placeholder}
-          </span>
+          <span className={styles.animatedPlaceholder({ placeholderState })}>{placeholder}</span>
           <input
             {...inputProps}
-            className={styles.textFieldInput({ isTextFieldActivated })}
+            className={styles.textFieldInput({ isTextFieldActivated, disabled })}
             placeholder=""
             onFocus={handleFocus}
             onBlur={handleBlur}
+            disabled={disabled}
           />
         </div>
         {rightAddOn && rightAddOn}
       </div>
-      {helperText && (
-        <p className={styles.helperText({ isError })}>{helperText}</p>
-      )}
+      {helperText && <p className={styles.helperText({ isError })}>{helperText}</p>}
     </>
   );
 }
