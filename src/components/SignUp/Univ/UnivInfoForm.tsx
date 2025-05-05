@@ -12,7 +12,6 @@ function UnivInfoForm() {
   const [grade, setGrade] = useState("");
 
   const handleResetMajor = () => setMajor("");
-  const handleResetGrade = () => setGrade("");
 
   return (
     <div className={styles.univInfoFormWrapper}>
@@ -30,7 +29,7 @@ function UnivInfoForm() {
             )
           }
         />
-        <Select placeholder="학년" onSelect={(value) => console.log(value)}>
+        <Select placeholder="학년" onSelect={(value) => setGrade(value)}>
           <Select.Trigger />
           <Select.Main>
             <Select.Option value="1학년">1학년</Select.Option>
@@ -42,7 +41,7 @@ function UnivInfoForm() {
         </Select>
       </div>
 
-      <SubmitButton disabled={false} />
+      <SubmitButton disabled={!(major && grade)} />
     </div>
   );
 }
