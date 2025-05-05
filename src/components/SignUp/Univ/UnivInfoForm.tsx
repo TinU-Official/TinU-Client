@@ -5,6 +5,7 @@ import * as styles from "./UnivInfoForm.css";
 import TextField from "@/components/Common/TextField/TextField";
 import { SubmitButton } from "../Terms/SubmitButton/SubmitButton";
 import IcSwap from "@/assets/icons/ic_swap.svg";
+import Select from "@/components/Common/Select/Select";
 
 function UnivInfoForm() {
   const [major, setMajor] = useState("");
@@ -29,18 +30,16 @@ function UnivInfoForm() {
             )
           }
         />
-        <TextField
-          placeholder="학년"
-          value={grade}
-          onChange={(e) => setGrade(e.target.value)}
-          rightAddOn={
-            grade && (
-              <button type="button" onClick={handleResetGrade} className={styles.swapButton}>
-                <IcSwap />
-              </button>
-            )
-          }
-        />
+        <Select placeholder="학년" onSelect={(value) => console.log(value)}>
+          <Select.Trigger />
+          <Select.Main>
+            <Select.Option value="1학년">1학년</Select.Option>
+            <Select.Option value="2학년">2학년</Select.Option>
+            <Select.Option value="3학년">3학년</Select.Option>
+            <Select.Option value="4학년">4학년</Select.Option>
+            <Select.Option value="휴학생">휴학생</Select.Option>
+          </Select.Main>
+        </Select>
       </div>
 
       <SubmitButton disabled={false} />
