@@ -47,12 +47,6 @@ globalStyle("table", {
   borderSpacing: 0,
 });
 
-globalStyle("button", {
-  outline: "none",
-  border: "none",
-  backgroundColor: "transparent",
-});
-
 globalStyle("input", {
   appearance: "none",
 });
@@ -101,7 +95,18 @@ globalStyle("body", {
   scrollBehavior: "smooth",
 });
 
-globalStyle("input, button", {
+globalStyle("input", {
   cursor: "pointer",
   padding: 0,
+});
+
+globalStyle("button", {
+  outline: "none",
+  border: "none",
+  backgroundColor: "transparent",
+  padding: 0,
+  margin: 0,
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
 });
