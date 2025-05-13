@@ -11,7 +11,13 @@ function UnivInfoForm() {
   const [major, setMajor] = useState("");
   const [grade, setGrade] = useState("");
 
+  const handleMajorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setMajor(e.target.value);
+  };
   const handleResetMajor = () => setMajor("");
+  const handleGradeSelect = (value: string) => {
+    setGrade(value);
+  };
 
   return (
     <div className={styles.univInfoFormWrapper}>
@@ -20,7 +26,7 @@ function UnivInfoForm() {
         <TextField
           placeholder="학과"
           value={major}
-          onChange={(e) => setMajor(e.target.value)}
+          onChange={handleMajorChange}
           rightAddOn={
             major && (
               <button type="button" onClick={handleResetMajor} className={styles.swapButton}>
@@ -29,7 +35,7 @@ function UnivInfoForm() {
             )
           }
         />
-        <Select placeholder="학년" onSelect={(value) => setGrade(value)}>
+        <Select placeholder="학년" onSelect={handleGradeSelect}>
           <Select.Trigger />
           <Select.Main>
             <Select.Option value="1학년">1학년</Select.Option>
