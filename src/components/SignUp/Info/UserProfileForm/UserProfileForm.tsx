@@ -5,8 +5,8 @@ import React, { useState } from "react";
 import * as styles from "./UserProfileForm.css";
 import ImageInputForm from "../ImageInputForm/ImageInputForm";
 import TextField from "@/components/Common/TextField/TextField";
-import { SubmitButton } from "../../Email/SubmitButton/SubmitButton";
 import { NICKNAME_MESSAGES } from "@/constants/message";
+import Button from "@/components/Common/Button/Button";
 
 function UserProfileForm() {
   const [nickname, setNickname] = useState("");
@@ -45,7 +45,9 @@ function UserProfileForm() {
           />
         </div>
       </div>
-      <SubmitButton disabled={!isAvailableNickname} />
+      <div className={styles.fixedButtonWrapper}>
+        <Button disabled={!isAvailableNickname}>다음</Button>
+      </div>
     </div>
   );
 }

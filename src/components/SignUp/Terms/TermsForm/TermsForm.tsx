@@ -6,9 +6,9 @@ import { useRouter } from "next/navigation";
 import * as styles from "./termsForm.css";
 
 import { useCallback, useMemo } from "react";
-import { SubmitButton } from "../SubmitButton/SubmitButton";
 import { TermCheckboxField } from "../TermCheckboxField/TermCheckboxField";
 import { AllAgreeCheckboxField } from "../AllAgreeCheckboxField/AllAgreeCheckboxField";
+import Button from "@/components/Common/Button/Button";
 
 interface TermsFormData {
   agree1: boolean;
@@ -78,7 +78,9 @@ export function TermsForm() {
           ))}
         </div>
       </div>
-      <SubmitButton disabled={!isAllRequired} />
+      <div className={styles.fixedButtonWrapper}>
+        <Button disabled={!isAllRequired}>다음</Button>
+      </div>
     </form>
   );
 }

@@ -3,7 +3,7 @@
 import * as styles from "./emailForm.css";
 import React, { useState } from "react";
 import TextField from "@/components/Common/TextField/TextField";
-import { SubmitButton } from "@/components/SignUp/Email/SubmitButton/SubmitButton";
+import Button from "@/components/Common/Button/Button";
 
 function EmailForm() {
   const [email, setEmail] = useState("");
@@ -29,7 +29,9 @@ function EmailForm() {
           helperText={isError ? "학교 계정이 아닌 것 같아요 :(" : ""}
         />
       </div>
-      <SubmitButton disabled={!isValidEmail} />
+      <div className={styles.fixedButtonWrapper}>
+        <Button disabled={!isValidEmail}>다음</Button>
+      </div>
     </div>
   );
 }

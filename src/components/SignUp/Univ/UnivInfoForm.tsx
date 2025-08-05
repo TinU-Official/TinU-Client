@@ -3,9 +3,9 @@
 import React, { useState } from "react";
 import * as styles from "./UnivInfoForm.css";
 import TextField from "@/components/Common/TextField/TextField";
-import { SubmitButton } from "../Terms/SubmitButton/SubmitButton";
 import IcSwap from "@/assets/icons/ic_swap.svg";
 import Select from "@/components/Common/Select/Select";
+import Button from "@/components/Common/Button/Button";
 
 function UnivInfoForm() {
   const [major, setMajor] = useState("");
@@ -46,8 +46,9 @@ function UnivInfoForm() {
           </Select.Main>
         </Select>
       </div>
-
-      <SubmitButton disabled={!(major && grade)} />
+      <div className={styles.fixedButtonWrapper}>
+        <Button disabled={!(major && grade)}>다음</Button>
+      </div>
     </div>
   );
 }
