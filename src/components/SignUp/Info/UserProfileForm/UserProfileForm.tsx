@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import * as styles from "./UserProfileForm.css";
 import ImageInputForm from "../ImageInputForm/ImageInputForm";
 import TextField from "@/components/Common/TextField/TextField";
-import { SubmitButton } from "../../Email/SubmitButton/SubmitButton";
+import { SubmitButton } from "@/components/Common/SubmitButton/SubmitButton";
 import { NICKNAME_MESSAGES } from "@/constants/message";
 
 function UserProfileForm() {

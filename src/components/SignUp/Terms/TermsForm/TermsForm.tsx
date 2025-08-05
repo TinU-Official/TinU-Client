@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import * as styles from "./termsForm.css";
 
 import { useCallback, useMemo } from "react";
-import { SubmitButton } from "../SubmitButton/SubmitButton";
+import { SubmitButton } from "../../../Common/SubmitButton/SubmitButton";
 import { TermCheckboxField } from "../TermCheckboxField/TermCheckboxField";
 import { AllAgreeCheckboxField } from "../AllAgreeCheckboxField/AllAgreeCheckboxField";
 

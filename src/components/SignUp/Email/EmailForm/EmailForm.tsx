@@ -3,7 +3,7 @@
 import * as styles from "./emailForm.css";
 import React, { useState } from "react";
 import TextField from "@/components/Common/TextField/TextField";
-import { SubmitButton } from "@/components/SignUp/Email/SubmitButton/SubmitButton";
+import { SubmitButton } from "../SubmitButton/SubmitButton";
 
 function EmailForm() {
   const [email, setEmail] = useState("");

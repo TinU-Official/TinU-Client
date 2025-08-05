@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import * as styles from "./UnivInfoForm.css";
 import TextField from "@/components/Common/TextField/TextField";
-import { SubmitButton } from "../Terms/SubmitButton/SubmitButton";
+import { SubmitButton } from "../../Common/SubmitButton/SubmitButton";
 import IcSwap from "@/assets/icons/ic_swap.svg";
 import Select from "@/components/Common/Select/Select";
 
