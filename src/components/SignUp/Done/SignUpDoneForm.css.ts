@@ -24,7 +24,7 @@ export const celebrationWrapper = style({
   position: "relative",
 });
 
-export const confettiBackground = style({
+export const confetti = style({
   position: "absolute",
   top: 0,
   left: 0,

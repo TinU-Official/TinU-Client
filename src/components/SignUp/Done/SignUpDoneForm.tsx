@@ -1,15 +1,16 @@
+"use client";
+
 import Button from "@/components/Common/Button/Button";
 import * as styles from "./SignUpDoneForm.css";
 import ImgSignUpDone from "@/assets/icons/ic_signup_done.svg";
-import Confetti from "@/assets/animations/Confetti";
+import LottieConfetti from "@/assets/animations/confetti.json";
+import Lottie from "lottie-react";
 
 function SignUpDoneForm() {
   return (
     <div className={styles.SignUpDoneFormWrapper}>
       <div className={styles.celebrationWrapper}>
-        <div className={styles.confettiBackground}>
-          <Confetti />
-        </div>
+        <Lottie className={styles.confetti} animationData={LottieConfetti} loop autoPlay />
         <ImgSignUpDone className={styles.image} />
       </div>
 
