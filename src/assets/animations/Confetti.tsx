@@ -4,11 +4,7 @@ import Lottie from "lottie-react";
 import LottieConfetti from "@/assets/animations/confetti.json";
 
 const Confetti = () => {
-  return (
-    <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-      <Lottie animationData={LottieConfetti} loop autoPlay />
-    </div>
-  );
+  return <Lottie animationData={LottieConfetti} loop autoPlay />;
 };
 
 export default Confetti;

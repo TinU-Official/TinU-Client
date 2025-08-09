@@ -32,6 +32,10 @@ export const confettiBackground = style({
   height: "100%",
   zIndex: 0,
 
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+
   transform: "scale(1.6)",
   transformOrigin: "center",
 });
