@@ -1,6 +1,6 @@
 import * as styles from "./done.css";
 import ImgSignUpDone from "@/assets/icons/ic_signup_done.svg";
-import Confetti from "@/assets/animations/Confetti";
+import Confetti from "@/components/SignUp/Done/Confetti";
 import Button from "@/components/Common/Button/Button";
 
 export default function Page() {
