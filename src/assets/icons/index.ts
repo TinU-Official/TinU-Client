@@ -11,7 +11,6 @@ import IcCheckTransparent from "./ic_check_transparent.svg";
 import IcCheckWhiteGrey from "./ic_check_whitegrey.svg";
 import IcChevronDown from "./ic_chevron_down.svg";
 import IcChevronLeft from "./ic_chevron_left.svg";
-import IcChevronRight from "./ic_chevron_right.svg";
 import IcChevronUp from "./ic_chevron_up.svg";
 import IcClose from "./ic_close.svg";
 import IcGreyCircle from "./ic_grey_circle.svg";
@@ -24,6 +23,7 @@ import IcLogoNaver from "./ic_logo_naver.svg";
 import IcMoreVertical from "./ic_more_vertical.svg";
 import IcPlus from "./ic_plus.svg";
 import IcProfile from "./ic_profile.svg";
+import IcSearch from "./ic_search.svg";
 import IcSignUpDone from "./ic_signup_done.svg";
 import IcStep1 from "./ic_step1.svg";
 import IcStep2 from "./ic_step2.svg";
@@ -48,7 +48,6 @@ export {
   IcCheckWhiteGrey,
   IcChevronDown,
   IcChevronLeft,
-  IcChevronRight,
   IcChevronUp,
   IcClose,
   IcGreyCircle,
@@ -61,6 +60,7 @@ export {
   IcMoreVertical,
   IcPlus,
   IcProfile,
+  IcSearch,
   IcSignUpDone,
   IcStep1,
   IcStep2,
