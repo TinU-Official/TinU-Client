@@ -1,11 +1,12 @@
 "use client";
 
+import { IcSwap } from "@/assets/icons";
+import Button from "@/components/Common/Button/Button";
+import { IconButton } from "@/components/Common/IconButton";
+import Select from "@/components/Common/Select/Select";
+import TextField from "@/components/Common/TextField/TextField";
 import React, { useState } from "react";
 import * as styles from "./UnivInfoForm.css";
-import TextField from "@/components/Common/TextField/TextField";
-import IcSwap from "@/assets/icons/ic_swap.svg";
-import Select from "@/components/Common/Select/Select";
-import Button from "@/components/Common/Button/Button";
 
 function UnivInfoForm() {
   const [major, setMajor] = useState("");
@@ -29,9 +30,12 @@ function UnivInfoForm() {
           onChange={handleMajorChange}
           rightAddOn={
             major && (
-              <button type="button" onClick={handleResetMajor} className={styles.swapButton}>
-                <IcSwap />
-              </button>
+              <IconButton
+                icon={<IcSwap />}
+                label="학과 초기화"
+                onClick={handleResetMajor}
+                className={styles.swapButton}
+              />
             )
           }
         />

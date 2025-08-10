@@ -1,6 +1,6 @@
+import { ImgLogoBig } from "@/assets/imgs";
 import { LoginButtonSection } from "@/components/Login/LoginButtonSection";
 import * as styles from "./login.css";
-import ImgLogoBig from "@/assets/imgs/img_logo_big.svg";
 
 export default function page() {
   return (

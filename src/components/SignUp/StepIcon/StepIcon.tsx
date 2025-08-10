@@ -1,12 +1,8 @@
 "use client";
 
 import { memo } from "react";
-import IcStep1 from "@/assets/icons/ic_step1.svg";
-import IcStep2 from "@/assets/icons/ic_step2.svg";
-import IcStep3 from "@/assets/icons/ic_step3.svg";
-import IcStep4 from "@/assets/icons/ic_step4.svg";
-import IcCheckTransparent from "@/assets/icons/ic_check_transparent.svg";
-import IcGreyCircle from "@/assets/icons/ic_grey_circle.svg";
+
+import { IcCheckTransparent, IcGreyCircle, IcStep1, IcStep2, IcStep3, IcStep4 } from "@/assets/icons";
 import * as styles from "./stepIcon.css";
 
 interface StepIconProps {

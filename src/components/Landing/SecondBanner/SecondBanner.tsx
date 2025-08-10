@@ -1,6 +1,6 @@
+import { ImgSecondBanner } from "@/assets/imgs";
 import { forwardRef } from "react";
 import * as styles from "./secondBanner.css";
-import ImgSecondBanner from "@/assets/imgs/img_second_banner.svg";
 
 export const SecondBanner = forwardRef<HTMLDivElement>((_, ref) => {
   return (
