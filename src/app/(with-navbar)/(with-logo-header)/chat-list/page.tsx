@@ -3,11 +3,10 @@
 import { FilterButton } from "@/components/ChatList/FilterButton/FilterButton";
 import * as styles from "./chatList.css";
 
+import { ImgChatEmpty } from "@/assets/imgs";
 import { ChatListItem } from "@/components/ChatList/ChatListItem/ChatListItem";
 import { FilterOption } from "@/types/chatListTypes";
 import { useState } from "react";
-
-import ImgChatEmpty from "@/assets/imgs/img_chat_empty.svg";
 
 const FILTER_OPTIONS: FilterOption[] = ["전체", "판매", "구매"];
 

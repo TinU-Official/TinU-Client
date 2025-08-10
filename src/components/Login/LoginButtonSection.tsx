@@ -1,9 +1,7 @@
 "use client";
 
+import { IcLogoGoogle, IcLogoKakao, IcLogoNaver } from "@/assets/icons";
 import * as styles from "./loginButtonSection.css";
-import IcLogoKakao from "@/assets/icons/ic_logo_kakao.svg";
-import IcLogoNaver from "@/assets/icons/ic_logo_naver.svg";
-import IcLogoGoogle from "@/assets/icons/ic_logo_google.svg";
 
 export function LoginButtonSection() {
   return (

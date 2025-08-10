@@ -1,6 +1,6 @@
-import React, { memo } from "react";
-import IcCheckComplete from "@/assets/icons/ic_check_complete.svg";
-import IcCheckWhiteGrey from "@/assets/icons/ic_check_whitegrey.svg";
+import { memo } from "react";
+
+import { IcCheckComplete, IcCheckWhiteGrey } from "@/assets/icons";
 import * as styles from "./allAgreeCheckboxField.css";
 
 interface AllAgreeCheckboxProps {

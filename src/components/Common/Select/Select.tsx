@@ -1,9 +1,8 @@
 "use client";
 
-import { createContext, useContext, useState, ReactNode, useEffect, useRef } from "react";
+import { IcChevronDown, IcChevronUp } from "@/assets/icons";
+import { createContext, ReactNode, useContext, useEffect, useRef, useState } from "react";
 import * as styles from "./Select.css";
-import IcChevronDown from "@/assets/icons/ic_chevron_down.svg";
-import IcChevronUp from "@/assets/icons/ic_chevron_up.svg";
 
 interface SelectContextType {
   selected: string;
