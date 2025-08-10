@@ -1,11 +1,12 @@
-import * as styles from "./chatBottomSheet.css";
-import { useState, useRef, type ChangeEvent } from "react";
-import IcPlus from "@/assets/icons/ic_plus.svg";
-import IcAirplaneMint from "@/assets/icons/ic_airplane_mint.svg";
-import IcAirplaneGrey from "@/assets/icons/ic_airplane_grey.svg";
-import IcCamera from "@/assets/icons/ic_camera.svg";
-import { motion } from "framer-motion";
 import { ChatText } from "@/app/chat/page";
+import IcAirplaneGrey from "@/assets/icons/ic_airplane_grey.svg";
+import IcAirplaneMint from "@/assets/icons/ic_airplane_mint.svg";
+import IcCamera from "@/assets/icons/ic_camera.svg";
+import IcPlus from "@/assets/icons/ic_plus.svg";
+import { IconButton } from "@/components/Common/IconButton";
+import { motion } from "framer-motion";
+import { useRef, useState, type ChangeEvent } from "react";
+import * as styles from "./chatBottomSheet.css";
 
 interface ChatBottomSheetProps {
   isBottomSheetOpen: boolean;
@@ -58,9 +59,8 @@ export function ChatBottomSheet({
       transition={{ duration: 0.2 }}
     >
       <div className={styles.chatBottomSheetClosedSection}>
-        <button type="button" className={styles.openBottomSheetButton} onClick={handleClickPlusButton}>
-          <IcPlus />
-        </button>
+        {/* TODO: 카메라 버튼으로 변경 */}
+        <IconButton icon={<IcPlus />} label="바텀시트 열기 버튼" onClick={handleClickPlusButton} />
         <div className={styles.chattingInputBox}>
           <input
             className={styles.chattingInput}
@@ -69,9 +69,11 @@ export function ChatBottomSheet({
             onFocus={handleFocus}
             placeholder="메세지 보내기"
           />
-          <button type="button" onClick={handleClickSendButton}>
-            {chattingInputValue.length === 0 ? <IcAirplaneGrey /> : <IcAirplaneMint />}
-          </button>
+          <IconButton
+            icon={chattingInputValue.length === 0 ? <IcAirplaneGrey /> : <IcAirplaneMint />}
+            label="메시지 전송"
+            onClick={handleClickSendButton}
+          />
         </div>
       </div>
       {isBottomSheetOpen && (

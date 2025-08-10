@@ -1,14 +1,13 @@
 "use client";
 
-import * as styles from "./ImageInputForm.css";
 import IcProfile from "@/assets/icons/ic_profile.svg";
+import { IconButton } from "@/components/Common/IconButton";
+import * as styles from "./ImageInputForm.css";
 
 function ImageInputForm() {
   return (
     <div className={styles.ImageInputFormWrapper}>
-      <button type="button">
-        <IcProfile />
-      </button>
+      <IconButton icon={<IcProfile />} label="프로필 사진 변경" />
     </div>
   );
 }
