@@ -1,7 +1,7 @@
-import * as styles from "./done.css";
-import ImgSignUpDone from "@/assets/icons/ic_signup_done.svg";
-import Confetti from "@/components/SignUp/Done/Confetti";
+import { IcSignUpDone } from "@/assets/icons";
 import Button from "@/components/Common/Button/Button";
+import Confetti from "@/components/SignUp/Done/Confetti";
+import * as styles from "./done.css";
 
 export default function Page() {
   return (
@@ -12,7 +12,7 @@ export default function Page() {
           <div className={styles.confettiBackground}>
             <Confetti />
           </div>
-          <ImgSignUpDone className={styles.image} />
+          <IcSignUpDone className={styles.image} />
         </div>
       </div>
 

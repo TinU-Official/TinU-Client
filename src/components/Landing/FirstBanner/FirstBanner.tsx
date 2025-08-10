@@ -1,7 +1,7 @@
+import { IcTextLogo } from "@/assets/icons";
+import { ImgFirstBanner } from "@/assets/imgs";
 import { forwardRef } from "react";
 import * as styles from "./firstBanner.css";
-import IcTextLogo from "@/assets/icons/ic_text_logo.svg";
-import ImgFirstBanner from "@/assets/imgs/img_first_banner.svg";
 
 export const FirstBanner = forwardRef<HTMLDivElement>((_, ref) => {
   return (

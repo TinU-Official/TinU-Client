@@ -1,7 +1,7 @@
+import { IcTextLogoSmall } from "@/assets/icons";
+import { ImgThirdBanner } from "@/assets/imgs";
 import { forwardRef } from "react";
 import * as styles from "./thirdBanner.css";
-import IcTextLogoSmall from "@/assets/icons/ic_text_logo_small.svg";
-import ImgThirdBanner from "@/assets/imgs/img_third_banner.svg";
 
 export const ThirdBanner = forwardRef<HTMLDivElement>((_, ref) => {
   return (
