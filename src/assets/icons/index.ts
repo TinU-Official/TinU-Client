@@ -13,6 +13,8 @@ import IcChevronDown from "./ic_chevron_down.svg";
 import IcChevronLeft from "./ic_chevron_left.svg";
 import IcChevronUp from "./ic_chevron_up.svg";
 import IcClose from "./ic_close.svg";
+import IcDownSmallGrey from "./ic_down_small_grey.svg";
+import IcDownSmallWhite from "./ic_down_small_white.svg";
 import IcGreyCircle from "./ic_grey_circle.svg";
 import IcHamburger from "./ic_hamburger.svg";
 import IcHomeGrey from "./ic_home_grey.svg";
@@ -50,6 +52,8 @@ export {
   IcChevronLeft,
   IcChevronUp,
   IcClose,
+  IcDownSmallGrey,
+  IcDownSmallWhite,
   IcGreyCircle,
   IcHamburger,
   IcHomeGrey,

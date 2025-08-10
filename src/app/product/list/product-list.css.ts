@@ -8,3 +8,20 @@ export const searchBarSection = style({
   width: "100%",
   padding: "1.3rem 2rem",
 });
+
+export const filterChipSection = style({
+  width: "100%",
+  padding: "1.5rem 2rem",
+});
+
+export const filterChipScrollContainer = style({
+  display: "flex",
+  alignItems: "center",
+  gap: "0.6rem",
+
+  width: "100%",
+  overflowX: "auto",
+
+  scrollbarWidth: "none",
+  msOverflowStyle: "none",
+});
