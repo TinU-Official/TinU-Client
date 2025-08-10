@@ -1,6 +1,6 @@
 "use client";
 
-import IcProfile from "@/assets/icons/ic_profile.svg";
+import { IcProfile } from "@/assets/icons";
 import { IconButton } from "@/components/Common/IconButton";
 import * as styles from "./ImageInputForm.css";
 

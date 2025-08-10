@@ -1,9 +1,7 @@
-import IcCheckGrey from "@/assets/icons/ic_check_grey.svg";
-import IcCheckMint from "@/assets/icons/ic_check_mint.svg";
-import IcArrowRight from "@/assets/icons/ic_arrow_right.svg";
-import * as styles from "./termCheckboxField.css";
+import { IcArrowRight, IcCheckGrey, IcCheckMint } from "@/assets/icons";
 import Link from "next/link";
 import { memo, useCallback } from "react";
+import * as styles from "./termCheckboxField.css";
 
 interface TermCheckboxProps {
   id: number;

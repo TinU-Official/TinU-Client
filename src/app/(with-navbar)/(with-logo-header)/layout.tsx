@@ -1,5 +1,5 @@
-import IcHamburger from "@/assets/icons/ic_hamburger.svg";
-import ImgLogoSmall from "@/assets/imgs/img_logo_small.svg";
+import { IcHamburger } from "@/assets/icons";
+import { ImgLogoSmall } from "@/assets/imgs";
 import { Header } from "@/components/Common/Header/Header";
 import { IconButton } from "@/components/Common/IconButton";
 import Link from "next/link";

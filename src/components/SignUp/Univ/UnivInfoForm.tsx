@@ -1,6 +1,6 @@
 "use client";
 
-import IcSwap from "@/assets/icons/ic_swap.svg";
+import { IcSwap } from "@/assets/icons";
 import Button from "@/components/Common/Button/Button";
 import { IconButton } from "@/components/Common/IconButton";
 import Select from "@/components/Common/Select/Select";

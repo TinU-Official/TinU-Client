@@ -1,8 +1,5 @@
 import { ChatText } from "@/app/chat/page";
-import IcAirplaneGrey from "@/assets/icons/ic_airplane_grey.svg";
-import IcAirplaneMint from "@/assets/icons/ic_airplane_mint.svg";
-import IcCamera from "@/assets/icons/ic_camera.svg";
-import IcPlus from "@/assets/icons/ic_plus.svg";
+import { IcAirplaneGrey, IcAirplaneMint, IcCamera, IcPlus } from "@/assets/icons";
 import { IconButton } from "@/components/Common/IconButton";
 import { motion } from "framer-motion";
 import { useRef, useState, type ChangeEvent } from "react";

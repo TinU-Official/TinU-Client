@@ -1,5 +1,6 @@
 "use client";
-import IcChevronLeft from "@/assets/icons/ic_chevron_left.svg";
+
+import { IcChevronLeft } from "@/assets/icons";
 import { useRouter } from "next/navigation";
 import { IconButton } from "../IconButton";
 

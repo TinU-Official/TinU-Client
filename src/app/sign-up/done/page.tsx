@@ -1,4 +1,4 @@
-import IcSignUpDone from "@/assets/icons/ic_signup_done.svg";
+import { IcSignUpDone } from "@/assets/icons";
 import Button from "@/components/Common/Button/Button";
 import Confetti from "@/components/SignUp/Done/Confetti";
 import * as styles from "./done.css";
