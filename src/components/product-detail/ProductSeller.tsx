@@ -1,30 +1,35 @@
 "use client";
 
 import * as styles from "./productSeller.css";
-import IcEmptyHeart from "@/assets/icons/ic_empty_heart.svg";
-import IcFilledHeart from "@/assets/icons/ic_filled_heart.svg";
-import IcVertical from "@/assets/icons/ic_vertical.svg";
 import { useState } from "react";
+import { IconButton } from "../Common/IconButton";
+import { IcEmptyHeart, IcFilledHeart, IcVertical } from "@/assets/icons";
 
 function ProductSeller() {
   const [isLiked, setIsLiked] = useState(false);
 
-  const handleToggle = () => {
+  const handleClickHeart = () => {
     setIsLiked((prev) => !prev);
   };
 
+  // TODO: 추후 토글(드롭다운) 구현 예정
+  const handleClickVerticalBtn = () => {};
+
   return (
     <div className={styles.productSellerWrapper}>
-      <div className={styles.productSellerSection}>
-        <div className={styles.sellerSection}>
-          <img src="/sechon.png" alt="판매자 이미지" className={styles.sellerImg} />
-          <div className={styles.sellerName}>이세숑</div>
-        </div>
-        <div className={styles.toggleSection}>
-          <button onClick={handleToggle}>{isLiked ? <IcFilledHeart /> : <IcEmptyHeart />}</button>
-          <IcVertical />
-        </div>
-      </div>
+      <section className={styles.sellerProfileSection}>
+        <img src="/sechon.png" alt="판매자 프로필이미지" className={styles.sellerImg} />
+        <p className={styles.sellerName}>이세숑</p>
+      </section>
+      <section className={styles.toggleSection}>
+        <p className={styles.likesCount}>1</p>
+        <IconButton
+          icon={isLiked ? <IcFilledHeart /> : <IcEmptyHeart />}
+          label="좋아요 클릭"
+          onClick={handleClickHeart}
+        />
+        <IconButton icon={<IcVertical />} label="토글버튼" onClick={handleClickVerticalBtn} />
+      </section>
     </div>
   );
 }

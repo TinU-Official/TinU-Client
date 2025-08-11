@@ -2,16 +2,8 @@ import { vars } from "@/styles/theme.css";
 import { style } from "@vanilla-extract/css";
 
 export const productSellerWrapper = style({
-  flex: 1,
-
-  display: "flex",
-  flexDirection: "row",
-  justifyContent: "space-between",
-});
-
-export const productSellerSection = style({
   width: "100%",
-  height: "65px",
+  height: "6.5rem",
 
   display: "flex",
   justifyContent: "space-between",
@@ -31,7 +23,7 @@ export const sellerName = style({
   ...vars.fontStyles.subtitle1_sb_16,
 });
 
-export const sellerSection = style({
+export const sellerProfileSection = style({
   display: "flex",
   alignItems: "center",
 
@@ -41,5 +33,10 @@ export const sellerSection = style({
 export const toggleSection = style({
   display: "flex",
   alignItems: "center",
-  gap: "0.25rem",
+  gap: "0.5rem",
+});
+
+export const likesCount = style({
+  ...vars.fontStyles.subtitle1_sb_16,
+  color: vars.color.grey_5,
 });
