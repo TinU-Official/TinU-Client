@@ -15,7 +15,7 @@ export const productImage = style({
   objectFit: "cover",
 });
 
-export const productInfo = style({
+export const productMeta = style({
   display: "flex",
   flexDirection: "column",
   justifyContent: "space-between",
@@ -25,7 +25,7 @@ export const productInfo = style({
   padding: "1.1rem 1rem 1.6rem 1rem",
 });
 
-export const productInfoA = style({
+export const productMetaRow = style({
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
