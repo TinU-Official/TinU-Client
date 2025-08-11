@@ -25,3 +25,11 @@ export const filterChipScrollContainer = style({
   scrollbarWidth: "none",
   msOverflowStyle: "none",
 });
+
+export const productListSection = style({
+  display: "grid",
+  gridTemplateColumns: "repeat(2, 1fr)",
+  columnGap: "0.5rem",
+
+  width: "100%",
+});

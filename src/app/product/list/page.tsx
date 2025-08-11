@@ -7,6 +7,7 @@ import { SearchBar } from "@/components/product-list/search-bar";
 import * as styles from "./product-list.css";
 
 import { FilterChip } from "@/components/product-list/filter-chip";
+import { ProductItem } from "@/components/product-list/product-item";
 import { useState } from "react";
 
 export default function page() {
@@ -34,6 +35,11 @@ export default function page() {
           <FilterChip filterText="전체 3" isSelected={false} />
           <FilterChip filterText="전체 3" isSelected={false} />
         </div>
+      </section>
+      <section className={styles.productListSection}>
+        <ProductItem />
+        <ProductItem />
+        <ProductItem />
       </section>
     </>
   );

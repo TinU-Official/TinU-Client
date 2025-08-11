@@ -17,6 +17,7 @@ import IcDownSmallGrey from "./ic_down_small_grey.svg";
 import IcDownSmallWhite from "./ic_down_small_white.svg";
 import IcGreyCircle from "./ic_grey_circle.svg";
 import IcHamburger from "./ic_hamburger.svg";
+import IcHeart from "./ic_heart.svg";
 import IcHomeGrey from "./ic_home_grey.svg";
 import IcHomeMint from "./ic_home_mint.svg";
 import IcLogoGoogle from "./ic_logo_google.svg";
@@ -56,6 +57,7 @@ export {
   IcDownSmallWhite,
   IcGreyCircle,
   IcHamburger,
+  IcHeart,
   IcHomeGrey,
   IcHomeMint,
   IcLogoGoogle,
