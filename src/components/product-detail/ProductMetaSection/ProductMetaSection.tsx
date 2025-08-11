@@ -2,7 +2,7 @@
 
 import * as styles from "./productMetaSection.css";
 import { useState } from "react";
-import { IconButton } from "../Common/IconButton";
+import { IconButton } from "@/components/Common/IconButton";
 import { IcEmptyHeart, IcFilledHeart, IcVertical } from "@/assets/icons";
 
 function ProductMetaSection() {
