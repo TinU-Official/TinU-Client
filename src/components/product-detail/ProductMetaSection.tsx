@@ -1,22 +1,22 @@
 "use client";
 
-import * as styles from "./productSeller.css";
+import * as styles from "./productMetaSection.css";
 import { useState } from "react";
 import { IconButton } from "../Common/IconButton";
 import { IcEmptyHeart, IcFilledHeart, IcVertical } from "@/assets/icons";
 
-function ProductSeller() {
+function ProductMetaSection() {
   const [isLiked, setIsLiked] = useState(false);
 
-  const handleClickHeart = () => {
+  const handleClickLikeButton = () => {
     setIsLiked((prev) => !prev);
   };
 
   // TODO: 추후 토글(드롭다운) 구현 예정
-  const handleClickVerticalBtn = () => {};
+  const handleClickVerticalButton = () => {};
 
   return (
-    <div className={styles.productSellerWrapper}>
+    <div className={styles.productMetaWrapper}>
       <section className={styles.sellerProfileSection}>
         <img src="/sechon.png" alt="판매자 프로필이미지" className={styles.sellerImg} />
         <p className={styles.sellerName}>이세숑</p>
@@ -26,12 +26,12 @@ function ProductSeller() {
         <IconButton
           icon={isLiked ? <IcFilledHeart /> : <IcEmptyHeart />}
           label="좋아요 클릭"
-          onClick={handleClickHeart}
+          onClick={handleClickLikeButton}
         />
-        <IconButton icon={<IcVertical />} label="토글버튼" onClick={handleClickVerticalBtn} />
+        <IconButton icon={<IcVertical />} label="토글버튼" onClick={handleClickVerticalButton} />
       </section>
     </div>
   );
 }
 
-export default ProductSeller;
+export default ProductMetaSection;

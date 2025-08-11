@@ -1,7 +1,7 @@
 import { vars } from "@/styles/theme.css";
 import { style } from "@vanilla-extract/css";
 
-export const productSellerWrapper = style({
+export const productMetaWrapper = style({
   width: "100%",
   height: "6.5rem",
 
