@@ -15,7 +15,6 @@ export const productDetailInfo = style({
   display: "flex",
   flexDirection: "column",
 
-  marginTop: "0.8rem",
   gap: "0.3rem",
 });
 
