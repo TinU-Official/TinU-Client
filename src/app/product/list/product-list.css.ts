@@ -1,4 +1,13 @@
+import { vars } from "@/styles/theme.css";
 import { style } from "@vanilla-extract/css";
+
+export const stickyWrapper = style({
+  position: "sticky",
+  top: "6rem",
+  zIndex: 100,
+
+  width: "100%",
+});
 
 export const searchBarSection = style({
   display: "flex",
@@ -7,11 +16,15 @@ export const searchBarSection = style({
 
   width: "100%",
   padding: "1.3rem 2rem",
+
+  backgroundColor: vars.color.white,
 });
 
 export const filterChipSection = style({
   width: "100%",
   padding: "1.5rem 2rem",
+
+  backgroundColor: vars.color.white,
 });
 
 export const filterChipScrollContainer = style({
