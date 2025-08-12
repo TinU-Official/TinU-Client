@@ -11,7 +11,7 @@ import IcCheckTransparent from "./ic_check_transparent.svg";
 import IcCheckWhiteGrey from "./ic_check_whitegrey.svg";
 import IcChevronDown from "./ic_chevron_down.svg";
 import IcChevronLeft from "./ic_chevron_left.svg";
-import IcChevronRight from "./ic_chevron_right.svg";
+//import IcChevronRight from "./ic_chevron_right.svg";
 import IcChevronUp from "./ic_chevron_up.svg";
 import IcClose from "./ic_close.svg";
 import IcGreyCircle from "./ic_grey_circle.svg";
@@ -33,6 +33,9 @@ import IcSwap from "./ic_swap.svg";
 import IcTextLogo from "./ic_text_logo.svg";
 import IcTextLogoSmall from "./ic_text_logo_small.svg";
 import IcUserGrey from "./ic_user_grey.svg";
+import IcEmptyHeart from "./ic_empty_heart.svg";
+import IcFilledHeart from "./ic_filled_heart.svg";
+import IcVertical from "./ic_vertical.svg";
 
 export {
   IcAirplaneGrey,
@@ -48,7 +51,7 @@ export {
   IcCheckWhiteGrey,
   IcChevronDown,
   IcChevronLeft,
-  IcChevronRight,
+  //IcChevronRight,
   IcChevronUp,
   IcClose,
   IcGreyCircle,
@@ -70,4 +73,7 @@ export {
   IcTextLogo,
   IcTextLogoSmall,
   IcUserGrey,
+  IcEmptyHeart,
+  IcFilledHeart,
+  IcVertical,
 };
