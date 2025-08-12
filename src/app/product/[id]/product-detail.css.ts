@@ -15,12 +15,13 @@ export const headerTitle = style({
   ...vars.fontStyles.subtitle1_sb_16,
 });
 
-export const productMainImg = style({
+export const imgWrapper = style({
   width: "100%",
-  height: "100%",
-
   aspectRatio: "1 / 1",
-  overflow: "hidden",
+  position: "relative",
+});
+
+export const productMainImg = style({
   objectFit: "cover",
 });
 
