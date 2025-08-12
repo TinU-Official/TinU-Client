@@ -6,5 +6,5 @@ interface HashTagProps {
 }
 
 export function HashTag({ text, isActive = false }: HashTagProps) {
-  return <button className={styles.tag({ state: isActive ? "active" : "inactive" })}># {text}</button>;
+  return <div className={styles.tag({ state: isActive ? "active" : "inactive" })}># {text}</div>;
 }
