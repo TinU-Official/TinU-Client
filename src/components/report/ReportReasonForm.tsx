@@ -19,7 +19,7 @@ function ReportReasonForm() {
 
   return (
     <>
-      <div className={styles.reportSelectWrapper}>
+      <form className={styles.reportSelectWrapper}>
         <Select placeholder="해당하는 내용을 선택하세요" onSelect={handleReasonSelect}>
           <Select.Trigger />
           <Select.Main>
@@ -39,7 +39,7 @@ function ReportReasonForm() {
             className={styles.guitarReasonTextarea}
           />
         )}
-      </div>
+      </form>
 
       <div className={styles.fixedButtonWrapper}>
         <Button disabled={!isValid}>제출하기</Button>
