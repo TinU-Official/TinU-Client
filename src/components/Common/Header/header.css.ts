@@ -1,4 +1,5 @@
 import { Z_INDEX } from "@/constants/zIndex";
+import { vars } from "@/styles/theme.css";
 import { style } from "@vanilla-extract/css";
 import { recipe } from "@vanilla-extract/recipes";
 
@@ -36,6 +37,9 @@ export const centerElement = style({
   alignItems: "center",
   margin: "0 auto",
   height: "100%",
+
+  ...vars.fontStyles.subtitle1_sb_16,
+  color: vars.color.grey_12,
 });
 
 export const rightElement = style({
