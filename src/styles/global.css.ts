@@ -15,6 +15,11 @@ globalStyle("article, aside, details, figcaption, figure, footer, header, hgroup
   display: "block",
 });
 
+globalStyle("textarea, textfield", {
+  fontFamily: "inherit",
+  fontSize: "inherit",
+});
+
 globalStyle("*[hidden]", {
   display: "none",
 });

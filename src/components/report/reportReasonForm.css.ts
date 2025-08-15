@@ -15,7 +15,7 @@ export const guitarReasonTextarea = style({
   width: "100%",
   height: "14rem",
 
-  fontFamily: "var(--font-pretendard)",
+  // fontFamily: "var(--font-pretendard)",
   ...vars.fontStyles.subtitle3_r_16,
   backgroundColor: vars.color.grey_2,
   border: `1px solid ${vars.color.grey_4}`,
