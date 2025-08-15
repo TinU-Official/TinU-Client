@@ -7,10 +7,15 @@ import Button from "../Common/Button/Button";
 
 function ReportReasonForm() {
   const [reason, setReason] = useState("");
+  const [otherReason, setOtherReason] = useState("");
 
   const handleReasonSelect = (value: string) => {
     setReason(value);
+    setOtherReason("");
   };
+
+  const isGuitar = reason === "기타 사유 (직접 입력)";
+  const isValid = isGuitar ? !!otherReason.trim() : !!reason;
 
   return (
     <>
@@ -25,10 +30,19 @@ function ReportReasonForm() {
             <Select.Option value="기타 사유 (직접 입력)">기타 사유 (직접 입력)</Select.Option>
           </Select.Main>
         </Select>
+
+        {isGuitar && (
+          <textarea
+            placeholder="자세한 내용을 입력해주세요"
+            value={otherReason}
+            onChange={(e) => setOtherReason(e.target.value)}
+            className={styles.otherReasonTextarea}
+          />
+        )}
       </div>
 
       <div className={styles.fixedButtonWrapper}>
-        <Button disabled={!reason}>제출하기</Button>
+        <Button disabled={!isValid}>제출하기</Button>
       </div>
     </>
   );
