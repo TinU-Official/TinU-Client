@@ -7,15 +7,15 @@ import Button from "../Common/Button/Button";
 
 function ReportReasonForm() {
   const [reason, setReason] = useState("");
-  const [otherReason, setOtherReason] = useState("");
+  const [guitarReason, setGuitarReason] = useState("");
 
   const handleReasonSelect = (value: string) => {
     setReason(value);
-    setOtherReason("");
+    setGuitarReason("");
   };
 
   const isGuitar = reason === "기타 사유 (직접 입력)";
-  const isValid = isGuitar ? !!otherReason.trim() : !!reason;
+  const isValid = isGuitar ? !!guitarReason.trim() : !!reason;
 
   return (
     <>
@@ -34,9 +34,9 @@ function ReportReasonForm() {
         {isGuitar && (
           <textarea
             placeholder="자세한 내용을 입력해주세요"
-            value={otherReason}
-            onChange={(e) => setOtherReason(e.target.value)}
-            className={styles.otherReasonTextarea}
+            value={guitarReason}
+            onChange={(e) => setGuitarReason(e.target.value)}
+            className={styles.guitarReasonTextarea}
           />
         )}
       </div>

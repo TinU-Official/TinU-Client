@@ -11,7 +11,7 @@ export const reportSelectWrapper = style({
   padding: "0 2rem",
 });
 
-export const otherReasonTextarea = style({
+export const guitarReasonTextarea = style({
   width: "100%",
   height: "14rem",
 
