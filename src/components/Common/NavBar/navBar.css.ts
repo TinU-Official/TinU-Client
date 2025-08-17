@@ -32,7 +32,6 @@ export const navItemWrapper = style({
 export const navItemLabel = recipe({
   base: {
     ...vars.fontStyles.caption1_m_11,
-    transition: "color 0.2s ease",
   },
   variants: {
     isActive: {
