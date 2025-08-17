@@ -2,8 +2,8 @@ import IcAirplaneGrey from "./ic_airplane_grey.svg";
 import IcAirplaneMint from "./ic_airplane_mint.svg";
 import IcArrowRight from "./ic_arrow_right.svg";
 import IcCamera from "./ic_camera.svg";
-import IcChatInactive from "./ic_chat_inactive.svg";
-import IcChatActive from "./ic_chat_active.svg";
+import IcChatGrey from "./ic_chat_grey.svg";
+import IcChatBlack from "./ic_chat_black.svg";
 import IcCheckComplete from "./ic_check_complete.svg";
 import IcCheckGrey from "./ic_check_grey.svg";
 import IcCheckMint from "./ic_check_mint.svg";
@@ -20,9 +20,8 @@ import IcFilledHeart from "./ic_filled_heart.svg";
 import IcGreyCircle from "./ic_grey_circle.svg";
 import IcHamburger from "./ic_hamburger.svg";
 import IcHeart from "./ic_heart.svg";
-import IcHomeInactive from "./ic_home_inactive.svg";
-import IcHomeActive from "./ic_home_active.svg";
-
+import IcHomeGrey from "./ic_home_grey.svg";
+import IcHomeBlack from "./ic_home_black.svg";
 import IcLogoGoogle from "./ic_logo_google.svg";
 import IcLogoKakao from "./ic_logo_kakao.svg";
 import IcLogoNaver from "./ic_logo_naver.svg";
@@ -38,8 +37,8 @@ import IcStep4 from "./ic_step4.svg";
 import IcSwap from "./ic_swap.svg";
 import IcTextLogo from "./ic_text_logo.svg";
 import IcTextLogoSmall from "./ic_text_logo_small.svg";
-import IcMypageInactive from "./ic_mypage_inactive.svg";
-import IcMypageActive from "./ic_mypage_active.svg";
+import IcUserGrey from "./ic_user_grey.svg";
+import IcUserBlack from "./ic_user_black.svg";
 import IcVertical from "./ic_vertical.svg";
 
 export {
@@ -47,8 +46,8 @@ export {
   IcAirplaneMint,
   IcArrowRight,
   IcCamera,
-  IcChatInactive,
-  IcChatActive,
+  IcChatGrey,
+  IcChatBlack,
   IcCheckComplete,
   IcCheckGrey,
   IcCheckMint,
@@ -65,8 +64,8 @@ export {
   IcGreyCircle,
   IcHamburger,
   IcHeart,
-  IcHomeInactive,
-  IcHomeActive,
+  IcHomeGrey,
+  IcHomeBlack,
   IcLogoGoogle,
   IcLogoKakao,
   IcLogoNaver,
@@ -82,7 +81,7 @@ export {
   IcSwap,
   IcTextLogo,
   IcTextLogoSmall,
-  IcMypageInactive,
-  IcMypageActive,
+  IcUserGrey,
+  IcUserBlack,
   IcVertical,
 };

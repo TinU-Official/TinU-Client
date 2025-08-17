@@ -1,21 +1,14 @@
 "use client";
 
-import {
-  IcChatActive,
-  IcChatInactive,
-  IcHomeInactive,
-  IcHomeActive,
-  IcMypageActive,
-  IcMypageInactive,
-} from "@/assets/icons";
+import { IcChatBlack, IcChatGrey, IcHomeBlack, IcHomeGrey, IcUserBlack, IcUserGrey } from "@/assets/icons";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import * as styles from "./navBar.css";
 
 const navItems = [
-  { href: "/home", label: "홈", icon: <IcHomeInactive />, activeIcon: <IcHomeActive /> },
-  { href: "/chat-list", label: "채팅", icon: <IcChatInactive />, activeIcon: <IcChatActive /> },
-  { href: "/mypage", label: "마이", icon: <IcMypageInactive />, activeIcon: <IcMypageActive /> },
+  { href: "/home", label: "홈", icon: <IcHomeGrey />, activeIcon: <IcHomeBlack /> },
+  { href: "/chat-list", label: "채팅", icon: <IcChatGrey />, activeIcon: <IcChatBlack /> },
+  { href: "/mypage", label: "마이", icon: <IcUserGrey />, activeIcon: <IcUserBlack /> },
 ];
 
 export function NavBar() {
