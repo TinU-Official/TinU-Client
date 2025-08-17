@@ -2,8 +2,8 @@ import IcAirplaneGrey from "./ic_airplane_grey.svg";
 import IcAirplaneMint from "./ic_airplane_mint.svg";
 import IcArrowRight from "./ic_arrow_right.svg";
 import IcCamera from "./ic_camera.svg";
-import IcChatGrey from "./ic_chat_grey.svg";
-import IcChatMint from "./ic_chat_mint.svg";
+import IcChatInactive from "./ic_chat_inactive.svg";
+import IcChatActive from "./ic_chat_active.svg";
 import IcCheckComplete from "./ic_check_complete.svg";
 import IcCheckGrey from "./ic_check_grey.svg";
 import IcCheckMint from "./ic_check_mint.svg";
@@ -20,8 +20,9 @@ import IcFilledHeart from "./ic_filled_heart.svg";
 import IcGreyCircle from "./ic_grey_circle.svg";
 import IcHamburger from "./ic_hamburger.svg";
 import IcHeart from "./ic_heart.svg";
-import IcHomeGrey from "./ic_home_grey.svg";
-import IcHomeMint from "./ic_home_mint.svg";
+import IcHomeInactive from "./ic_home_inactive.svg";
+import IcHomeActive from "./ic_home_active.svg";
+
 import IcLogoGoogle from "./ic_logo_google.svg";
 import IcLogoKakao from "./ic_logo_kakao.svg";
 import IcLogoNaver from "./ic_logo_naver.svg";
@@ -37,7 +38,8 @@ import IcStep4 from "./ic_step4.svg";
 import IcSwap from "./ic_swap.svg";
 import IcTextLogo from "./ic_text_logo.svg";
 import IcTextLogoSmall from "./ic_text_logo_small.svg";
-import IcUserGrey from "./ic_user_grey.svg";
+import IcMypageInactive from "./ic_mypage_inactive.svg";
+import IcMypageActive from "./ic_mypage_active.svg";
 import IcVertical from "./ic_vertical.svg";
 
 export {
@@ -45,8 +47,8 @@ export {
   IcAirplaneMint,
   IcArrowRight,
   IcCamera,
-  IcChatGrey,
-  IcChatMint,
+  IcChatInactive,
+  IcChatActive,
   IcCheckComplete,
   IcCheckGrey,
   IcCheckMint,
@@ -63,8 +65,8 @@ export {
   IcGreyCircle,
   IcHamburger,
   IcHeart,
-  IcHomeGrey,
-  IcHomeMint,
+  IcHomeInactive,
+  IcHomeActive,
   IcLogoGoogle,
   IcLogoKakao,
   IcLogoNaver,
@@ -80,6 +82,7 @@ export {
   IcSwap,
   IcTextLogo,
   IcTextLogoSmall,
-  IcUserGrey,
+  IcMypageInactive,
+  IcMypageActive,
   IcVertical,
 };
