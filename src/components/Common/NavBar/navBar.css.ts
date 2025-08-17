@@ -1,5 +1,6 @@
 import { vars } from "@/styles/theme.css";
 import { style } from "@vanilla-extract/css";
+import { recipe } from "@vanilla-extract/recipes";
 
 export const navBarWrapper = style({
   position: "sticky",
@@ -13,7 +14,6 @@ export const navBarWrapper = style({
   padding: "0 2.5rem",
 
   backgroundColor: vars.color.white,
-  boxShadow: `inset 0 1px 0 0 #f1f5f5`,
 });
 
 export const navItemWrapper = style({
@@ -29,19 +29,17 @@ export const navItemWrapper = style({
   height: "100%",
 });
 
-export const activeBar = style({
-  position: "absolute",
-  top: "0.1rem",
-
-  width: "100%",
-  height: "0.4rem",
-
-  borderRadius: "1.2rem",
-  backgroundColor: "#14c3bc",
-});
-
-export const navItemLabel = style({
-  ...vars.fontStyles.label1_m_12,
-
-  color: vars.color.grey_11,
+export const navItemLabel = recipe({
+  base: {
+    ...vars.fontStyles.caption1_m_11,
+  },
+  variants: {
+    isActive: {
+      true: { color: vars.color.grey_11 },
+      false: { color: vars.color.grey_5 },
+    },
+  },
+  defaultVariants: {
+    isActive: false,
+  },
 });
