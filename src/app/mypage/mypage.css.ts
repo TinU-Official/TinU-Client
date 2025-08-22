@@ -113,19 +113,20 @@ export const divider = style({
   margin: "2.3rem 0",
 });
 
-export const myactivityText = style({
+export const myActivityWrapper = style({
+  padding: "0 2rem",
+});
+
+export const myActivityText = style({
   ...vars.fontStyles.subtitle1_sb_16,
   color: vars.color.grey_12,
-
-  marginLeft: "2rem",
 });
 
 export const myActivitySection = style({
   display: "flex",
-  justifyContent: "center",
-  gap: "1.5rem",
+  justifyContent: "space-between",
 
-  marginTop: "2rem",
+  marginTop: "2.2rem",
 });
 
 export const buttonBase = style({
@@ -143,7 +144,7 @@ export const buttonBase = style({
 
 export const activityButton = styleVariants({
   forSale: [buttonBase, { backgroundColor: "#DEF7FF" }],
-  soldout: [buttonBase, { backgroundColor: "#FFE9DE" }],
+  soldOut: [buttonBase, { backgroundColor: "#FFE9DE" }],
   hidden: [buttonBase, { backgroundColor: vars.color.grey_2 }],
 });
 
