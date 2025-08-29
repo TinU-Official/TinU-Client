@@ -2,7 +2,9 @@ import { vars } from "@/styles/theme.css";
 import { style } from "@vanilla-extract/css";
 
 export const chatBottomSheetWrapper = style({
-  position: "sticky",
+  position: "fixed",
+  left: 0,
+  right: 0,
   bottom: 0,
 
   width: "100%",
@@ -10,6 +12,7 @@ export const chatBottomSheetWrapper = style({
   padding: "0 1.3rem",
 
   borderRadius: "1.6rem 1.6rem 0 0",
+  paddingBottom: "env(safe-area-inset-bottom)",
 });
 
 export const chatBottomSheetClosedSection = style({

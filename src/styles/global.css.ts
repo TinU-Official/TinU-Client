@@ -34,6 +34,14 @@ globalStyle("body", {
   MozOsxFontSmoothing: "grayscale",
 });
 
+// CSS vars for keyboard and safe-area insets
+globalStyle(":root", {
+  vars: {
+    ["--keyboard-inset"]: "0px",
+    ["--keyboard-anim-duration"]: "0ms",
+  } as any,
+});
+
 globalStyle("menu, ol, ul, li", {
   paddingLeft: 0,
   listStyle: "none",
@@ -114,4 +122,18 @@ globalStyle("button", {
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
+});
+
+// Shift sticky/fixed bottoms when keyboard opens
+globalStyle("body.keyboard-open [data-keyboard-aware='bottom']", {
+  transform: "translateY(calc(-1 * var(--keyboard-inset)))",
+});
+
+globalStyle("body.keyboard-anim [data-keyboard-aware='bottom']", {
+  transition: "transform var(--keyboard-anim-duration) ease",
+});
+
+// Provide padding-bottom to main scroll area to avoid last messages covered by keyboard
+globalStyle("body.keyboard-open [data-keyboard-aware='scroll']", {
+  paddingBottom: "calc(env(safe-area-inset-bottom) + var(--keyboard-inset))",
 });

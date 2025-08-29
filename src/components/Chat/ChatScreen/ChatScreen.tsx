@@ -26,7 +26,7 @@ export const ChatScreen = memo(function ChatScreen({ chatList, closeBottomSheet 
   });
 
   return (
-    <div className={styles.chatScreenWrapper} ref={scrollRef} onClick={closeBottomSheet}>
+    <div className={styles.chatScreenWrapper} data-keyboard-aware="scroll" ref={scrollRef} onClick={closeBottomSheet}>
       <DailyChatGroup chatList={chatList} />
     </div>
   );

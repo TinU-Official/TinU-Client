@@ -50,6 +50,7 @@ export function ChatBottomSheet({
   return (
     <motion.div
       className={styles.chatBottomSheetWrapper}
+      data-keyboard-aware="bottom"
       animate={{
         height: isBottomSheetOpen ? "27.8rem" : "6.8rem",
       }}

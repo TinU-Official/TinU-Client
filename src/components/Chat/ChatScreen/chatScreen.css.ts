@@ -15,6 +15,12 @@ export const chatScreenWrapper = style({
   overflowY: "scroll",
 
   backgroundColor: vars.color.grey_2,
+  // mark as keyboard-aware scroll container
+  selectors: {
+    '&': {
+      vars: {},
+    },
+  },
 });
 
 export const chatBubbleLine = recipe({
