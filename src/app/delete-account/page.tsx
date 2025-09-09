@@ -19,8 +19,8 @@ export default function page() {
     <>
       <Header isSticky left={<BackButton />} />
       <div className={styles.withdrawTextWrapper}>
-        <h1 className={styles.titleWrapper}>떠나시는 건가요?</h1>
-        <h2 className={styles.descriptionWrapper}>잠깐! 틴유를 탈퇴하기 전에 하단 정보를 확인해주세요.</h2>
+        <h1 className={styles.title}>떠나시는 건가요?</h1>
+        <h2 className={styles.description}>잠깐! 틴유를 탈퇴하기 전에 하단 정보를 확인해주세요.</h2>
       </div>
 
       <div className={styles.withdrawInfoWrapper}>

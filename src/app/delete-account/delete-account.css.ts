@@ -13,11 +13,11 @@ export const headerText = style({
   color: vars.color.grey_12,
 });
 
-export const titleWrapper = style({
+export const title = style({
   ...vars.fontStyles.title2_sb_22,
 });
 
-export const descriptionWrapper = style({
+export const description = style({
   ...vars.fontStyles.body2_m_14,
   color: vars.color.grey_6,
 
