@@ -6,15 +6,23 @@ import * as styles from "./deleteAccountReasonForm.css";
 import Button from "../Common/Button/Button";
 
 function DeleteAccountReasonForm() {
-  const [reason, setReason] = useState("");
+  const 탈퇴사유 = {
+    noProduct: "사고 싶은 물품이 없어요",
+    notSell: "물품이 안 팔려요",
+    noMannerUser: "비매너 사용자를 만났어요",
+    newAccount: "새 계정을 만들고 싶어요",
+    elseReason: "기타 사유 (직접 입력)",
+  } as const;
+
+  const [reason, setReason] = useState<keyof typeof 탈퇴사유 | null>(null);
   const [guitarReason, setGuitarReason] = useState("");
 
   const handleReasonSelect = (value: string) => {
-    setReason(value);
+    setReason(value as keyof typeof 탈퇴사유);
     setGuitarReason("");
   };
 
-  const isGuitar = reason === "기타 사유 (직접 입력)";
+  const isGuitar = reason === "elseReason";
   const isValid = isGuitar ? !!guitarReason.trim() : !!reason;
 
   return (
@@ -23,11 +31,11 @@ function DeleteAccountReasonForm() {
         <Select placeholder="해당하는 내용을 선택하세요" onSelect={handleReasonSelect}>
           <Select.Trigger />
           <Select.Main>
-            <Select.Option value="사고 싶은 물품이 없어요">사고 싶은 물품이 없어요</Select.Option>
-            <Select.Option value="물품이 안 팔려요">물품이 안 팔려요</Select.Option>
-            <Select.Option value="비매너 사용자를 만났어요">비매너 사용자를 만났어요</Select.Option>
-            <Select.Option value="새 계정을 만들고 싶어요">새 계정을 만들고 싶어요</Select.Option>
-            <Select.Option value="기타 사유 (직접 입력)">기타 사유 (직접 입력)</Select.Option>
+            {Object.entries(탈퇴사유).map(([key, label]) => (
+              <Select.Option key={key} value={key}>
+                {label}
+              </Select.Option>
+            ))}
           </Select.Main>
         </Select>
 
