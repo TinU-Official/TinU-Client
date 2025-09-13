@@ -5,6 +5,7 @@ import IcCamera from "./ic_camera.svg";
 import IcChatGrey from "./ic_chat_grey.svg";
 import IcChatBlack from "./ic_chat_black.svg";
 import IcCheckComplete from "./ic_check_complete.svg";
+import IcCheckCompleteSmall from "./ic_check_complete_small.svg";
 import IcCheckGrey from "./ic_check_grey.svg";
 import IcCheckMint from "./ic_check_mint.svg";
 import IcCheckTransparent from "./ic_check_transparent.svg";
@@ -55,6 +56,7 @@ export {
   IcChatGrey,
   IcChatBlack,
   IcCheckComplete,
+  IcCheckCompleteSmall,
   IcCheckGrey,
   IcCheckMint,
   IcCheckTransparent,

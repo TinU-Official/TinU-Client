@@ -29,11 +29,13 @@ export const withdrawInfoWrapper = style({
 });
 
 export const withdrawInfo = style({
+  margin: "2rem 0",
+});
+
+export const withdrawBox = style({
   display: "flex",
   alignItems: "center",
   gap: "1rem",
-
-  margin: "2rem 0",
 });
 
 export const withdrawInfoText = style({
@@ -42,14 +44,22 @@ export const withdrawInfoText = style({
 });
 
 export const verticalLine = style({
-  marginLeft: "2rem",
+  width: "0.4rem",
   height: "7rem",
+  borderRadius: "1.2rem",
+
+  backgroundColor: "#D9D9D9",
+
+  marginLeft: "2rem",
+  flexShrink: "0",
 });
 
 export const withdrawDescription = style({
   display: "flex",
   alignItems: "center",
   gap: "1rem",
+
+  marginTop: "2rem",
 });
 
 export const withdrawDescriptionText = style({
