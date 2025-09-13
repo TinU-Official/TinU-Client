@@ -38,7 +38,7 @@ export default function page() {
             <div className={styles.descriptionFlex}>
               <span className={styles.withdrawDescriptionText}>글, 프로필 등 모든 사용자 정보</span>
               <span className={styles.withdrawDescriptionText}>
-                타인의 게시물에 단 댓글은 삭제되지 않으니 미리 확인하세요.
+                타인 게시물의 댓글은 삭제되지 않으니 미리 확인하세요.
               </span>
             </div>
           </div>

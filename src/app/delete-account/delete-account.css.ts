@@ -57,7 +57,7 @@ export const verticalLine = style({
 export const withdrawDescription = style({
   display: "flex",
   alignItems: "center",
-  gap: "1rem",
+  gap: "1.3rem",
 
   marginTop: "2rem",
 });
