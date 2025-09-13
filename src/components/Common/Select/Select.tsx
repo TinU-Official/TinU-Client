@@ -5,10 +5,9 @@ import { createContext, ReactNode, useContext, useEffect, useRef, useState } fro
 import * as styles from "./Select.css";
 
 interface SelectContextType {
-  selectedValue: string;
-  selectedLabel: string;
+  selected: string;
   isOpen: boolean;
-  setSelected: (value: string, label: string) => void;
+  setSelected: (value: string) => void;
   toggleDropdown: () => void;
   closeDropdown: () => void;
   placeholder?: string;
@@ -24,13 +23,11 @@ interface SelectRootProps {
 }
 
 function SelectRoot({ children, onSelect, placeholder }: SelectRootProps) {
-  const [selectedValue, setSelectedValue] = useState("");
-  const [selectedLabel, setSelectedLabel] = useState("");
+  const [selected, setSelectedState] = useState("");
   const [isOpen, setIsOpen] = useState(false);
 
-  const setSelected = (value: string, label: string) => {
-    setSelectedValue(value);
-    setSelectedLabel(label);
+  const setSelected = (value: string) => {
+    setSelectedState(value);
     onSelect?.(value);
     setIsOpen(false);
   };
@@ -39,17 +36,7 @@ function SelectRoot({ children, onSelect, placeholder }: SelectRootProps) {
   const closeDropdown = () => setIsOpen(false);
 
   return (
-    <SelectContext.Provider
-      value={{
-        selectedValue,
-        selectedLabel,
-        isOpen,
-        setSelected,
-        toggleDropdown,
-        closeDropdown,
-        placeholder,
-      }}
-    >
+    <SelectContext.Provider value={{ selected, isOpen, setSelected, toggleDropdown, closeDropdown, placeholder }}>
       <div className={styles.dropdownWrapper}>{children}</div>
     </SelectContext.Provider>
   );
@@ -60,11 +47,11 @@ function Trigger() {
   const context = useContext(SelectContext);
   if (!context) throw new Error("Select.Trigger must be used within Select");
 
-  const { selectedLabel, isOpen, toggleDropdown, placeholder } = context;
+  const { selected, isOpen, toggleDropdown, placeholder } = context;
 
   return (
     <div className={styles.selectBox({ isOpen })} onClick={toggleDropdown}>
-      <span className={styles.placeholderText({ isSelected: !!selectedLabel })}>{selectedLabel || placeholder}</span>
+      <span className={styles.placeholderText({ isSelected: !!selected })}>{selected || placeholder}</span>
       {isOpen ? <IcChevronUp /> : <IcChevronDown />}
     </div>
   );
@@ -94,11 +81,7 @@ function Main({ children }: { children: ReactNode }) {
 
   if (!isOpen) return null;
 
-  return (
-    <ul className={styles.dropdownList} ref={ref}>
-      {children}
-    </ul>
-  );
+  return <ul className={styles.dropdownList}>{children}</ul>;
 }
 
 // 4. Select.Option
@@ -109,7 +92,7 @@ function Option({ value, children }: { value: string; children: ReactNode }) {
   const { setSelected } = context;
 
   return (
-    <li className={styles.dropdownItem} onClick={() => setSelected(value, String(children))}>
+    <li className={styles.dropdownItem} onClick={() => setSelected(value)}>
       {children}
     </li>
   );
