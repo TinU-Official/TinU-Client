@@ -3,8 +3,7 @@
 import { BackButton } from "@/components/Common/BackButton/BackButton";
 import { Header } from "@/components/Common/Header/Header";
 import * as styles from "./delete-account.css";
-import { IconButton } from "@/components/Common/IconButton";
-import { IcCheckComplete, IcVerticalLine } from "@/assets/icons";
+import { IcCheckCompleteSmall } from "@/assets/icons";
 import Button from "@/components/Common/Button/Button";
 import { useRouter } from "next/navigation";
 import { useCallback } from "react";
@@ -12,7 +11,7 @@ import { useCallback } from "react";
 export default function page() {
   const router = useRouter();
   const handleClickDeleteAccount = useCallback(() => {
-    router.push("delete-account/reason");
+    router.push("/delete-account/reason");
   }, [router]);
 
   return (
@@ -23,29 +22,33 @@ export default function page() {
         <h2 className={styles.description}>잠깐! 틴유를 탈퇴하기 전에 하단 정보를 확인해주세요.</h2>
       </div>
 
-      <div className={styles.withdrawInfoWrapper}>
-        <div className={styles.withdrawInfo}>
-          <IconButton icon={<IcCheckComplete />} label="체크 버튼" />
-          <span className={styles.withdrawInfoText}>
-            아래 항목을 포함한 모든 정보가 영구적으로 삭제되며 복구할 수 없습니다.
-          </span>
-        </div>
-
-        <div className={styles.withdrawDescription}>
-          <IcVerticalLine className={styles.verticalLine} />
-          <div className={styles.descriptionFlex}>
-            <span className={styles.withdrawDescriptionText}>글, 프로필 등 모든 사용자 정보</span>
-            <span className={styles.withdrawDescriptionText}>
-              타인의 게시물에 단 댓글은 삭제되지 않으니 미리 확인하세요.
+      <article className={styles.withdrawInfoWrapper}>
+        <section className={styles.withdrawInfo}>
+          <div className={styles.withdrawBox}>
+            <IcCheckCompleteSmall />
+            <span className={styles.withdrawInfoText}>
+              아래 항목을 포함한 모든 정보가 영구적으로 삭제
+              <br />
+              되며 복구할 수 없습니다.
             </span>
           </div>
-        </div>
 
-        <div className={styles.withdrawInfo}>
-          <IconButton icon={<IcCheckComplete />} label="체크 버튼" />
+          <div className={styles.withdrawDescription}>
+            <div className={styles.verticalLine} />
+            <div className={styles.descriptionFlex}>
+              <span className={styles.withdrawDescriptionText}>글, 프로필 등 모든 사용자 정보</span>
+              <span className={styles.withdrawDescriptionText}>
+                타인의 게시물에 단 댓글은 삭제되지 않으니 미리 확인하세요.
+              </span>
+            </div>
+          </div>
+        </section>
+
+        <section className={styles.withdrawBox}>
+          <IcCheckCompleteSmall />
           <span className={styles.withdrawInfoText}>탈퇴 후 7일 간 재가입이 불가능합니다.</span>
-        </div>
-      </div>
+        </section>
+      </article>
 
       <div className={styles.fixedButtonWrapper}>
         <Button onClick={handleClickDeleteAccount}>탈퇴하기</Button>
