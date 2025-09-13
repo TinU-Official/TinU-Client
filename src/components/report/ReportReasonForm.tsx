@@ -14,15 +14,15 @@ function ReportReasonForm() {
     elseReason: "기타 사유 (직접 입력)",
   } as const;
 
-  const [reason, setReason] = useState<keyof typeof 신고사유 | null>(null);
+  const [reason, setReason] = useState<(typeof 신고사유)[keyof typeof 신고사유] | null>(null);
   const [guitarReason, setGuitarReason] = useState("");
 
   const handleReasonSelect = (value: string) => {
-    setReason(value as keyof typeof 신고사유);
+    setReason(value as (typeof 신고사유)[keyof typeof 신고사유]);
     setGuitarReason("");
   };
 
-  const isGuitar = reason === "elseReason";
+  const isGuitar = reason === 신고사유.elseReason;
   const isValid = isGuitar ? !!guitarReason.trim() : !!reason;
 
   return (
@@ -32,7 +32,7 @@ function ReportReasonForm() {
           <Select.Trigger />
           <Select.Main>
             {Object.entries(신고사유).map(([key, label]) => (
-              <Select.Option key={key} value={key}>
+              <Select.Option key={key} value={label}>
                 {label}
               </Select.Option>
             ))}
