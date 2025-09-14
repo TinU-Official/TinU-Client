@@ -5,15 +5,15 @@ import Select from "../Common/Select/Select";
 import * as styles from "./reportReasonForm.css";
 import Button from "../Common/Button/Button";
 
-function ReportReasonForm() {
-  const 신고사유 = {
-    mismatchInfo: "상품 정보가 실제와 달라요",
-    noShow: "거래 약속을 지키지 않았어요",
-    abusiveUser: "욕설이나 비하 발언을 했어요",
-    suspicious: "사기가 의심돼요",
-    elseReason: "기타 사유 (직접 입력)",
-  } as const;
+const 신고사유 = {
+  mismatchInfo: "상품 정보가 실제와 달라요",
+  noShow: "거래 약속을 지키지 않았어요",
+  abusiveUser: "욕설이나 비하 발언을 했어요",
+  suspicious: "사기가 의심돼요",
+  elseReason: "기타 사유 (직접 입력)",
+} as const;
 
+function ReportReasonForm() {
   const [reason, setReason] = useState<(typeof 신고사유)[keyof typeof 신고사유] | null>(null);
   const [guitarReason, setGuitarReason] = useState("");
 
