@@ -51,8 +51,10 @@ export default function page() {
       </article>
 
       <div className={styles.fixedButtonWrapper}>
-        <Button onClick={handleClickDeleteAccount}>탈퇴하기</Button>
-        <Button>계속 이용하기</Button>
+        <Button className={styles.deleteButton} outlined>
+          탈퇴하기
+        </Button>
+        <Button className={styles.continueButton}>계속 이용하기</Button>
       </div>
     </>
   );

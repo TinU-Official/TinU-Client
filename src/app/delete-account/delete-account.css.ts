@@ -84,3 +84,11 @@ export const fixedButtonWrapper = style({
 
   padding: "0 2rem",
 });
+
+export const deleteButton = style({
+  flex: 1,
+});
+
+export const continueButton = style({
+  flex: 2,
+});
