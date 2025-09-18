@@ -51,7 +51,7 @@ export default function page() {
       </article>
 
       <div className={styles.fixedButtonWrapper}>
-        <Button className={styles.deleteButton} outlined>
+        <Button className={styles.deleteButton} outlined onClick={handleClickDeleteAccount}>
           탈퇴하기
         </Button>
         <Button className={styles.continueButton}>계속 이용하기</Button>
