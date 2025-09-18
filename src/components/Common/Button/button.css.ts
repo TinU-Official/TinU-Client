@@ -22,6 +22,6 @@ export const buttonStyle = style({
 
 export const outlinedStyle = style({
   background: vars.color.white,
-  border: `1px solid ${vars.color.grey_4}`,
+boxShadow: `inset 0 0 0 1px ${vars.color.grey_4}`,
   color: vars.color.grey_6,
 });
