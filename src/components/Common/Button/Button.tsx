@@ -1,15 +1,16 @@
 import { type ButtonHTMLAttributes, ReactNode, memo } from "react";
 
 import clsx from "clsx";
-import { buttonStyle } from "./button.css";
+import { buttonStyle, outlinedStyle } from "./button.css";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
+  outlined?: boolean;
 }
 
-function Button({ children, className, ...buttonElementProps }: ButtonProps) {
+function Button({ children, className, outlined, ...buttonElementProps }: ButtonProps) {
   return (
-    <button className={clsx(buttonStyle, className)} {...buttonElementProps}>
+    <button className={clsx(buttonStyle, outlined && outlinedStyle, className)} {...buttonElementProps}>
       {children}
     </button>
   );
