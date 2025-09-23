@@ -8,8 +8,8 @@ interface SelectContextType {
   selected: string;
   isOpen: boolean;
   setSelected: (value: string) => void;
-  toggleDropdown: () => void;
-  closeDropdown: () => void;
+  toggle: () => void;
+  close: () => void;
   placeholder?: string;
 }
 
@@ -31,12 +31,12 @@ function SelectRoot({ children, onSelect, placeholder }: SelectRootProps) {
     setIsOpen(false);
   };
 
-  const toggleDropdown = () => setIsOpen((prev) => !prev);
-  const closeDropdown = () => setIsOpen(false);
+  const toggle = () => setIsOpen((prev) => !prev);
+  const close = () => setIsOpen(false);
 
   return (
-    <SelectContext.Provider value={{ selected, isOpen, setSelected, toggleDropdown, closeDropdown, placeholder }}>
-      <div className={styles.dropdownWrapper}>{children}</div>
+    <SelectContext.Provider value={{ selected, isOpen, setSelected, toggle, close, placeholder }}>
+      <div className={styles.selectWrapper}>{children}</div>
     </SelectContext.Provider>
   );
 }
@@ -45,10 +45,10 @@ function Trigger() {
   const context = useContext(SelectContext);
   if (!context) throw new Error("Select.Trigger must be used within Select");
 
-  const { selected, isOpen, toggleDropdown, placeholder } = context;
+  const { selected, isOpen, toggle, placeholder } = context;
 
   return (
-    <div className={styles.selectBox({ isOpen })} onClick={toggleDropdown}>
+    <div className={styles.selectBox({ isOpen })} onClick={toggle}>
       <span className={styles.placeholderText({ isSelected: !!selected })}>{selected || placeholder}</span>
       {isOpen ? <IcChevronUp /> : <IcChevronDown />}
     </div>
@@ -59,7 +59,7 @@ function Main({ children }: { children: ReactNode }) {
   const context = useContext(SelectContext);
   if (!context) throw new Error("Select.Main must be used within Select");
 
-  const { isOpen, closeDropdown } = context;
+  const { isOpen, close } = context;
 
   const ref = useRef<HTMLUListElement>(null);
 
@@ -67,18 +67,18 @@ function Main({ children }: { children: ReactNode }) {
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (ref.current && !ref.current.contains(e.target as Node)) {
-        closeDropdown();
+        close();
       }
     };
     if (isOpen) {
       document.addEventListener("mousedown", handleClickOutside);
     }
     return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, [isOpen, closeDropdown]);
+  }, [isOpen, close]);
 
   if (!isOpen) return null;
 
-  return <ul className={styles.dropdownList}>{children}</ul>;
+  return <ul className={styles.selectList}>{children}</ul>;
 }
 
 function Option({ value, children }: { value: string; children: ReactNode }) {
@@ -88,7 +88,7 @@ function Option({ value, children }: { value: string; children: ReactNode }) {
   const { setSelected } = context;
 
   return (
-    <li className={styles.dropdownItem} onClick={() => setSelected(value)}>
+    <li className={styles.selectItem} onClick={() => setSelected(value)}>
       {children}
     </li>
   );
