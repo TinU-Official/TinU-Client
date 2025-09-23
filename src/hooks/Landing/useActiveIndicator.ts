@@ -1,13 +1,11 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export const useActiveIndicator = () => {
   const [activeIndicator, setActiveIndicator] = useState(0);
 
-  const bannerRefs = {
-    first: useRef<HTMLDivElement>(null),
-    second: useRef<HTMLDivElement>(null),
-    third: useRef<HTMLDivElement>(null),
-  };
+  const firstBannerRef = useRef<HTMLDivElement>(null);
+  const secondBannerRef = useRef<HTMLDivElement>(null);
+  const thirdBannerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const options = {
@@ -34,7 +32,7 @@ export const useActiveIndicator = () => {
     };
 
     const observer = new IntersectionObserver(callback, options);
-    const refs = [bannerRefs.first, bannerRefs.second, bannerRefs.third];
+    const refs = [firstBannerRef, secondBannerRef, thirdBannerRef];
 
     refs.forEach((ref) => {
       if (ref.current) {
@@ -53,8 +51,8 @@ export const useActiveIndicator = () => {
 
   return {
     activeIndicator,
-    firstBannerRef: bannerRefs.first,
-    secondBannerRef: bannerRefs.second,
-    thirdBannerRef: bannerRefs.third,
+    firstBannerRef,
+    secondBannerRef,
+    thirdBannerRef,
   };
 };
