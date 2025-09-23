@@ -14,6 +14,7 @@ interface ChatBottomSheetProps {
 
 export function ChatBottomSheet({
   isBottomSheetOpen,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   handleSendChat,
   closeBottomSheet,
   toggleBottomSheet,
@@ -37,6 +38,7 @@ export function ChatBottomSheet({
   const handleClickSendButton = () => {};
 
   const handleSelectImage = (e: ChangeEvent<HTMLInputElement>) => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const file = e.target.files?.[0];
 
     // TODO
