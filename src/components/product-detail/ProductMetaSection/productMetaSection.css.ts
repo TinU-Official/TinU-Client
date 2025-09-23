@@ -13,9 +13,6 @@ export const productMetaWrapper = style({
 });
 
 export const sellerImg = style({
-  width: "2.5rem",
-  height: "2.5rem",
-
   borderRadius: "50%",
 });
 

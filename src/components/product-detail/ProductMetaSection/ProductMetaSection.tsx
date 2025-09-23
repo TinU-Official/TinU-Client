@@ -1,9 +1,10 @@
 "use client";
 
-import * as styles from "./productMetaSection.css";
-import { useState } from "react";
-import { IconButton } from "@/components/Common/IconButton";
 import { IcEmptyHeart, IcFilledHeart, IcVertical } from "@/assets/icons";
+import { IconButton } from "@/components/Common/IconButton";
+import Image from "next/image";
+import { useState } from "react";
+import * as styles from "./productMetaSection.css";
 
 function ProductMetaSection() {
   const [isLiked, setIsLiked] = useState(false);
@@ -18,7 +19,7 @@ function ProductMetaSection() {
   return (
     <div className={styles.productMetaWrapper}>
       <section className={styles.sellerProfileSection}>
-        <img src="/sechon.png" alt="판매자 프로필이미지" className={styles.sellerImg} />
+        <Image src="/sechon.png" alt="판매자 프로필이미지" className={styles.sellerImg} width={25} height={25} />
         <p className={styles.sellerName}>이세숑</p>
       </section>
       <section className={styles.toggleSection}>
