@@ -15,7 +15,6 @@ interface SelectContextType {
 
 const SelectContext = createContext<SelectContextType | null>(null);
 
-// 1. Select.Root
 interface SelectRootProps {
   children: ReactNode;
   onSelect?: (value: string) => void;
@@ -42,7 +41,6 @@ function SelectRoot({ children, onSelect, placeholder }: SelectRootProps) {
   );
 }
 
-// 2. Select.Trigger
 function Trigger() {
   const context = useContext(SelectContext);
   if (!context) throw new Error("Select.Trigger must be used within Select");
@@ -57,7 +55,6 @@ function Trigger() {
   );
 }
 
-// 3. Select.Main (Option 목록 컨테이너)
 function Main({ children }: { children: ReactNode }) {
   const context = useContext(SelectContext);
   if (!context) throw new Error("Select.Main must be used within Select");
@@ -84,7 +81,6 @@ function Main({ children }: { children: ReactNode }) {
   return <ul className={styles.dropdownList}>{children}</ul>;
 }
 
-// 4. Select.Option
 function Option({ value, children }: { value: string; children: ReactNode }) {
   const context = useContext(SelectContext);
   if (!context) throw new Error("Select.Option must be used within Select");
@@ -98,7 +94,6 @@ function Option({ value, children }: { value: string; children: ReactNode }) {
   );
 }
 
-// 합성 컴포넌트 내보내기
 const Select = Object.assign(SelectRoot, {
   Trigger,
   Main,
