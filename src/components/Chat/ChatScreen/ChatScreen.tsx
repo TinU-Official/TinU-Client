@@ -1,4 +1,3 @@
-import { useScrollToBottom } from "@/hooks/Chat/useScrollToBottom";
 import { DailyChatGroup } from "../DailyChatGroup/DailyChatGroup";
 import * as styles from "./chatScreen.css";
 
@@ -21,12 +20,8 @@ interface ChatScreenProps {
 }
 
 export const ChatScreen = memo(function ChatScreen({ chatList, closeBottomSheet }: ChatScreenProps) {
-  const { scrollRef } = useScrollToBottom({
-    dependencies: [chatList],
-  });
-
   return (
-    <div className={styles.chatScreenWrapper} ref={scrollRef} onClick={closeBottomSheet}>
+    <div className={styles.chatScreenWrapper} onClick={closeBottomSheet}>
       <DailyChatGroup chatList={chatList} />
     </div>
   );
