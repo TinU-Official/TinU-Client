@@ -19,3 +19,5 @@ export const ThirdBanner = forwardRef<HTMLDivElement>((_, ref) => {
     </div>
   );
 });
+
+ThirdBanner.displayName = "ThirdBanner";
