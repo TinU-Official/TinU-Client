@@ -11,7 +11,7 @@ import { FilterChip } from "@/components/product-list/filter-chip";
 import { ProductItem } from "@/components/product-list/product-item";
 import { useState } from "react";
 
-export default function page() {
+export default function ProductListPage() {
   const [searchText, setSearchText] = useState("");
 
   const handleChangeSearchText = (text: string) => {

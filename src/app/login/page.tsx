@@ -2,7 +2,7 @@ import { ImgLogoBig } from "@/assets/imgs";
 import { LoginButtonSection } from "@/components/Login/LoginButtonSection";
 import * as styles from "./login.css";
 
-export default function page() {
+export default function LoginPage() {
   return (
     <div className={styles.loginPageWrapper}>
       <div className={styles.loginPageBanner}>

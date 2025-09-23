@@ -1,9 +1,9 @@
 import * as styles from "./email.css";
 
-import { MemoizedStepIcon } from "@/components/SignUp/StepIcon/StepIcon";
 import EmailForm from "@/components/SignUp/Email/EmailForm/EmailForm";
+import { MemoizedStepIcon } from "@/components/SignUp/StepIcon/StepIcon";
 
-export default function page() {
+export default function SignUpEmailPage() {
   return (
     <div className={styles.emailPageWrapper}>
       <MemoizedStepIcon step={2} />

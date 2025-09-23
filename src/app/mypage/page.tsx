@@ -1,13 +1,12 @@
 import { IcForSale, IcHamburger, IcHidden, IcPencil, IcSoldout, IcVerticalLine } from "@/assets/icons";
-import { Header } from "@/components/Common/Header/Header";
-import React from "react";
-import * as styles from "./mypage.css";
 import { ImgBubble } from "@/assets/imgs";
-import Image from "next/image";
-import { NavBar } from "@/components/Common/NavBar/NavBar";
+import { Header } from "@/components/Common/Header/Header";
 import { IconButton } from "@/components/Common/IconButton";
+import { NavBar } from "@/components/Common/NavBar/NavBar";
+import Image from "next/image";
+import * as styles from "./mypage.css";
 
-export default function page() {
+export default function MyPage() {
   return (
     <>
       <div className={styles.mypageWrapper}>

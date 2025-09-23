@@ -1,10 +1,10 @@
-import { Header } from "@/components/Common/Header/Header";
-import * as styles from "./report.css";
 import { IcHamburger } from "@/assets/icons";
 import { BackButton } from "@/components/Common/BackButton/BackButton";
+import { Header } from "@/components/Common/Header/Header";
 import ReportReasonForm from "@/components/report/ReportReasonForm";
+import * as styles from "./report.css";
 
-export default function page() {
+export default function ReportPage() {
   return (
     <>
       <Header

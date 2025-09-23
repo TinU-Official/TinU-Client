@@ -1,14 +1,14 @@
 "use client";
 
-import { BackButton } from "@/components/Common/BackButton/BackButton";
-import { Header } from "@/components/Common/Header/Header";
-import * as styles from "./delete-account.css";
 import { IcCheckCompleteSmall } from "@/assets/icons";
+import { BackButton } from "@/components/Common/BackButton/BackButton";
 import Button from "@/components/Common/Button/Button";
+import { Header } from "@/components/Common/Header/Header";
 import { useRouter } from "next/navigation";
 import { useCallback } from "react";
+import * as styles from "./delete-account.css";
 
-export default function page() {
+export default function DeleteAccountPage() {
   const router = useRouter();
   const handleClickDeleteAccount = useCallback(() => {
     router.push("/delete-account/reason");

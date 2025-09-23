@@ -3,7 +3,7 @@ import Button from "@/components/Common/Button/Button";
 import Confetti from "@/components/SignUp/Done/Confetti";
 import * as styles from "./done.css";
 
-export default function Page() {
+export default function SignUpDonePage() {
   return (
     <div className={styles.donePageWrapper}>
       <h1 className={styles.titleWrapper}>가입이 완료되었어요</h1>

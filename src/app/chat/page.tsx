@@ -8,7 +8,7 @@ import { BackButton } from "@/components/Common/BackButton/BackButton";
 import { Header } from "@/components/Common/Header/Header";
 import * as styles from "./chat.css";
 
-import { useState, useCallback } from "react";
+import { useCallback, useState } from "react";
 
 const mock = {
   nickname: "test",
@@ -128,7 +128,7 @@ const mockChatList: ChatText[] = [
   },
 ];
 
-export default function Chat() {
+export default function ChatPage() {
   const [chatList, setChatList] = useState(mockChatList);
   const [isBottomSheetOpen, setIsBottomSheetOpen] = useState<boolean>(false);
 

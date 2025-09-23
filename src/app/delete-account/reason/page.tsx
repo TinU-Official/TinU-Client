@@ -1,9 +1,9 @@
-import { Header } from "@/components/Common/Header/Header";
-import * as styles from "./reason.css";
 import { BackButton } from "@/components/Common/BackButton/BackButton";
+import { Header } from "@/components/Common/Header/Header";
 import DeleteAccountReasonForm from "@/components/reason/DeleteAccountReasonForm";
+import * as styles from "./reason.css";
 
-export default function page() {
+export default function DeleteAccountReasonPage() {
   return (
     <>
       <Header isSticky left={<BackButton />} />

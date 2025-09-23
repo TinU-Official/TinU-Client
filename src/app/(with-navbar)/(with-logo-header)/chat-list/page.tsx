@@ -94,7 +94,7 @@ const mock = [
   },
 ];
 
-export default function page() {
+export default function ChatListPage() {
   const [filterOption, setFilterOption] = useState("전체");
 
   const handleClickFilterButton = (option: FilterOption) => {

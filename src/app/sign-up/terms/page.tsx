@@ -1,9 +1,9 @@
 import * as styles from "./terms.css";
 
-import { TermsForm } from "@/components/SignUp/Terms/TermsForm/TermsForm";
 import { MemoizedStepIcon } from "@/components/SignUp/StepIcon/StepIcon";
+import { TermsForm } from "@/components/SignUp/Terms/TermsForm/TermsForm";
 
-export default function page() {
+export default function SignUpTermsPage() {
   return (
     <div className={styles.termsPageWrapper}>
       <MemoizedStepIcon step={1} />
