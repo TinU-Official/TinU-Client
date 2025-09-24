@@ -1,11 +1,10 @@
 import { IcChevronRight, IcHamburger } from "@/assets/icons";
 import { BackButton } from "@/components/Common/BackButton/BackButton";
-import * as styles from "./settings.css";
 import { Header } from "@/components/Common/Header/Header";
-import React from "react";
 import Link from "next/link";
+import * as styles from "./settings.css";
 
-export default function page() {
+export default function SettingsPage() {
   // TODO: Link 컴포넌트의 href 경로 정해지면 수정하기
 
   return (

@@ -1,14 +1,14 @@
-import { BackButton } from "@/components/Common/BackButton/BackButton";
-import * as styles from "./product-detail.css";
-import { Header } from "@/components/Common/Header/Header";
-import Button from "@/components/Common/Button/Button";
-import ProductMetaSection from "@/components/product-detail/ProductMetaSection/ProductMetaSection";
-import Image from "next/image";
 import { IcHamburger } from "@/assets/icons";
+import { BackButton } from "@/components/Common/BackButton/BackButton";
+import Button from "@/components/Common/Button/Button";
+import { Header } from "@/components/Common/Header/Header";
 import { IconButton } from "@/components/Common/IconButton";
 import ProductInfoSection from "@/components/product-detail/ProductInfoSection/ProductInfoSection";
+import ProductMetaSection from "@/components/product-detail/ProductMetaSection/ProductMetaSection";
+import Image from "next/image";
+import * as styles from "./product-detail.css";
 
-export default function Page() {
+export default function ProductDetailPage() {
   return (
     <div className={styles.detailPageWrapper}>
       <Header

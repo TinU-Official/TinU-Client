@@ -25,6 +25,7 @@
     "@commitlint/cli": "^19.7.1",
     "@commitlint/config-conventional": "^19.7.1",
     "@eslint/eslintrc": "^3",
+    "@next/eslint-plugin-next": "^15.5.4",
     "@svgr/webpack": "^8.1.0",
     "@types/node": "^20",
     "@types/react": "^19",
@@ -32,6 +33,8 @@
     "@vanilla-extract/next-plugin": "^2.4.10",
     "eslint": "^9",
     "eslint-config-next": "15.1.7",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^5.2.0",
     "prettier": "^3.5.1",
     "typescript": "^5"
   },

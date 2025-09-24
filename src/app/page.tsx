@@ -1,7 +1,5 @@
 "use client";
 
-import * as styles from "./landing.css";
-import { useCallback } from "react";
 import Button from "@/components/Common/Button/Button";
 import { FirstBanner } from "@/components/Landing/FirstBanner/FirstBanner";
 import { IndicatorBar } from "@/components/Landing/IndicatorBar/IndicatorBar";
@@ -9,8 +7,10 @@ import { SecondBanner } from "@/components/Landing/SecondBanner/SecondBanner";
 import { ThirdBanner } from "@/components/Landing/ThirdBanner/ThirdBanner";
 import { useActiveIndicator } from "@/hooks/Landing/useActiveIndicator";
 import { useRouter } from "next/navigation";
+import { useCallback } from "react";
+import * as styles from "./landing.css";
 
-export default function Landing() {
+export default function LandingPage() {
   const router = useRouter();
   const { activeIndicator, firstBannerRef, secondBannerRef, thirdBannerRef } = useActiveIndicator();
 

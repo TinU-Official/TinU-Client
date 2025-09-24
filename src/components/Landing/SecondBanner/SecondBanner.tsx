@@ -15,3 +15,5 @@ export const SecondBanner = forwardRef<HTMLDivElement>((_, ref) => {
     </div>
   );
 });
+
+SecondBanner.displayName = "SecondBanner";

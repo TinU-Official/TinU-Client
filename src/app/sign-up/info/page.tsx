@@ -3,7 +3,7 @@ import * as styles from "./info.css";
 
 import { MemoizedStepIcon } from "@/components/SignUp/StepIcon/StepIcon";
 
-export default function page() {
+export default function SignUpInfoPage() {
   return (
     <>
       <div className={styles.infoPageWrapper}>

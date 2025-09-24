@@ -3,7 +3,7 @@ import * as styles from "./univ.css";
 
 import { MemoizedStepIcon } from "@/components/SignUp/StepIcon/StepIcon";
 
-export default function page() {
+export default function SignUpUnivPage() {
   return (
     <>
       <div className={styles.univPageWrapper}>

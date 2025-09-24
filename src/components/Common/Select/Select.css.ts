@@ -2,12 +2,12 @@ import { vars } from "@/styles/theme.css";
 import { style } from "@vanilla-extract/css";
 import { recipe } from "@vanilla-extract/recipes";
 
-export const dropdownWrapper = style({
+export const selectWrapper = style({
   position: "relative",
   width: "100%",
 });
 
-export const dropdownList = style({
+export const selectList = style({
   position: "absolute",
   top: "100%",
   left: 0,
@@ -22,7 +22,7 @@ export const dropdownList = style({
   zIndex: 100,
 });
 
-export const dropdownItem = style({
+export const selectItem = style({
   display: "flex",
   alignItems: "center",
 
