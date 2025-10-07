@@ -6,7 +6,7 @@ pre-commit:
   commands:
     lint:
       glob: "*.{js,jsx,ts,tsx,mjs}"
-      run: echo "🔍 Running lint check before commit..." && yarn lint {staged_files} && echo "✅ Lint check passed!"
+      run: echo "🔍 Running lint check before commit..." && yarn eslint {staged_files} && echo "✅ Lint check passed!"
 
 commit-msg:
   commands:
