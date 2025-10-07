@@ -39,15 +39,7 @@ function ImageInputForm() {
           <IcProfile className={styles.profileIcon} />
         )}
 
-        <IconButton
-          icon={<IcPlusMint />}
-          label="프로필 사진 등록"
-          onClick={(e) => {
-            e.stopPropagation();
-            handleClickImage();
-          }}
-          className={styles.addButton}
-        />
+        <IconButton icon={<IcPlusMint />} label="프로필 사진 등록" className={styles.addButton} />
       </div>
     </div>
   );
