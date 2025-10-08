@@ -2,44 +2,54 @@
 
 import { IcPlusMint, IcProfile } from "@/assets/icons";
 import Image from "next/image";
-import { IconButton } from "@/components/Common/IconButton";
 import * as styles from "./ImageInputForm.css";
-import { useState, ChangeEvent } from "react";
+import { useState, ChangeEvent, useEffect } from "react";
 
 function ImageInputForm() {
-  const [image, setImage] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
 
-  const handleClickImageUpload = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleChangeImage = (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
 
-    setImage(file);
+    // 메모리 릭 방지
+    if (previewUrl) {
+      URL.revokeObjectURL(previewUrl);
+    }
+
     setPreviewUrl(URL.createObjectURL(file));
   };
 
-  const handleClickImage = () => {
-    document.getElementById("profile-image-input")?.click();
-  };
+  useEffect(() => {
+    return () => {
+      if (previewUrl) {
+        URL.revokeObjectURL(previewUrl);
+      }
+    };
+  }, [previewUrl]);
 
   return (
     <div className={styles.ImageInputFormWrapper}>
-      <input
-        id="profile-image-input"
-        type="file"
-        accept="image/*"
-        onChange={handleClickImageUpload}
-        style={{ display: "none" }}
-      />
+      <div className={styles.previewWrapper}>
+        <label htmlFor="profile-image-input" className={styles.plus}>
+          <input
+            id="profile-image-input"
+            type="file"
+            accept="image/*"
+            onChange={handleChangeImage}
+            style={{ display: "none" }}
+          />
 
-      <div className={styles.previewWrapper} onClick={handleClickImage}>
-        {previewUrl ? (
-          <Image src={previewUrl} alt="미리보기" width={11} height={11} className={styles.previewImage} />
-        ) : (
-          <IcProfile className={styles.profileIcon} />
-        )}
+          {previewUrl ? (
+            <Image src={previewUrl} alt="프로필 미리보기" fill className={styles.previewImage} />
+          ) : (
+            <IcProfile className={styles.profileIcon} />
+          )}
+        </label>
 
-        <IconButton icon={<IcPlusMint />} label="프로필 사진 등록" className={styles.addButton} />
+        <div className={styles.addButton}>
+          <IcPlusMint />
+        </div>
       </div>
     </div>
   );

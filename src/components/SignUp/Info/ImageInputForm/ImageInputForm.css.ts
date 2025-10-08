@@ -10,11 +10,19 @@ export const ImageInputFormWrapper = style({
 export const previewWrapper = style({
   width: "11rem",
   height: "11rem",
-  borderRadius: "50%",
-  boxShadow: `inset 0 0 0 1.28px ${vars.color.grey_5}`,
 
   position: "relative",
   cursor: "pointer",
+});
+
+export const plus = style({
+  display: "block",
+  width: "100%",
+  height: "100%",
+
+  borderRadius: "50%",
+  overflow: "hidden",
+  boxShadow: `inset 0 0 0 1.28px ${vars.color.grey_5}`,
 });
 
 export const previewImage = style({
