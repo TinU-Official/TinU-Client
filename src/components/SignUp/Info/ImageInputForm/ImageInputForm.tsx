@@ -29,15 +29,15 @@ function ImageInputForm() {
   }, [previewUrl]);
 
   return (
-    <div className={styles.ImageInputFormWrapper}>
+    <div className={styles.imageInputFormWrapper}>
       <div className={styles.previewWrapper}>
-        <label htmlFor="profile-image-input" className={styles.plus}>
+        <label htmlFor="profile-image-input" className={styles.profileImageLabel}>
           <input
             id="profile-image-input"
             type="file"
             accept="image/*"
             onChange={handleChangeImage}
-            style={{ display: "none" }}
+            className={styles.profileImageInput}
           />
 
           {previewUrl ? (

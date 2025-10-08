@@ -1,7 +1,7 @@
 import { vars } from "@/styles/theme.css";
 import { style } from "@vanilla-extract/css";
 
-export const ImageInputFormWrapper = style({
+export const imageInputFormWrapper = style({
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
@@ -15,7 +15,7 @@ export const previewWrapper = style({
   cursor: "pointer",
 });
 
-export const plus = style({
+export const profileImageLabel = style({
   display: "block",
   width: "100%",
   height: "100%",
@@ -23,6 +23,10 @@ export const plus = style({
   borderRadius: "50%",
   overflow: "hidden",
   boxShadow: `inset 0 0 0 1.28px ${vars.color.grey_5}`,
+});
+
+export const profileImageInput = style({
+  display: "none",
 });
 
 export const previewImage = style({
