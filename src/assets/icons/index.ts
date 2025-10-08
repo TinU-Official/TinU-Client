@@ -29,6 +29,7 @@ import IcLogoKakao from "./ic_logo_kakao.svg";
 import IcLogoNaver from "./ic_logo_naver.svg";
 import IcMoreVertical from "./ic_more_vertical.svg";
 import IcPlus from "./ic_plus.svg";
+import IcPlusMint from "./ic_plus_mint.svg";
 import IcProfile from "./ic_profile.svg";
 import IcPencil from "./ic_pencil.svg";
 import IcSearch from "./ic_search.svg";
@@ -80,6 +81,7 @@ export {
   IcLogoNaver,
   IcMoreVertical,
   IcPlus,
+  IcPlusMint,
   IcProfile,
   IcPencil,
   IcSearch,
