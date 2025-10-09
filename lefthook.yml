@@ -1,0 +1,14 @@
+# Lefthook configuration
+# https://github.com/evilmartians/lefthook
+
+pre-commit:
+  parallel: true
+  commands:
+    lint:
+      glob: "*.{js,jsx,ts,tsx}"
+      run: echo "🔍 Running lint check before commit..." && yarn eslint {staged_files} && echo "✅ Lint check passed!"
+
+commit-msg:
+  commands:
+    commitlint:
+      run: yarn commitlint --edit {1}
