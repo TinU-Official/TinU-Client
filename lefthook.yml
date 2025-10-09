@@ -5,7 +5,7 @@ pre-commit:
   parallel: true
   commands:
     lint:
-      glob: "*.{js,jsx,ts,tsx,mjs}"
+      glob: "*.{js,jsx,ts,tsx}"
       run: echo "🔍 Running lint check before commit..." && yarn eslint {staged_files} && echo "✅ Lint check passed!"
 
 commit-msg:
