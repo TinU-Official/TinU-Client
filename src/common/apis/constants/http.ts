@@ -1,0 +1,21 @@
+export const HTTP_STATUS_CODE = {
+  NETWORK_ERROR: 0,
+  OK: 200,
+  CREATED: 201,
+  NO_CONTENT: 204,
+  BAD_REQUEST: 400,
+  UNAUTHORIZED: 401,
+  FORBIDDEN: 403,
+  NOT_FOUND: 404,
+  CONFLICT: 409,
+  INTERNAL_SERVER_ERROR: 500,
+} as const;
+
+export const HTTP_ERROR_MESSAGE = {
+  [HTTP_STATUS_CODE.BAD_REQUEST]: "잘못된 요청입니다.",
+  [HTTP_STATUS_CODE.UNAUTHORIZED]: "인증이 필요합니다.",
+  [HTTP_STATUS_CODE.FORBIDDEN]: "접근 권한이 없습니다.",
+  [HTTP_STATUS_CODE.NOT_FOUND]: "리소스를 찾을 수 없습니다.",
+  [HTTP_STATUS_CODE.INTERNAL_SERVER_ERROR]: "서버 오류가 발생했습니다.",
+  [HTTP_STATUS_CODE.NETWORK_ERROR]: "네트워크 연결을 확인해주세요.",
+} as const;

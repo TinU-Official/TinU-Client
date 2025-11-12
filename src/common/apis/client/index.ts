@@ -1,5 +1,6 @@
 import ky, { type Options } from "ky";
 
+import { HTTP_ERROR_MESSAGE, HTTP_STATUS_CODE } from "../constants/http";
 import { accessTokenStore } from "../stores/token-store";
 import { reissueToken } from "../utils/reissue";
 
@@ -24,21 +25,51 @@ const baseApiClient = ky.create({
     ],
     afterResponse: [
       async (request, _options, response) => {
-        if (response.status === 401) {
+        if (response.status === HTTP_STATUS_CODE.UNAUTHORIZED) {
           try {
+            // 토큰 재발급
             const newToken = await reissueToken();
             accessTokenStore.set(newToken);
             return baseApiClient(request);
-          } catch (error) {
+          } catch {
             accessTokenStore.clear();
             if (typeof window !== "undefined") {
               window.location.href = "/login";
             }
-            throw error;
+
+            // 토큰 재발급 실패 시 커스텀 에러 객체 생성
+            const reissueError = new Error("토큰 재발급에 실패했습니다. 다시 로그인해주세요.");
+            reissueError.name = "TOKEN_REISSUE_ERROR";
+            throw reissueError;
           }
         }
 
         return response;
+      },
+    ],
+    beforeError: [
+      async (error) => {
+        // 토큰 재발급 실패 에러
+        if (error.name === "TOKEN_REISSUE_ERROR") {
+          return error;
+        }
+
+        const { response } = error;
+
+        // HTTP 에러
+        if (response) {
+          const status = response.status;
+
+          const customMessage =
+            HTTP_ERROR_MESSAGE[status as keyof typeof HTTP_ERROR_MESSAGE] || `HTTP ${status} 오류가 발생했습니다.`;
+
+          error.message = customMessage;
+        } else {
+          // 네트워크 에러
+          error.message = HTTP_ERROR_MESSAGE[HTTP_STATUS_CODE.NETWORK_ERROR];
+        }
+
+        return error;
       },
     ],
   },
