@@ -15,18 +15,31 @@ export const oneLineIntro = style({
   position: "relative",
 
   display: "flex",
+  flexDirection: "column",
   justifyContent: "center",
-  marginTop: "1.5rem",
+  alignItems: "center",
 });
 
 export const oneLineIntroText = style({
   ...vars.fontStyles.body5_m_13,
   color: vars.color.grey_10,
+  backgroundColor: vars.color.grey_2,
 
+  width: "80%",
+
+  padding: "1rem 2rem",
+  resize: "none",
+  border: "none",
+  outline: "none",
+  borderRadius: "2rem",
+
+  overflow: "hidden",
+});
+
+export const bubble = style({
   position: "absolute",
-  zIndex: 2,
-
-  padding: "1rem",
+  top: "4rem",
+  left: "27%",
 });
 
 export const profileSection = style({
@@ -126,7 +139,9 @@ export const myActivitySection = style({
   display: "flex",
   justifyContent: "space-between",
 
-  marginTop: "2.2rem",
+  margin: "2.2rem 0",
+  gap: "1.7rem",
+  flexWrap: "wrap",
 });
 
 export const buttonBase = style({
@@ -144,7 +159,8 @@ export const buttonBase = style({
 
 export const activityButton = styleVariants({
   forSale: [buttonBase, { backgroundColor: "#DEF7FF" }],
-  soldOut: [buttonBase, { backgroundColor: "#FFE9DE" }],
+  soldOut: [buttonBase, { backgroundColor: "#FFF5DE" }],
+  favorite: [buttonBase, { backgroundColor: "#FFE9DE" }],
   hidden: [buttonBase, { backgroundColor: vars.color.grey_2 }],
 });
 
