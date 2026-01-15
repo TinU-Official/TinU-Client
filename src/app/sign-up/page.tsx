@@ -72,7 +72,7 @@ export default function SignUpFunnel() {
               <Univ
                 onNext={(major, grade) => {
                   setRegisterData((prev) => ({ ...prev, major, grade }));
-                  setStep("추가정보");
+                  setStep("가입완료");
                 }}
               />
             );
