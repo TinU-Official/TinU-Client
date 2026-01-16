@@ -19,7 +19,7 @@ interface RegisterData {
   profileImage: File | null;
   nickname: string;
   major: string;
-  grade: string; // number??
+  grade: string; // API 요청할 때 Number로 타입 변환 필요
 }
 
 type Step = "약관동의" | "이메일인증" | "정보입력" | "추가정보" | "가입완료";
@@ -73,6 +73,7 @@ export default function SignUpFunnel() {
                 onNext={(major, grade) => {
                   setRegisterData((prev) => ({ ...prev, major, grade }));
                   setStep("가입완료");
+                  // API 요청 (스키마 미확정)
                 }}
               />
             );

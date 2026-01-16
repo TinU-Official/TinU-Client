@@ -54,11 +54,11 @@ export function Univ({ onNext }: UnivProps) {
           <Select placeholder="학년" onSelect={handleSelectGrade}>
             <Select.Trigger />
             <Select.Main>
-              <Select.Option value="1학년">1학년</Select.Option>
-              <Select.Option value="2학년">2학년</Select.Option>
-              <Select.Option value="3학년">3학년</Select.Option>
-              <Select.Option value="4학년">4학년</Select.Option>
-              <Select.Option value="휴학생">휴학생</Select.Option>
+              <Select.Option value="1">1학년</Select.Option>
+              <Select.Option value="2">2학년</Select.Option>
+              <Select.Option value="3">3학년</Select.Option>
+              <Select.Option value="4">4학년</Select.Option>
+              {/* <Select.Option value="휴학생">휴학생</Select.Option> */}
             </Select.Main>
           </Select>
         </div>
