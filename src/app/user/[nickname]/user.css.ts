@@ -85,7 +85,7 @@ export const myInfoContainer = style({
   backgroundColor: vars.color.grey_2,
 
   borderRadius: "1rem",
-  margin: "1.6rem 1.6rem 0 1.6rem",
+  margin: "2rem 2rem 0 2rem",
 });
 
 export const myInfoWrapper = style({
