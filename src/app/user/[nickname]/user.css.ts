@@ -13,12 +13,13 @@ export const profile = style({
   color: vars.color.grey_12,
 });
 
-export const oneLineIntro = style({
+export const oneLineIntroSection = style({
   position: "relative",
 
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
+  marginTop: "1.5rem",
 });
 
 export const oneLineIntroText = style({
@@ -57,7 +58,6 @@ export const myImgWrapper = style({
 
   width: "11rem",
   height: "11rem",
-  padding: "0.4rem",
 
   border: `3px solid ${vars.color.mint_500}`,
   borderRadius: "50%",
@@ -85,14 +85,14 @@ export const myInfoContainer = style({
   backgroundColor: vars.color.grey_2,
 
   borderRadius: "1rem",
-  margin: "1.6rem",
+  margin: "1.6rem 1.6rem 0 1.6rem",
 });
 
 export const myInfoWrapper = style({
   display: "flex",
 });
 
-export const myInfoBox = style({
+export const myInfoItem = style({
   width: "100%",
   height: "8rem",
 
@@ -108,9 +108,12 @@ export const infoTextBase = style({
   ...vars.fontStyles.body5_m_13,
 });
 
-export const infoText1 = style([infoTextBase, { color: vars.color.grey_6 }]);
+export const infoLabel = style({
+  ...vars.fontStyles.body5_m_13,
+  color: vars.color.grey_6,
+});
 
-export const infoText2 = style({
+export const infoValue = style({
   ...vars.fontStyles.body1_sb_14,
   color: vars.color.grey_12,
 });
@@ -127,16 +130,16 @@ export const divider = style({
   margin: "2.3rem 0",
 });
 
-export const myActivityWrapper = style({
+export const activityWrapper = style({
   padding: "0 2rem",
 });
 
-export const myActivityText = style({
+export const activityText = style({
   ...vars.fontStyles.subtitle1_sb_16,
   color: vars.color.grey_12,
 });
 
-export const myActivitySection = style({
+export const activitySection = style({
   display: "flex",
   gap: "1.7rem",
   margin: "2.2rem 0",
@@ -156,18 +159,18 @@ export const buttonBase = style({
   borderRadius: "1rem",
 });
 
-export const activityButton = styleVariants({
+export const statusButton = styleVariants({
   forSale: [buttonBase, { backgroundColor: "#DEF7FF" }],
   soldOut: [buttonBase, { backgroundColor: "#FFE9DE" }],
 });
 
-export const activityText = style({
+export const statusLabel = style({
   ...vars.fontStyles.body1_sb_14,
   color: vars.color.grey_10,
 
   alignSelf: "flex-start",
 });
 
-export const iconWrapper = style({
+export const iconAlignEnd = style({
   alignSelf: "flex-end",
 });
