@@ -18,6 +18,8 @@ export const oneLineIntro = style({
   flexDirection: "column",
   justifyContent: "center",
   alignItems: "center",
+
+  marginTop: "1.5rem",
 });
 
 export const oneLineIntroText = style({
@@ -91,7 +93,7 @@ export const myInfoWrapper = style({
   display: "flex",
 });
 
-export const myInfoBox = style({
+export const myInfoItem = style({
   width: "100%",
   height: "8rem",
 
@@ -107,9 +109,9 @@ export const infoTextBase = style({
   ...vars.fontStyles.body5_m_13,
 });
 
-export const infoText1 = style([infoTextBase, { color: vars.color.grey_6 }]);
+export const infoLabel = style([infoTextBase, { color: vars.color.grey_6 }]);
 
-export const infoText2 = style({
+export const infoValue = style({
   ...vars.fontStyles.body1_sb_14,
   color: vars.color.grey_12,
 });
@@ -157,20 +159,20 @@ export const buttonBase = style({
   borderRadius: "1rem",
 });
 
-export const activityButton = styleVariants({
+export const statusButton = styleVariants({
   forSale: [buttonBase, { backgroundColor: "#DEF7FF" }],
   soldOut: [buttonBase, { backgroundColor: "#FFF5DE" }],
   favorite: [buttonBase, { backgroundColor: "#FFE9DE" }],
   hidden: [buttonBase, { backgroundColor: vars.color.grey_2 }],
 });
 
-export const activityText = style({
+export const statusLabel = style({
   ...vars.fontStyles.body1_sb_14,
   color: vars.color.grey_10,
 
   alignSelf: "flex-start",
 });
 
-export const iconWrapper = style({
+export const iconAlignEnd = style({
   alignSelf: "flex-end",
 });

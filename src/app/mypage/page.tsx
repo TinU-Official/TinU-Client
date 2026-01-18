@@ -31,7 +31,7 @@ export default function MyPage() {
   return (
     <>
       <div className={styles.mypageWrapper}>
-        <Header center={<span className={styles.mypageText}>마이</span>} right={<IcHamburger />} isSticky />
+        <Header isSticky center={<span className={styles.mypageText}>마이</span>} right={<IcHamburger />} />
         <section className={styles.oneLineIntro}>
           <textarea
             className={styles.oneLineIntroText}
@@ -51,20 +51,20 @@ export default function MyPage() {
             <Image src="/sechon.png" alt="내 프로필 사진" className={styles.profileImg} fill />
             <IconButton icon={<IcPencil />} label="프로필 사진 수정 버튼" className={styles.pencil} />
           </div>
-          <h2 className={styles.nickname}>세숑</h2>
+          <h1 className={styles.nickname}>세숑</h1>
         </section>
 
         <section className={styles.myInfoContainer}>
           <div className={styles.myInfoWrapper}>
-            <div className={styles.myInfoBox}>
-              <span className={styles.infoText1}>학교명</span>
-              <h3 className={styles.infoText2}>경기대학교</h3>
+            <div className={styles.myInfoItem}>
+              <span className={styles.infoLabel}>학교명</span>
+              <h2 className={styles.infoValue}>경기대학교</h2>
             </div>
             <IcVerticalLine className={styles.verticalLine} />
 
-            <div className={styles.myInfoBox}>
-              <span className={styles.infoText1}>학년</span>
-              <h3 className={styles.infoText2}>4학년</h3>
+            <div className={styles.myInfoItem}>
+              <span className={styles.infoLabel}>학년</span>
+              <h2 className={styles.infoValue}>4학년</h2>
             </div>
           </div>
         </section>
@@ -76,27 +76,27 @@ export default function MyPage() {
           {/*TODO: [나의 활동] 3가지 각각 클릭 시 페이지 이동 예정 */}
 
           <section className={styles.myActivitySection}>
-            <button className={styles.activityButton.forSale}>
-              <span className={styles.activityText}>판매중</span>
-              <div className={styles.iconWrapper}>
+            <button className={styles.statusButton.forSale}>
+              <span className={styles.statusLabel}>판매중</span>
+              <div className={styles.iconAlignEnd}>
                 <IcForSale />
               </div>
             </button>
-            <button className={styles.activityButton.soldOut}>
-              <span className={styles.activityText}>거래완료</span>
-              <div className={styles.iconWrapper}>
+            <button className={styles.statusButton.soldOut}>
+              <span className={styles.statusLabel}>거래완료</span>
+              <div className={styles.iconAlignEnd}>
                 <IcSoldout />
               </div>
             </button>
-            <button className={styles.activityButton.favorite}>
-              <span className={styles.activityText}>관심상품</span>
-              <div className={styles.iconWrapper}>
+            <button className={styles.statusButton.favorite}>
+              <span className={styles.statusLabel}>관심상품</span>
+              <div className={styles.iconAlignEnd}>
                 <IcFavorite />
               </div>
             </button>
-            <button className={styles.activityButton.hidden}>
-              <span className={styles.activityText}>숨김목록</span>
-              <div className={styles.iconWrapper}>
+            <button className={styles.statusButton.hidden}>
+              <span className={styles.statusLabel}>숨김목록</span>
+              <div className={styles.iconAlignEnd}>
                 <IcHidden />
               </div>
             </button>
