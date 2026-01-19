@@ -48,6 +48,8 @@ import IcVerticalLine from "./ic_vertical_line.svg";
 import IcForSale from "./ic_for_sale.svg";
 import IcSoldout from "./ic_soldout.svg";
 import IcHidden from "./ic_hidden.svg";
+import IcFavorite from "./ic_favorite.svg";
+import IcBubble from "./ic_bubble.svg";
 
 export {
   IcAirplaneGrey,
@@ -100,4 +102,6 @@ export {
   IcForSale,
   IcSoldout,
   IcHidden,
+  IcFavorite,
+  IcBubble,
 };
