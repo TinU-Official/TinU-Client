@@ -36,6 +36,7 @@ export const divider = style({
   height: "1rem",
 
   backgroundColor: vars.color.grey_2,
+  border: "none",
 });
 
 export const versionText = style({
