@@ -5,6 +5,7 @@ import * as styles from "./user.css";
 import { NavBar } from "@/components/Common/NavBar/NavBar";
 import Image from "next/image";
 import { IcBubble, IcForSale, IcSoldout, IcVerticalLine } from "@/assets/icons";
+import { Divider } from "@/components/Common/Divider/Divider";
 
 export default function UserPage() {
   return (
@@ -44,7 +45,7 @@ export default function UserPage() {
           </div>
         </section>
 
-        <div className={styles.divider}></div>
+        <Divider height="0.8rem" />
 
         <div className={styles.activityWrapper}>
           <span className={styles.activityText}>활동</span>
