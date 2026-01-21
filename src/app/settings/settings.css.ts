@@ -31,14 +31,6 @@ export const infoText = style({
   color: vars.color.grey_11,
 });
 
-export const divider = style({
-  width: "100%",
-  height: "1rem",
-
-  backgroundColor: vars.color.grey_2,
-  border: "none",
-});
-
 export const versionText = style({
   ...vars.fontStyles.body3_r_14,
   color: vars.color.grey_7,

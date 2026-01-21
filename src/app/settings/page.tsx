@@ -3,6 +3,7 @@ import { BackButton } from "@/components/Common/BackButton/BackButton";
 import { Header } from "@/components/Common/Header/Header";
 import Link from "next/link";
 import * as styles from "./settings.css";
+import { Divider } from "@/components/Common/Divider/Divider";
 
 export default function SettingsPage() {
   // TODO: Link 컴포넌트의 href 경로 정해지면 수정하기
@@ -36,7 +37,7 @@ export default function SettingsPage() {
         ))}
       </section>
 
-      <hr className={styles.divider} />
+      <Divider />
 
       <section className={styles.settingSection}>
         <h3 className={styles.settingText}>기타</h3>
@@ -48,7 +49,7 @@ export default function SettingsPage() {
         ))}
       </section>
 
-      <hr className={styles.divider} />
+      <Divider />
 
       <section className={styles.settingSection}>
         <button className={styles.infoRow}>
