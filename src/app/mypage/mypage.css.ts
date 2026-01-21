@@ -71,7 +71,7 @@ export const myInfoContainer = style({
   backgroundColor: vars.color.grey_2,
 
   borderRadius: "1rem",
-  margin: "2rem",
+  margin: "1.6rem 2rem 2.3rem 2rem",
 });
 
 export const myInfoWrapper = style({
@@ -106,15 +106,8 @@ export const verticalLine = style({
   alignSelf: "center",
 });
 
-export const divider = style({
-  height: "0.8rem",
-
-  backgroundColor: vars.color.grey_2,
-  margin: "2.3rem 0",
-});
-
 export const myActivityWrapper = style({
-  padding: "0 2rem",
+  padding: "2.3rem 2rem",
 });
 
 export const myActivityText = style({
