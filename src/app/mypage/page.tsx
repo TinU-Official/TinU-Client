@@ -42,7 +42,7 @@ export default function MyPage() {
           </div>
         </section>
 
-        <Divider height="0.8rem" />
+        <Divider height={0.8} />
 
         <div className={styles.myActivityWrapper}>
           <span className={styles.myActivityText}>나의 활동</span>

@@ -45,7 +45,7 @@ export default function UserPage() {
           </div>
         </section>
 
-        <Divider height="0.8rem" />
+        <Divider height={0.8} />
 
         <div className={styles.activityWrapper}>
           <span className={styles.activityText}>활동</span>
