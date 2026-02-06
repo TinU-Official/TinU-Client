@@ -14,6 +14,13 @@ export function useModal<P extends ModalComponentProps>(
 
   const { setModals } = context;
 
+  const modalContainerStyle: React.CSSProperties = {
+    position: "fixed",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+  };
+
   const id = useId();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -35,10 +42,11 @@ export function useModal<P extends ModalComponentProps>(
       setIsOpen(true);
       setModals((prev) => {
         const exists = prev.some((m) => m.id === id);
-        const element = React.createElement(Component, {
-          ...props,
-          onClose: close,
-        } as P);
+        const element = (
+          <div style={modalContainerStyle}>
+            <Component {...(props as P)} onClose={close} />
+          </div>
+        );
 
         if (exists) {
           return prev.map((m) => (m.id === id ? { id, element } : m));
