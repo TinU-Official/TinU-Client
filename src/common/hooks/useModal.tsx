@@ -19,7 +19,15 @@ export function useModal<P extends ModalComponentProps>(
 
   const close = useCallback(() => {
     setIsOpen(false);
-    setModals((prev) => prev.filter((m) => m.id !== id));
+    setModals((prev) => {
+      const next = prev.filter((m) => m.id !== id);
+  
+      if (next.length === 0) {
+        document.body.style.overflow = "unset";
+      }
+  
+      return next;
+    });
   }, [id, setModals]);
 
   const open = useCallback(
@@ -37,6 +45,7 @@ export function useModal<P extends ModalComponentProps>(
         }
         return [...prev, { id, element }];
       });
+      document.body.style.overflow = "hidden";
     },
     [id, setModals, close, Component]
   );
