@@ -42,16 +42,17 @@ export function useModal<P extends ModalComponentProps>(
       setIsOpen(true);
       setModals((prev) => {
         const exists = prev.some((m) => m.id === id);
-        const element = (
-          <div style={modalContainerStyle}>
-            <Component {...(props as P)} onClose={close} />
-          </div>
-        );
+        const render = (isTop: boolean) =>  (
+            <div style={{...modalContainerStyle, pointerEvents: isTop ? "auto" : "none"}}>
+              <Component {...(props as P)} onClose={close} />
+            </div>
+          );
+
 
         if (exists) {
-          return prev.map((m) => (m.id === id ? { id, element } : m));
+          return prev.map((m) => (m.id === id ? { id, render } : m));
         }
-        return [...prev, { id, element }];
+        return [...prev, { id, render }];
       });
       document.body.style.overflow = "hidden";
     },

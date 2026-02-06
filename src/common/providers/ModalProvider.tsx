@@ -1,9 +1,9 @@
 import { Z_INDEX } from "@/constants/zIndex";
-import { createContext, Fragment, ReactNode, useState } from "react";
+import { createContext, ReactNode, useState } from "react";
 
 type ModalItem = {
   id: string;
-  element: ReactNode;
+  render: (isTop: boolean) => ReactNode;
 };
 
 type ModalContextType = {
@@ -27,11 +27,14 @@ export function ModalProvider({ children }: { children: ReactNode }) {
       {children}
       {modals.length > 0 && (
         <div style={backdropStyle}>
-          {modals.map(({ id, element }) => (
-            <Fragment key={id} >
-              {element}
-            </Fragment>
-          ))}
+          {modals.map(({ id, render }, idx) => {
+            const isTop = idx === modals.length - 1;
+            return (
+            <div key={id}>
+                {render(isTop)}
+              </div>
+            );
+          })}
         </div>
       )}
       
