@@ -18,7 +18,7 @@ export function ModalProvider({ children }: { children: ReactNode }) {
   const backdropStyle: React.CSSProperties = {
     position: "fixed",
     inset: 0,
-    backgroundColor: "rgba(0, 0, 0, 0.5)",
+    backgroundColor: "rgba(90, 90, 90, 0.38)",
     zIndex: Z_INDEX.BACKDROP,
   };
 
