@@ -30,11 +30,11 @@ export function ConfirmModal({ onConfirm, onClose, title, confirmText, cancelTex
         {title}
       </h2>
       <div className={styles.buttonWrapper}>
-        <Button onClick={onConfirm} className={styles.button}>
-          {confirmText}
-        </Button>
         <Button onClick={onClose} className={styles.button} outlined>
           {cancelText}
+        </Button>
+        <Button onClick={onConfirm} className={styles.button}>
+          {confirmText}
         </Button>
       </div>
     </div>
