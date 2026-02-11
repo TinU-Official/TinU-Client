@@ -1,32 +1,34 @@
-"use client";
-
 import { IcPlusMint, IcProfile } from "@/assets/icons";
 import Image from "next/image";
 import * as styles from "./ImageInputForm.css";
 import { useState, ChangeEvent, useEffect } from "react";
 
-function ImageInputForm() {
+interface ProfileImagePickerProps {
+  imageFile: File | null;
+  onChangeImage: (file: File | null) => void;
+}
+
+export function ProfileImagePicker({ imageFile, onChangeImage }: ProfileImagePickerProps) {
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
 
   const handleChangeImage = (e: ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-
-    // 메모리 릭 방지
-    if (previewUrl) {
-      URL.revokeObjectURL(previewUrl);
-    }
-
-    setPreviewUrl(URL.createObjectURL(file));
+    const file = e.target.files?.[0] ?? null;
+    onChangeImage(file);
   };
 
   useEffect(() => {
+    if (!imageFile) {
+      setPreviewUrl(null);
+      return;
+    }
+
+    const url = URL.createObjectURL(imageFile);
+    setPreviewUrl(url);
+
     return () => {
-      if (previewUrl) {
-        URL.revokeObjectURL(previewUrl);
-      }
+      URL.revokeObjectURL(url);
     };
-  }, [previewUrl]);
+  }, [imageFile]);
 
   return (
     <div className={styles.imageInputFormWrapper}>
@@ -54,5 +56,3 @@ function ImageInputForm() {
     </div>
   );
 }
-
-export default ImageInputForm;
