@@ -8,12 +8,10 @@ import * as styles from "./review.css";
 import { ReviewSelector } from "@/components/review/reviewSelector/ReviewSelector";
 
 import { useState } from "react";
-import { EMOJI_OPTIONS } from "@/constants/text";
-import { EmojiSelector } from "@/components/review/emojiSelector/EmojiSelector";
+import { EMOJI_OPTIONS, EmojiSelector } from "@/components/review/emojiSelector/EmojiSelector";
 
 export default function ReviewPage() {
   const [emoji, setEmoji] = useState<(typeof EMOJI_OPTIONS)[number]["id"] | null>(null);
-
   const [reviews, setReviews] = useState<Record<string, string | null>>({
     conversation: null,
     punctuality: null,
@@ -29,15 +27,15 @@ export default function ReviewPage() {
         <ProductInfo />
 
         <section className={styles.emojiSection}>
-          <div className={styles.reviewSection}>
-            <h1 className={styles.reviewText}>아리님과의 거래가 어떠셨나요?</h1>
+          <div className={styles.emojiWrapper}>
+            <h1 className={styles.questionText}>아리님과의 거래가 어떠셨나요?</h1>
             <EmojiSelector value={emoji} onChange={setEmoji} />
           </div>
         </section>
 
-        <div className={styles.reviewScrollArea}>
+        <section className={styles.reviewSelectorWrapper}>
           <ReviewSelector value={reviews} onChange={setReviews} />
-        </div>
+        </section>
       </div>
 
       <div className={styles.fixedButtonWrapper}>

@@ -1,17 +1,17 @@
 import { vars } from "@/styles/theme.css";
 import { style } from "@vanilla-extract/css";
 
-export const headerText = style({
-  ...vars.fontStyles.subtitle1_sb_16,
-  color: vars.color.grey_12,
-});
-
 export const reviewWrapper = style({
   width: "100%",
   height: "100dvh",
 
   display: "flex",
   flexDirection: "column",
+});
+
+export const headerText = style({
+  ...vars.fontStyles.subtitle1_sb_16,
+  color: vars.color.grey_12,
 });
 
 export const emojiSection = style({
@@ -24,19 +24,19 @@ export const emojiSection = style({
   backgroundColor: vars.color.grey_3,
 });
 
-export const reviewSection = style({
+export const emojiWrapper = style({
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
   gap: "1.2rem",
 });
 
-export const reviewText = style({
+export const questionText = style({
   ...vars.fontStyles.body2_m_14,
   color: vars.color.grey_7,
 });
 
-export const reviewScrollArea = style({
+export const reviewSelectorWrapper = style({
   flex: 1,
   overflowY: "auto",
 
