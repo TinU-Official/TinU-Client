@@ -1,5 +1,11 @@
 import * as styles from "./emojiSelector.css";
-import { EMOJI_OPTIONS } from "@/constants/text";
+import { IcGood, IcSad, IcSatisfied } from "@/assets/icons";
+
+export const EMOJI_OPTIONS = [
+  { id: "sad", label: "별로예요", Icon: IcSad },
+  { id: "good", label: "좋아요", Icon: IcGood },
+  { id: "satisfied", label: "만족해요", Icon: IcSatisfied },
+];
 
 type EmojiId = (typeof EMOJI_OPTIONS)[number]["id"];
 

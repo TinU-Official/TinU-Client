@@ -23,7 +23,7 @@ export const reviewSelector = style({
   gap: "1.2rem",
 });
 
-export const button = style({
+export const buttonSection = style({
   display: "flex",
   gap: "2.3rem",
 });
