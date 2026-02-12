@@ -23,7 +23,7 @@ export function useModal<P extends ModalComponentProps>(Component: React.Compone
 
   const close = useCallback(() => {
     setModals((prev) => {
-      const next = prev.filter((m) => m.id !== id);
+      const next = prev.slice(0, -1);
 
       if (next.length === 0) {
         document.body.style.overflow = "unset";
@@ -31,7 +31,7 @@ export function useModal<P extends ModalComponentProps>(Component: React.Compone
 
       return next;
     });
-  }, [id, setModals]);
+  }, [setModals]);
 
   const open = useCallback(
     (props?: Omit<P, "onClose">) => {
