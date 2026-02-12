@@ -41,7 +41,7 @@ interface ReviewSelectorProps {
 }
 
 export const ReviewSelector = ({ value, onChange }: ReviewSelectorProps) => {
-  const handleOptionSelect = (id: ReviewOption, option: boolean) => {
+  const handleSelectOption = (id: ReviewOption, option: boolean) => {
     onChange({
       ...value,
       [id]: option,
@@ -59,7 +59,7 @@ export const ReviewSelector = ({ value, onChange }: ReviewSelectorProps) => {
               <OptionButton
                 key={label}
                 isSelected={value[id] === optionValue}
-                onClick={() => handleOptionSelect(id, optionValue)}
+                onClick={() => handleSelectOption(id, optionValue)}
               >
                 {label}
               </OptionButton>
