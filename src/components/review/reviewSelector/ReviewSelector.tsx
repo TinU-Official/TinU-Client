@@ -1,26 +1,39 @@
+import { ReviewOption } from "@/types/reviewTypes";
 import * as styles from "./reviewSelector.css";
 import { OptionButton } from "@/components/Common/OptionButton";
 
-export const REVIEW_QUESTIONS = [
+const REVIEW_QUESTIONS: {
+  id: ReviewOption;
+  question: string;
+  options: { label: string; value: boolean }[];
+}[] = [
   {
-    id: "conversation",
+    id: "isFriendly",
     question: "대화는 어땠나요?",
-    options: ["아쉬웠어요", "친절했어요"],
+    options: [
+      { label: "아쉬웠어요", value: false },
+      { label: "친절했어요", value: true },
+    ],
   },
   {
-    id: "punctuality",
+    id: "notLate",
     question: "시간 약속은 잘 지켰나요?",
-    options: ["못 지켰어요", "잘 지켰어요"],
+    options: [
+      { label: "못 지켰어요", value: false },
+      { label: "잘 지켰어요", value: true },
+    ],
   },
   {
-    id: "responseSpeed",
+    id: "respondedQuickly",
     question: "답장 속도는 어땠나요?",
-    options: ["느렸어요", "빨랐어요"],
+    options: [
+      { label: "느렸어요", value: false },
+      { label: "빨랐어요", value: true },
+    ],
   },
 ];
 
-type ReviewId = (typeof REVIEW_QUESTIONS)[number]["id"];
-type ReviewValue = Record<ReviewId, string | null>;
+type ReviewValue = Record<ReviewOption, boolean | null>;
 
 interface ReviewSelectorProps {
   value: ReviewValue;
@@ -28,7 +41,7 @@ interface ReviewSelectorProps {
 }
 
 export const ReviewSelector = ({ value, onChange }: ReviewSelectorProps) => {
-  const handleOptionSelect = (id: ReviewId, option: string) => {
+  const handleOptionSelect = (id: ReviewOption, option: boolean) => {
     onChange({
       ...value,
       [id]: option,
@@ -42,13 +55,13 @@ export const ReviewSelector = ({ value, onChange }: ReviewSelectorProps) => {
           <h2 className={styles.questionText}>{question}</h2>
 
           <section className={styles.buttonSection}>
-            {options.map((option) => (
+            {options.map(({ label, value: optionValue }) => (
               <OptionButton
-                key={option}
-                isSelected={value[id] === option}
-                onClick={() => handleOptionSelect(id, option)}
+                key={label}
+                isSelected={value[id] === optionValue}
+                onClick={() => handleOptionSelect(id, optionValue)}
               >
-                {option}
+                {label}
               </OptionButton>
             ))}
           </section>

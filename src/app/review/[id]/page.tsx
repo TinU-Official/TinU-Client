@@ -9,13 +9,14 @@ import { ReviewSelector } from "@/components/review/reviewSelector/ReviewSelecto
 
 import { useState } from "react";
 import { EMOJI_OPTIONS, EmojiSelector } from "@/components/review/emojiSelector/EmojiSelector";
+import { ReviewOption } from "@/types/reviewTypes";
 
 export default function ReviewPage() {
   const [emoji, setEmoji] = useState<(typeof EMOJI_OPTIONS)[number]["id"] | null>(null);
-  const [reviews, setReviews] = useState<Record<string, string | null>>({
-    conversation: null,
-    punctuality: null,
-    responseSpeed: null,
+  const [reviews, setReviews] = useState<Record<ReviewOption, boolean | null>>({
+    isFriendly: null,
+    notLate: null,
+    respondedQuickly: null,
   });
 
   const isValid = emoji !== null && Object.values(reviews).every((value) => value !== null);
