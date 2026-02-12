@@ -1,5 +1,5 @@
-import Button from "@/components/Common/Button/Button";
 import * as styles from "./reviewSelector.css";
+import { OptionButton } from "@/components/Common/OptionButton";
 
 export const REVIEW_QUESTIONS = [
   {
@@ -43,15 +43,13 @@ export const ReviewSelector = ({ value, onChange }: ReviewSelectorProps) => {
 
           <section className={styles.buttonSection}>
             {options.map((option) => (
-              <Button
+              <OptionButton
                 key={option}
-                className={styles.optionButton({
-                  state: value[id] === option ? "selected" : "default",
-                })}
+                isSelected={value[id] === option}
                 onClick={() => handleOptionSelect(id, option)}
               >
                 {option}
-              </Button>
+              </OptionButton>
             ))}
           </section>
         </div>
