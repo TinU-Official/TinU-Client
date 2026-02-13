@@ -3,7 +3,7 @@ import { createContext, ReactNode, useState } from "react";
 
 type ModalItem = {
   id: string;
-  render: (isTop: boolean) => ReactNode;
+  render: () => ReactNode;
 };
 
 type ModalContextType = {
@@ -22,6 +22,13 @@ export function ModalProvider({ children }: { children: ReactNode }) {
     zIndex: Z_INDEX.BACKDROP,
   };
 
+  const modalContainerStyle: React.CSSProperties = {
+    position: "fixed",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+  };
+
   return (
     <ModalContext.Provider value={{ setModals }}>
       {children}
@@ -30,14 +37,13 @@ export function ModalProvider({ children }: { children: ReactNode }) {
           {modals.map(({ id, render }, idx) => {
             const isTop = idx === modals.length - 1;
             return (
-            <div key={id}>
-                {render(isTop)}
+              <div key={id} style={{ ...modalContainerStyle, pointerEvents: isTop ? "auto" : "none" }}>
+                {render()}
               </div>
             );
           })}
         </div>
       )}
-      
     </ModalContext.Provider>
   );
 }
