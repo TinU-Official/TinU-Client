@@ -9,7 +9,7 @@ export function useModal() {
   const { setModals } = context;
 
   const open = useCallback(
-    (render: (close: () => void) => ReactNode) => {
+    (render: (props: { close: () => void }) => ReactNode) => {
       const id = crypto.randomUUID();
 
       const close = () => {
@@ -28,7 +28,7 @@ export function useModal() {
         ...prev,
         {
           id,
-          render: () => render(close),
+          render: () => render({ close }),
         },
       ]);
 
