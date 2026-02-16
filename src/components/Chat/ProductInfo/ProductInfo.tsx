@@ -16,7 +16,7 @@ export const ProductInfo = memo(function ProductInfo({ isSoldOut }: ProductInfoP
       <div className={styles.ProductDetailContainer}>
         <div className={styles.ProductTitleAndStatus}>
           <p className={styles.ProductTitle}>라탄 자전거 바구니</p>
-          {<SalesBadge isSoldOut={isSoldOut} />}
+          {isSoldOut != null && <SalesBadge isSoldOut={isSoldOut} />}
         </div>
         <p className={styles.ProductPrice}>6,000원</p>
       </div>

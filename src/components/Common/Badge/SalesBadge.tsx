@@ -1,7 +1,7 @@
 import * as styles from "./salesBadge.css";
 
 interface SalesBadgeProps {
-  isSoldOut?: boolean;
+  isSoldOut: boolean;
 }
 
 function SalesBadge({ isSoldOut }: SalesBadgeProps) {
