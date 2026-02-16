@@ -13,12 +13,12 @@ export const badge = recipe({
   },
 
   variants: {
-    status: {
-      forSale: {
+    isSoldOut: {
+      false: {
         width: "4rem",
         backgroundColor: vars.color.mint_500,
       },
-      soldOut: {
+      true: {
         width: "5rem",
         backgroundColor: vars.color.grey_8,
       },
