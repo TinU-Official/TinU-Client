@@ -152,7 +152,7 @@ export default function ChatPage() {
         center={<span className={styles.nickname}>{mock.nickname}</span>}
         right={<MoreButton />}
       />
-      <ProductInfo />
+      <ProductInfo isSoldOut={false} />
       <ChatScreen chatList={chatList} closeBottomSheet={closeBottomSheet} />
       <ChatBottomSheet
         handleSendChat={handleSendChat}
