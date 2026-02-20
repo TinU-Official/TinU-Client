@@ -5,6 +5,8 @@
   "packageManager": "pnpm@10.6.4",
   "scripts": {
     "dev": "turbo run dev",
+    "dev:web": "turbo run dev --filter=@tinu/web",
+    "dev:mobile": "turbo run dev --filter=@tinu/mobile",
     "build": "turbo run build",
     "lint": "turbo run lint",
     "prepare": "lefthook install"
