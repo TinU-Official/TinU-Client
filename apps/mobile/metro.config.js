@@ -1,16 +1,35 @@
-const { getDefaultConfig } = require("@expo/metro-config");
-const path = require("path");
+const path = require("node:path");
+const { FileStore } = require("metro-cache");
+const { makeMetroConfig } = require("@rnx-kit/metro-config");
+const { getDefaultConfig } = require("expo/metro-config");
+const MetroSymlinksResolver = require("@rnx-kit/metro-resolver-symlinks");
 
-const projectRoot = __dirname;
-const monorepoRoot = path.resolve(projectRoot, "../..");
+const projectDir = __dirname;
+const workspaceRoot = path.resolve(projectDir, "../..");
 
-const config = getDefaultConfig(projectRoot);
+const symlinksResolver = MetroSymlinksResolver();
 
-config.watchFolders = [monorepoRoot];
+const expoConfig = getDefaultConfig(projectDir);
 
-config.resolver.nodeModulesPaths = [
-  path.resolve(projectRoot, "node_modules"),
-  path.resolve(monorepoRoot, "node_modules"),
-];
-
-module.exports = config;
+module.exports = makeMetroConfig({
+  ...expoConfig,
+  resolver: {
+    ...expoConfig.resolver,
+    resolveRequest: (context, moduleName, platform) => {
+      try {
+        const res = symlinksResolver(context, moduleName, platform);
+        if (res) {
+          return res;
+        }
+      } catch {
+        return context.resolveRequest(context, moduleName, platform);
+      }
+    },
+  },
+  watchFolders: [workspaceRoot],
+  cacheStores: [
+    new FileStore({
+      root: path.join(projectDir, "node_modules", ".cache", "metro"),
+    }),
+  ],
+});
