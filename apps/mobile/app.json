@@ -14,7 +14,10 @@
     },
     "ios": {
       "supportsTablet": false,
-      "bundleIdentifier": "com.tinu.app"
+      "bundleIdentifier": "com.tinu.client",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -23,6 +26,11 @@
       },
       "edgeToEdgeEnabled": true,
       "package": "com.tinu.app"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "675996ad-8f22-4689-90ba-48a24123d17e"
+      }
     }
   }
 }
