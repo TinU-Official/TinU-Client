@@ -6,9 +6,9 @@ pre-commit:
   commands:
     lint:
       glob: "*.{js,jsx,ts,tsx}"
-      run: echo "🔍 Running lint check before commit..." && yarn eslint {staged_files} && echo "✅ Lint check passed!"
+      run: pnpm turbo run lint
 
 commit-msg:
   commands:
     commitlint:
-      run: yarn commitlint --edit {1}
+      run: pnpm commitlint --edit {1}
