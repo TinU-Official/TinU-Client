@@ -1,32 +1,32 @@
-import { style, styleVariants } from "@vanilla-extract/css";
 import { vars } from "@/styles/theme.css";
+import { style, styleVariants } from "@vanilla-extract/css";
 
-export const mypageWrapper = style({
-  flex: 1,
+export const userPageWrapper = style({
+  display: "flex",
+  flexDirection: "column",
+  height: "100dvh",
   width: "100%",
 });
 
-export const mypageText = style({
+export const profile = style({
   ...vars.fontStyles.subtitle1_sb_16,
   color: vars.color.grey_12,
 });
 
-export const oneLineIntro = style({
+export const oneLineIntroSection = style({
   position: "relative",
 
   display: "flex",
-  flexDirection: "column",
   justifyContent: "center",
   alignItems: "center",
-
   marginTop: "1.5rem",
 });
 
 export const oneLineIntroText = style({
   ...vars.fontStyles.body5_m_13,
   color: vars.color.grey_10,
-  backgroundColor: vars.color.grey_2,
 
+  backgroundColor: vars.color.grey_2,
   width: "80%",
 
   padding: "1rem 2rem",
@@ -38,18 +38,18 @@ export const oneLineIntroText = style({
   overflow: "hidden",
 });
 
-export const bubble = style({
-  position: "absolute",
-  top: "4rem",
-  left: "27%",
-});
-
 export const profileSection = style({
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
 
-  margin: "1.5rem 0",
+  marginTop: "1.5rem",
+});
+
+export const bubble = style({
+  position: "absolute",
+  top: "4rem",
+  left: "27%",
 });
 
 export const myImgWrapper = style({
@@ -58,7 +58,6 @@ export const myImgWrapper = style({
 
   width: "11rem",
   height: "11rem",
-  padding: "0.4rem",
 
   border: `3px solid ${vars.color.mint_500}`,
   borderRadius: "50%",
@@ -109,7 +108,10 @@ export const infoTextBase = style({
   ...vars.fontStyles.body5_m_13,
 });
 
-export const infoLabel = style([infoTextBase, { color: vars.color.grey_6 }]);
+export const infoLabel = style({
+  ...vars.fontStyles.body5_m_13,
+  color: vars.color.grey_6,
+});
 
 export const infoValue = style({
   ...vars.fontStyles.body1_sb_14,
@@ -121,21 +123,19 @@ export const verticalLine = style({
   alignSelf: "center",
 });
 
-export const myActivityWrapper = style({
+export const activityWrapper = style({
   padding: "2.3rem 2rem",
 });
 
-export const myActivityText = style({
+export const activityText = style({
   ...vars.fontStyles.subtitle1_sb_16,
   color: vars.color.grey_12,
 });
 
-export const myActivitySection = style({
+export const activitySection = style({
   display: "flex",
-  justifyContent: "space-between",
-
-  margin: "2.2rem 0",
   gap: "1.7rem",
+  margin: "2.2rem 0",
   flexWrap: "wrap",
 });
 
@@ -154,9 +154,7 @@ export const buttonBase = style({
 
 export const statusButton = styleVariants({
   forSale: [buttonBase, { backgroundColor: "#DEF7FF" }],
-  soldOut: [buttonBase, { backgroundColor: "#FFF5DE" }],
-  favorite: [buttonBase, { backgroundColor: "#FFE9DE" }],
-  hidden: [buttonBase, { backgroundColor: vars.color.grey_2 }],
+  soldOut: [buttonBase, { backgroundColor: "#FFE9DE" }],
 });
 
 export const statusLabel = style({

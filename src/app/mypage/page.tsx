@@ -16,6 +16,7 @@ import { NavBar } from "@/components/Common/NavBar/NavBar";
 import Image from "next/image";
 import * as styles from "./mypage.css";
 import { ChangeEvent, useState } from "react";
+import { Divider } from "@/components/Common/Divider/Divider";
 
 export default function MyPage() {
   const [inputText, setInputText] = useState("");
@@ -69,7 +70,7 @@ export default function MyPage() {
           </div>
         </section>
 
-        <div className={styles.divider}></div>
+        <Divider height={0.8} />
 
         <div className={styles.myActivityWrapper}>
           <span className={styles.myActivityText}>나의 활동</span>

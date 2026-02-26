@@ -32,22 +32,8 @@ export const ProductTitle = style({
   ...vars.fontStyles.subtitle2_m_16,
 });
 
-export const ProductStatus = style({
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-
-  width: "4rem",
-  height: "2rem",
-
-  color: vars.color.white,
-
-  borderRadius: "1.3rem 1.3rem 1.3rem 0.1rem",
-  backgroundColor: vars.color.mint_500,
-});
-
 export const ProductPrice = style({
-  ...vars.fontStyles.subtitle2_m_16,
+  ...vars.fontStyles.body2_m_14,
 
   color: vars.color.grey_6,
 });
