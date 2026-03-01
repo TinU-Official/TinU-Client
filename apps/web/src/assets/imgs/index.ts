@@ -4,6 +4,5 @@ import ImgLogoBig from "./img_logo_big.svg";
 import ImgLogoSmall from "./img_logo_small.svg";
 import ImgSecondBanner from "./img_second_banner.svg";
 import ImgThirdBanner from "./img_third_banner.svg";
-import ImgBubble from "./img_bubble.svg";
 
-export { ImgChatEmpty, ImgFirstBanner, ImgLogoBig, ImgLogoSmall, ImgSecondBanner, ImgThirdBanner, ImgBubble };
+export { ImgChatEmpty, ImgFirstBanner, ImgLogoBig, ImgLogoSmall, ImgSecondBanner, ImgThirdBanner };
