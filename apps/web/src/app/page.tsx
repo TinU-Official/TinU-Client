@@ -7,23 +7,15 @@ import { SecondBanner } from "@/components/Landing/SecondBanner/SecondBanner";
 import { ThirdBanner } from "@/components/Landing/ThirdBanner/ThirdBanner";
 import { useActiveIndicator } from "@/hooks/Landing/useActiveIndicator";
 
+import { useRouter } from "next/navigation";
 import * as styles from "./landing.css";
 
 export default function LandingPage() {
   const { activeIndicator, firstBannerRef, secondBannerRef, thirdBannerRef } = useActiveIndicator();
-  // const router = useRouter();
+  const router = useRouter();
 
   const handleClickStartButton = () => {
-    // router.push("/login")
-    // 테스트용 임시 라우팅 변경
-    if (window.ReactNativeWebView) {
-      window.ReactNativeWebView.postMessage(
-        JSON.stringify({
-          type: "NAVIGATE_TO_CHAT",
-          payload: { userId: "123", userName: "세숑" },
-        }),
-      );
-    }
+    router.push("/login");
   };
 
   return (
