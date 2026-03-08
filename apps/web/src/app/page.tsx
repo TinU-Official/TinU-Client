@@ -6,17 +6,17 @@ import { IndicatorBar } from "@/components/Landing/IndicatorBar/IndicatorBar";
 import { SecondBanner } from "@/components/Landing/SecondBanner/SecondBanner";
 import { ThirdBanner } from "@/components/Landing/ThirdBanner/ThirdBanner";
 import { useActiveIndicator } from "@/hooks/Landing/useActiveIndicator";
+
 import { useRouter } from "next/navigation";
-import { useCallback } from "react";
 import * as styles from "./landing.css";
 
 export default function LandingPage() {
-  const router = useRouter();
   const { activeIndicator, firstBannerRef, secondBannerRef, thirdBannerRef } = useActiveIndicator();
+  const router = useRouter();
 
-  const handleClickStartButton = useCallback(() => {
+  const handleClickStartButton = () => {
     router.push("/login");
-  }, [router]);
+  };
 
   return (
     <>
