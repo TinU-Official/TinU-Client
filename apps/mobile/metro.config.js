@@ -11,10 +11,18 @@ const symlinksResolver = MetroSymlinksResolver();
 
 const expoConfig = getDefaultConfig(projectDir);
 
+const { transformer, resolver } = expoConfig;
+
 module.exports = makeMetroConfig({
   ...expoConfig,
+  transformer: {
+    ...transformer,
+    babelTransformerPath: require.resolve("react-native-svg-transformer"),
+  },
   resolver: {
-    ...expoConfig.resolver,
+    ...resolver,
+    assetExts: resolver.assetExts.filter((ext) => ext !== "svg"),
+    sourceExts: [...resolver.sourceExts, "svg"],
     resolveRequest: (context, moduleName, platform) => {
       try {
         const res = symlinksResolver(context, moduleName, platform);
