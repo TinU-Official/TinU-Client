@@ -286,8 +286,9 @@ const styles = StyleSheet.create({
   },
   dateText: {
     textAlign: "center",
-    fontSize: 11,
-    color: "#c8c8c8",
+    fontSize: 12,
+    fontWeight: "500",
+    color: "#9b9b9b",
     marginBottom: 12,
   },
   senderRow: {
@@ -361,6 +362,7 @@ const bubble = StyleSheet.create({
   },
   senderText: {
     fontSize: 16,
+    fontWeight: "400",
     color: "#ffffff",
   },
   receiverContainer: {
@@ -387,10 +389,12 @@ const bubble = StyleSheet.create({
   },
   receiverText: {
     fontSize: 16,
+    fontWeight: "400",
     color: "#000000",
   },
   timeText: {
     fontSize: 11,
+    fontWeight: "500",
     color: "#c8c8c8",
   },
 });
@@ -421,22 +425,28 @@ const product = StyleSheet.create({
   title: {
     fontSize: 16,
     fontWeight: "500",
+    lineHeight: 20,
     color: "#212121",
   },
   badge: {
-    paddingHorizontal: 6,
-    paddingVertical: 2,
-    borderRadius: 4,
-    backgroundColor: "#e8f9f8",
+    width: 40,
+    height: 20,
+    borderTopLeftRadius: 13,
+    borderTopRightRadius: 13,
+    borderBottomRightRadius: 13,
+    borderBottomLeftRadius: 1,
+    backgroundColor: "#14c3bc",
+    alignItems: "center",
+    justifyContent: "center",
   },
   badgeText: {
     fontSize: 11,
-    color: "#14c3bc",
-    fontWeight: "600",
+    color: "#ffffff",
   },
   price: {
     fontSize: 14,
     fontWeight: "500",
+    lineHeight: 20,
     color: "#9b9b9b",
   },
 });
