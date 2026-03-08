@@ -2,7 +2,8 @@ import { useNavigation } from "@react-navigation/native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { useRef, useState } from "react";
 import { FlatList, Platform, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
-import { KeyboardAvoidingView } from "react-native-keyboard-controller";
+import { KeyboardAvoidingView, useKeyboardHandler } from "react-native-keyboard-controller";
+import { runOnJS, useSharedValue } from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { IcChevronLeft, IcMoreVertical } from "../assets/icons";
 import { Header } from "../components/common/Header";
@@ -274,6 +275,37 @@ export default function ChatScreen({ route }: Props) {
   const [chatList, setChatList] = useState<ChatText[]>(mockChatList);
   const [inputValue, setInputValue] = useState("");
   const flatListRef = useRef<FlatList>(null);
+  const scrollOffsetRef = useRef(0);
+  const lastKeyboardHeight = useSharedValue(0);
+
+  const scrollFlatListBy = (delta: number) => {
+    flatListRef.current?.scrollToOffset({
+      offset: Math.max(0, scrollOffsetRef.current + delta),
+      animated: false,
+    });
+  };
+
+  useKeyboardHandler(
+    {
+      onMove: (e) => {
+        "worklet";
+        const delta = e.height - lastKeyboardHeight.value;
+        lastKeyboardHeight.value = e.height;
+        if (Math.abs(delta) > 0.5) {
+          runOnJS(scrollFlatListBy)(delta);
+        }
+      },
+      onEnd: (e) => {
+        "worklet";
+        const delta = e.height - lastKeyboardHeight.value;
+        lastKeyboardHeight.value = e.height;
+        if (Math.abs(delta) > 0.5) {
+          runOnJS(scrollFlatListBy)(delta);
+        }
+      },
+    },
+    [],
+  );
 
   const handleSend = () => {
     if (!inputValue.trim()) return;
@@ -317,6 +349,10 @@ export default function ChatScreen({ route }: Props) {
           keyExtractor={(item) => String(item.chatTextId)}
           contentContainerStyle={styles.chatListContent}
           onContentSizeChange={() => flatListRef.current?.scrollToEnd({ animated: false })}
+          onScroll={(e) => {
+            scrollOffsetRef.current = e.nativeEvent.contentOffset.y;
+          }}
+          scrollEventThrottle={16}
           ListHeaderComponent={<Text style={styles.dateText}>2024년 10월 1일 (월)</Text>}
           renderItem={({ item }) =>
             item.role === "sender" ? (
