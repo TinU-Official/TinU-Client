@@ -1,24 +1,23 @@
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { useCallback, useRef, useState } from "react";
-import { KeyboardAvoidingView } from "react-native-keyboard-controller";
+import { useRef, useState } from "react";
 import {
-  Animated,
   FlatList,
   Platform,
-  Pressable,
   StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
   View,
 } from "react-native";
+import { KeyboardAvoidingView } from "react-native-keyboard-controller";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { IcChevronLeft, IcMoreVertical } from "../assets/icons";
+import { Header } from "../components/common/Header";
 import { RootStackParamList } from "../navigation/types";
 
 type Props = NativeStackScreenProps<RootStackParamList, "Chat">;
 
-// ─── 타입 ────────────────────────────────────────────────
 interface ChatText {
   chatTextId: number;
   role: "sender" | "receiver";
@@ -30,7 +29,6 @@ interface ChatText {
   notRead: number;
 }
 
-// ─── 목 데이터 (웹과 동일) ────────────────────────────────
 const mockChatList: ChatText[] = [
   {
     chatTextId: 1,
@@ -134,7 +132,6 @@ const mockChatList: ChatText[] = [
   },
 ];
 
-// ─── 서브 컴포넌트 ────────────────────────────────────────
 function SenderChatBubble({ chatText, time }: { chatText: string; time: string }) {
   return (
     <View style={bubble.senderContainer}>
@@ -177,10 +174,6 @@ function ProductInfo() {
   );
 }
 
-// ─── 메인 스크린 ──────────────────────────────────────────
-const BOTTOM_SHEET_CLOSED = 68;
-const BOTTOM_SHEET_OPEN = 210;
-
 export default function ChatScreen({ route }: Props) {
   const { userName } = route.params;
   const navigation = useNavigation();
@@ -188,28 +181,7 @@ export default function ChatScreen({ route }: Props) {
 
   const [chatList, setChatList] = useState<ChatText[]>(mockChatList);
   const [inputValue, setInputValue] = useState("");
-  const [isBottomSheetOpen, setIsBottomSheetOpen] = useState(false);
   const flatListRef = useRef<FlatList>(null);
-  const bottomSheetHeight = useRef(new Animated.Value(BOTTOM_SHEET_CLOSED)).current;
-
-  const closeBottomSheet = useCallback(() => {
-    Animated.timing(bottomSheetHeight, {
-      toValue: BOTTOM_SHEET_CLOSED,
-      duration: 200,
-      useNativeDriver: false,
-    }).start();
-    setIsBottomSheetOpen(false);
-  }, [bottomSheetHeight]);
-
-  const toggleBottomSheet = useCallback(() => {
-    const toValue = isBottomSheetOpen ? BOTTOM_SHEET_CLOSED : BOTTOM_SHEET_OPEN;
-    Animated.timing(bottomSheetHeight, {
-      toValue,
-      duration: 200,
-      useNativeDriver: false,
-    }).start();
-    setIsBottomSheetOpen((prev) => !prev);
-  }, [isBottomSheetOpen, bottomSheetHeight]);
 
   const handleSend = () => {
     if (!inputValue.trim()) return;
@@ -230,22 +202,23 @@ export default function ChatScreen({ route }: Props) {
 
   return (
     <KeyboardAvoidingView style={styles.container} behavior={Platform.OS === "ios" ? "padding" : "height"}>
-      {/* 헤더 */}
-      <View style={[styles.header, { paddingTop: insets.top }]}>
-        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.headerButton}>
-          <Text style={styles.backArrow}>‹</Text>
-        </TouchableOpacity>
-        <Text style={styles.headerTitle}>{userName}</Text>
-        <TouchableOpacity style={styles.headerButton}>
-          <Text style={styles.moreIcon}>⋮</Text>
-        </TouchableOpacity>
-      </View>
+      <Header
+        left={
+          <TouchableOpacity onPress={() => navigation.goBack()} style={styles.headerButton}>
+            <IcChevronLeft />
+          </TouchableOpacity>
+        }
+        center={<Text style={styles.headerTitle}>{userName}</Text>}
+        right={
+          <TouchableOpacity style={styles.headerButton}>
+            <IcMoreVertical />
+          </TouchableOpacity>
+        }
+      />
 
-      {/* 상품 정보 */}
       <ProductInfo />
 
-      {/* 채팅 목록 */}
-      <Pressable style={styles.chatListArea} onPress={closeBottomSheet}>
+      <View style={styles.chatListArea}>
         <FlatList
           ref={flatListRef}
           data={chatList}
@@ -265,57 +238,33 @@ export default function ChatScreen({ route }: Props) {
             )
           }
         />
-      </Pressable>
+      </View>
 
-      {/* 인풋바 + 바텀시트 */}
-      <Animated.View style={[styles.bottomSheet, { height: bottomSheetHeight, paddingBottom: insets.bottom }]}>
-        <View style={styles.inputRow}>
-          <TouchableOpacity style={styles.plusButton} onPress={toggleBottomSheet}>
-            <Text style={styles.plusIcon}>+</Text>
+      <View style={[styles.inputBar, { paddingBottom: insets.bottom }]}>
+        <TouchableOpacity style={styles.plusButton}>
+          <Text style={styles.plusIcon}>+</Text>
+        </TouchableOpacity>
+        <View style={styles.inputBox}>
+          <TextInput
+            style={styles.textInput}
+            value={inputValue}
+            onChangeText={setInputValue}
+            placeholder="메세지 보내기"
+            placeholderTextColor="#c8c8c8"
+          />
+          <TouchableOpacity onPress={handleSend}>
+            <Text style={[styles.sendIcon, inputValue.length > 0 && styles.sendIconActive]}>➤</Text>
           </TouchableOpacity>
-          <View style={styles.inputBox}>
-            <TextInput
-              style={styles.textInput}
-              value={inputValue}
-              onChangeText={setInputValue}
-              onFocus={closeBottomSheet}
-              placeholder="메세지 보내기"
-              placeholderTextColor="#c8c8c8"
-            />
-            <TouchableOpacity onPress={handleSend}>
-              <Text style={[styles.sendIcon, inputValue.length > 0 && styles.sendIconActive]}>➤</Text>
-            </TouchableOpacity>
-          </View>
         </View>
-
-        {/* 확장 영역 */}
-        {isBottomSheetOpen && (
-          <View style={styles.expandedArea}>
-            <TouchableOpacity style={styles.cameraButton}>
-              <View style={styles.cameraIconBox}>
-                <Text style={styles.cameraEmoji}>📷</Text>
-              </View>
-              <Text style={styles.cameraLabel}>이미지 전송</Text>
-            </TouchableOpacity>
-          </View>
-        )}
-      </Animated.View>
+      </View>
     </KeyboardAvoidingView>
   );
 }
 
-// ─── 스타일 ───────────────────────────────────────────────
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#f6f6f6",
-  },
-  header: {
-    flexDirection: "row",
-    alignItems: "center",
-    height: 60,
-    paddingHorizontal: 4,
-    backgroundColor: "#ffffff",
   },
   headerButton: {
     width: 44,
@@ -323,20 +272,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  backArrow: {
-    fontSize: 36,
-    color: "#212121",
-    lineHeight: 44,
-  },
   headerTitle: {
-    flex: 1,
-    textAlign: "center",
     fontSize: 16,
     fontWeight: "600",
-    color: "#212121",
-  },
-  moreIcon: {
-    fontSize: 22,
     color: "#212121",
   },
   chatListArea: {
@@ -360,17 +298,15 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
     marginVertical: 3,
   },
-  bottomSheet: {
+  inputBar: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 10,
     backgroundColor: "#ffffff",
     borderTopLeftRadius: 16,
     borderTopRightRadius: 16,
     paddingHorizontal: 13,
     paddingTop: 16,
-  },
-  inputRow: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 10,
   },
   plusButton: {
     width: 32,
@@ -407,30 +343,6 @@ const styles = StyleSheet.create({
   },
   sendIconActive: {
     color: "#14c3bc",
-  },
-  expandedArea: {
-    paddingHorizontal: 42,
-    marginTop: 23,
-  },
-  cameraButton: {
-    alignItems: "center",
-    gap: 8,
-  },
-  cameraIconBox: {
-    width: 56,
-    height: 56,
-    borderRadius: 12,
-    backgroundColor: "#f2f2f2",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  cameraEmoji: {
-    fontSize: 24,
-  },
-  cameraLabel: {
-    fontSize: 13,
-    fontWeight: "600",
-    color: "#424242",
   },
 });
 
