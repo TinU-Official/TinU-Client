@@ -18,9 +18,11 @@ function TextField({
   ...inputProps
 }: TextFieldProps) {
   const [isFocused, setIsFocused] = useState(false);
+  const [hasText, setHasText] = useState(
+    inputProps.value !== "" && inputProps.value !== undefined,
+  );
 
-  const hasValue = inputProps.value !== "" && inputProps.value !== undefined;
-  const isActivated = isFocused || hasValue;
+  const isActivated = isFocused || hasText;
 
   const handleFocus = (e: Parameters<NonNullable<TextInputProps["onFocus"]>>[0]) => {
     setIsFocused(true);
@@ -32,9 +34,15 @@ function TextField({
     inputProps.onBlur?.(e);
   };
 
+  const handleChangeText = (text: string) => {
+    setHasText(text.length > 0);
+    inputProps.onChangeText?.(text);
+  };
+
   const wrapperStyle = [
     styles.textFieldWrapper,
-    isActivated && !isError && !disabled && styles.textFieldWrapperActive,
+    hasText && !isFocused && !isError && !disabled && styles.textFieldWrapperFilled,
+    isFocused && !isError && !disabled && styles.textFieldWrapperActive,
     isError && styles.textFieldWrapperError,
     disabled && styles.textFieldWrapperDisabled,
   ];
@@ -49,9 +57,10 @@ function TextField({
           placeholderTextColor="#9b9b9b"
           onFocus={handleFocus}
           onBlur={handleBlur}
+          onChangeText={handleChangeText}
           editable={!disabled}
         />
-        {isFocused && rightAddOn}
+        {isActivated && rightAddOn}
       </View>
       {helperText && (
         <Text style={[styles.helperText, isError ? styles.helperTextError : styles.helperTextNormal]}>
@@ -75,6 +84,11 @@ const styles = StyleSheet.create({
     paddingRight: 17,
     borderRadius: 12,
     backgroundColor: "#f6f6f6",
+  },
+  textFieldWrapperFilled: {
+    backgroundColor: "#ffffff",
+    borderWidth: 1,
+    borderColor: "#c8c8c8",
   },
   textFieldWrapperActive: {
     backgroundColor: "#ffffff",
