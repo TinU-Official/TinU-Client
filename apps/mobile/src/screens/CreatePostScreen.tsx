@@ -1,18 +1,39 @@
 import { useNavigation } from "@react-navigation/native";
 import * as ImagePicker from "expo-image-picker";
 import { useState } from "react";
-import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Image, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-controller";
-import { IcCamera, IcChevronLeft, IcMoreVertical, IcSwap } from "../assets/icons";
+
+import { IcCamera, IcChevronLeft, IcMoreVertical, IcSwap, IcXGreyBig, IcXGreySmall } from "../assets/icons";
 import { Divider } from "../components/common/Divider";
 import { Header } from "../components/common/Header";
 import Select from "../components/common/Select";
 import TextArea from "../components/common/TextArea";
 import TextField from "../components/common/TextField";
+import { TopSheet } from "../components/common/TopSheet";
+
+interface TagProps {
+  text: string;
+  onRemove: () => void;
+}
+
+function Tag({ text, onRemove }: TagProps) {
+  return (
+    <View style={tagStyles.tagWrapper}>
+      <Text style={tagStyles.tagText}>{`# ${text}`}</Text>
+      <TouchableOpacity>
+        <IcXGreySmall onPress={onRemove} />
+      </TouchableOpacity>
+    </View>
+  );
+}
 
 export function CreatePostScreen() {
   const navigation = useNavigation();
   const [images, setImages] = useState<string[]>([]);
+  const [tagSheetVisible, setTagSheetVisible] = useState(false);
+  const [tags, setTags] = useState<string[]>(["테스트"]);
+  const [tagInputText, setTagInputText] = useState("");
 
   const handlePickImages = async () => {
     const result = await ImagePicker.launchImageLibraryAsync({
@@ -24,6 +45,31 @@ export function CreatePostScreen() {
     if (!result.canceled) {
       setImages((prev) => [...prev, ...result.assets.map((a) => a.uri)]);
     }
+  };
+
+  const handleChangeTagInput = (text: string) => {
+    setTagInputText(text);
+  };
+
+  const clearTagInput = () => {
+    setTagInputText("");
+  };
+
+  const handleAddTag = () => {
+    const next = tagInputText.trim();
+
+    if (!next) {
+      return;
+    }
+
+    setTags((prev) => {
+      if (prev.includes(next)) {
+        return prev;
+      }
+      return [...prev, next];
+    });
+
+    setTagInputText("");
   };
 
   return (
@@ -81,12 +127,45 @@ export function CreatePostScreen() {
           </Select>
           <TextArea height={190} placeholder="내용을 입력하세요" />
           <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.tagListContainer}>
-            <TouchableOpacity style={styles.openAddTagTopSheetButton}>
-              <Text style={styles.openAddTagTopSheetButtonText}># 태그 입력(최대 30개)</Text>
+            <TouchableOpacity style={styles.openAddTagTopSheetButton} onPress={() => setTagSheetVisible(true)}>
+              <Text style={styles.openAddTagTopSheetButtonText}># 태그 입력(최대 5개)</Text>
             </TouchableOpacity>
+            {tags.map((tagText) => (
+              <Tag key={tagText} text={tagText} onRemove={() => setTags((prev) => prev.filter((t) => t !== tagText))} />
+            ))}
           </ScrollView>
         </View>
       </View>
+      <TopSheet visible={tagSheetVisible} onClose={() => setTagSheetVisible(false)}>
+        <Header
+          center={<Text style={styles.headerTitle}>태그 편집</Text>}
+          right={
+            <TouchableOpacity style={styles.headerButton} onPress={() => setTagSheetVisible(false)}>
+              <Text style={styles.confirmText}>확인</Text>
+            </TouchableOpacity>
+          }
+        />
+        <View style={styles.tagInputRow}>
+          <TextInput
+            placeholderTextColor="9b9b9b"
+            placeholder="태그 입력(최대 5개)"
+            value={tagInputText}
+            onChangeText={handleChangeTagInput}
+            style={styles.tagInput}
+          />
+          <TouchableOpacity>
+            <IcXGreyBig onPress={clearTagInput} />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={handleAddTag} disabled={!tagInputText.trim()}>
+            <Text style={[styles.addTagButtonText, { color: tagInputText ? "#14c3bc" : "#9b9b9b" }]}>+추가</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.tagContainer}>
+          {tags.map((tagText) => (
+            <Tag key={tagText} text={tagText} onRemove={() => setTags((prev) => prev.filter((t) => t !== tagText))} />
+          ))}
+        </View>
+      </TopSheet>
     </KeyboardAwareScrollView>
   );
 }
@@ -103,6 +182,11 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   headerTitle: {
+    fontSize: 16,
+    fontWeight: "600",
+    color: "#212121",
+  },
+  confirmText: {
     fontSize: 16,
     fontWeight: "600",
     color: "#212121",
@@ -168,5 +252,49 @@ const styles = StyleSheet.create({
     color: "#5d5d5d",
     fontSize: 13,
     fontWeight: "500",
+  },
+  tagInputRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 10,
+    padding: 20,
+    height: 60,
+  },
+  tagInput: {
+    flex: 1,
+    fontSize: 16,
+    fontWeight: "500",
+    lineHeight: 20,
+  },
+  addTagButtonText: {
+    fontSize: 16,
+    fontWeight: 500,
+    lineHeight: 20,
+  },
+  tagContainer: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: 6,
+    paddingVertical: 13,
+    paddingHorizontal: 20,
+  },
+});
+
+const tagStyles = StyleSheet.create({
+  tagWrapper: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 4,
+    paddingVertical: 8,
+    paddingHorizontal: 10,
+    borderWidth: 1,
+    borderRadius: 999,
+    borderColor: "#12b1ab",
+    backgroundColor: "#e8f9f8",
+  },
+  tagText: {
+    fontSize: 13,
+    fontWeight: 500,
+    color: "#12b1ab",
   },
 });

@@ -4,3 +4,5 @@ export { default as IcChevronLeft } from "./ic_chevron_left.svg";
 export { default as IcChevronUp } from "./ic_chevron_up.svg";
 export { default as IcMoreVertical } from "./ic_more_vertical.svg";
 export { default as IcSwap } from "./ic_swap.svg";
+export { default as IcXGreyBig } from "./ic_x_grey_big.svg";
+export { default as IcXGreySmall } from "./ic_x_grey_small.svg";
