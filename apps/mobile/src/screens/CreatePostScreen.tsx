@@ -2,9 +2,13 @@ import { useNavigation } from "@react-navigation/native";
 import * as ImagePicker from "expo-image-picker";
 import { useState } from "react";
 import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { KeyboardAvoidingView } from "react-native-keyboard-controller";
+import { KeyboardAwareScrollView } from "react-native-keyboard-controller";
 import { IcCamera, IcChevronLeft, IcMoreVertical, IcSwap } from "../assets/icons";
+import { Divider } from "../components/common/Divider";
 import { Header } from "../components/common/Header";
+import Select from "../components/common/Select";
+import TextArea from "../components/common/TextArea";
+import TextField from "../components/common/TextField";
 
 export function CreatePostScreen() {
   const navigation = useNavigation();
@@ -23,7 +27,7 @@ export function CreatePostScreen() {
   };
 
   return (
-    <KeyboardAvoidingView style={styles.container}>
+    <KeyboardAwareScrollView style={styles.container} keyboardShouldPersistTaps="handled">
       <Header
         left={
           <TouchableOpacity onPress={() => navigation.goBack()} style={styles.headerButton}>
@@ -37,9 +41,9 @@ export function CreatePostScreen() {
           </TouchableOpacity>
         }
       />
-      <View style={styles.pageWrapper}>
+      <View style={styles.pageContent}>
         <View>
-          <Text style={styles.imageSectionText}>사진을 등록해 주세요</Text>
+          <Text style={styles.sectionText}>사진을 등록해 주세요</Text>
           <ScrollView
             horizontal
             showsHorizontalScrollIndicator={false}
@@ -62,8 +66,28 @@ export function CreatePostScreen() {
             ))}
           </ScrollView>
         </View>
+        <Divider />
+        <View style={styles.infoSectionContainer}>
+          <Text style={styles.sectionText}>상품 정보를 입력해 주세요</Text>
+          <TextField placeholder="상품명" />
+          <TextField placeholder="가격" rightAddOn={<Text>원</Text>} />
+          <Select placeholder="해당하는 내용을 선택하세요">
+            <Select.Trigger />
+            <Select.Main>
+              <Select.Option value={"카테고리1"}>{"카테고리 1"}</Select.Option>
+              <Select.Option value={"카테고리2"}>{"카테고리 2"}</Select.Option>
+              <Select.Option value={"카테고리3"}>{"카테고리 3"}</Select.Option>
+            </Select.Main>
+          </Select>
+          <TextArea height={190} placeholder="내용을 입력하세요" />
+          <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.tagListContainer}>
+            <TouchableOpacity style={styles.openAddTagTopSheetButton}>
+              <Text style={styles.openAddTagTopSheetButtonText}># 태그 입력(최대 30개)</Text>
+            </TouchableOpacity>
+          </ScrollView>
+        </View>
       </View>
-    </KeyboardAvoidingView>
+    </KeyboardAwareScrollView>
   );
 }
 
@@ -83,15 +107,16 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     color: "#212121",
   },
-  pageWrapper: {
+  pageContent: {
     padding: 20,
   },
   imageSectionContainer: {
     flexDirection: "row",
     marginTop: 21,
+    marginBottom: 22,
     gap: 9,
   },
-  imageSectionText: {
+  sectionText: {
     marginLeft: 2,
     color: "#9b9b9b",
     fontSize: 13,
@@ -123,5 +148,25 @@ const styles = StyleSheet.create({
     top: 0,
     right: 0,
     transform: [{ translateX: "50%" }, { translateY: "-50%" }],
+  },
+  infoSectionContainer: {
+    marginTop: 20,
+    gap: 20,
+  },
+  tagListContainer: {
+    flexDirection: "row",
+    gap: 6,
+  },
+  openAddTagTopSheetButton: {
+    paddingVertical: 8,
+    paddingHorizontal: 10,
+    borderWidth: 1,
+    borderColor: "#dedede",
+    borderRadius: 999,
+  },
+  openAddTagTopSheetButtonText: {
+    color: "#5d5d5d",
+    fontSize: 13,
+    fontWeight: "500",
   },
 });
