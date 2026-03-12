@@ -22,7 +22,7 @@ export default OptionButton;
 
 const styles = StyleSheet.create({
   base: {
-    width: "100%",
+    flex: 1,
     height: 50,
     borderRadius: 8.5,
     alignItems: "center",
