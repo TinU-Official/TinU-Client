@@ -7,6 +7,7 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-controller";
 import { IcCamera, IcChevronLeft, IcMoreVertical, IcSwap, IcXGreyBig, IcXGreySmall } from "../assets/icons";
 import { Divider } from "../components/common/Divider";
 import { Header } from "../components/common/Header";
+import OptionButton from "../components/common/OptionButton";
 import Select from "../components/common/Select";
 import TextArea from "../components/common/TextArea";
 import TextField from "../components/common/TextField";
@@ -34,6 +35,8 @@ export function CreatePostScreen() {
   const [tagSheetVisible, setTagSheetVisible] = useState(false);
   const [tags, setTags] = useState<string[]>(["테스트"]);
   const [tagInputText, setTagInputText] = useState("");
+  const [tradeMethod, setTradeMethod] = useState<"direct" | "delivery">("direct");
+  const [paymentMethod, setPaymentMethod] = useState<"cash" | "transfer">("cash");
 
   const handlePickImages = async () => {
     const result = await ImagePicker.launchImageLibraryAsync({
@@ -135,6 +138,29 @@ export function CreatePostScreen() {
             ))}
           </ScrollView>
         </View>
+        <Divider />
+        <View style={styles.optionSelectSection}>
+          <Text style={styles.sectionText}>거래방식</Text>
+          <View style={styles.optionButtonWrapper}>
+            <OptionButton isSelected={tradeMethod === "direct"} onPress={() => setTradeMethod("direct")}>
+              직접 거래
+            </OptionButton>
+            <OptionButton isSelected={tradeMethod === "delivery"} onPress={() => setTradeMethod("delivery")}>
+              택배 거래
+            </OptionButton>
+          </View>
+        </View>
+        <View style={styles.optionSelectSection}>
+          <Text style={styles.sectionText}>결제수단</Text>
+          <View style={styles.optionButtonWrapper}>
+            <OptionButton isSelected={paymentMethod === "cash"} onPress={() => setPaymentMethod("cash")}>
+              현금
+            </OptionButton>
+            <OptionButton isSelected={paymentMethod === "transfer"} onPress={() => setPaymentMethod("transfer")}>
+              계좌이체
+            </OptionButton>
+          </View>
+        </View>
       </View>
       <TopSheet visible={tagSheetVisible} onClose={() => setTagSheetVisible(false)}>
         <Header
@@ -235,6 +261,7 @@ const styles = StyleSheet.create({
   },
   infoSectionContainer: {
     marginTop: 20,
+    marginBottom: 20,
     gap: 20,
   },
   tagListContainer: {
@@ -277,6 +304,14 @@ const styles = StyleSheet.create({
     gap: 6,
     paddingVertical: 13,
     paddingHorizontal: 20,
+  },
+  optionSelectSection: {
+    marginTop: 20,
+  },
+  optionButtonWrapper: {
+    flexDirection: "row",
+    gap: 12,
+    marginTop: 10,
   },
 });
 
