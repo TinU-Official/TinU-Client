@@ -36,6 +36,7 @@ export function CreatePostScreen() {
   const [tagSheetVisible, setTagSheetVisible] = useState(false);
   const [tags, setTags] = useState<string[]>(["테스트"]);
   const [tagInputText, setTagInputText] = useState("");
+  const [price, setPrice] = useState("");
   const [tradeMethod, setTradeMethod] = useState<"direct" | "delivery">("direct");
   const [paymentMethod, setPaymentMethod] = useState<"cash" | "transfer">("cash");
 
@@ -75,6 +76,8 @@ export function CreatePostScreen() {
 
     setTagInputText("");
   };
+
+  const priceError = !!price && !/^\d+$/.test(price);
 
   return (
     <View style={styles.screen}>
@@ -125,7 +128,15 @@ export function CreatePostScreen() {
           <View style={styles.infoSectionContainer}>
             <Text style={styles.sectionText}>상품 정보를 입력해 주세요</Text>
             <TextField placeholder="상품명" />
-            <TextField placeholder="가격" rightAddOn={<Text>원</Text>} />
+            <TextField
+              placeholder="가격"
+              rightAddOn={<Text>원</Text>}
+              keyboardType="numeric"
+              value={price}
+              onChangeText={setPrice}
+              isError={priceError}
+              helperText={priceError ? "숫자만 입력해 주세요" : undefined}
+            />
             <Select placeholder="해당하는 내용을 선택하세요">
               <Select.Trigger />
               <Select.Main>
