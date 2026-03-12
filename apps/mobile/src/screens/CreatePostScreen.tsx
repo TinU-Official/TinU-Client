@@ -36,6 +36,7 @@ export function CreatePostScreen() {
   const [tagSheetVisible, setTagSheetVisible] = useState(false);
   const [tags, setTags] = useState<string[]>(["테스트"]);
   const [tagInputText, setTagInputText] = useState("");
+  const [productName, setProductName] = useState("");
   const [price, setPrice] = useState("");
   const [tradeMethod, setTradeMethod] = useState<"direct" | "delivery">("direct");
   const [paymentMethod, setPaymentMethod] = useState<"cash" | "transfer">("cash");
@@ -77,6 +78,8 @@ export function CreatePostScreen() {
     setTagInputText("");
   };
 
+  const handleChangeProductName = (text: string) => setProductName(text);
+
   const handleGoBack = () => navigation.goBack();
 
   const handleRemoveImage = (uri: string) => () => {
@@ -98,6 +101,7 @@ export function CreatePostScreen() {
   const handleSelectPaymentMethod = (method: "cash" | "transfer") => () => setPaymentMethod(method);
 
   const formattedPrice = price.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  const isSubmitDisabled = !productName.trim() || !price || images.length === 0;
 
   return (
     <View style={styles.screen}>
@@ -134,10 +138,7 @@ export function CreatePostScreen() {
               {images.map((uri) => (
                 <View key={uri} style={styles.previewWrapper}>
                   <Image source={{ uri }} style={styles.previewImage} />
-                  <TouchableOpacity
-                    style={styles.deleteButton}
-                    onPress={handleRemoveImage(uri)}
-                  >
+                  <TouchableOpacity style={styles.deleteButton} onPress={handleRemoveImage(uri)}>
                     <IcSwap />
                   </TouchableOpacity>
                 </View>
@@ -147,7 +148,7 @@ export function CreatePostScreen() {
           <Divider />
           <View style={styles.infoSectionContainer}>
             <Text style={styles.sectionText}>상품 정보를 입력해 주세요</Text>
-            <TextField placeholder="상품명" />
+            <TextField placeholder="상품명" value={productName} onChangeText={handleChangeProductName} />
             <TextField
               placeholder="가격"
               rightAddOn={<Text>원</Text>}
@@ -173,11 +174,7 @@ export function CreatePostScreen() {
                 <Text style={styles.openAddTagTopSheetButtonText}># 태그 입력(최대 5개)</Text>
               </TouchableOpacity>
               {tags.map((tagText) => (
-                <Tag
-                  key={tagText}
-                  text={tagText}
-                  onRemove={handleRemoveTag(tagText)}
-                />
+                <Tag key={tagText} text={tagText} onRemove={handleRemoveTag(tagText)} />
               ))}
             </ScrollView>
           </View>
@@ -237,7 +234,7 @@ export function CreatePostScreen() {
         </TopSheet>
       </KeyboardAwareScrollView>
       <View style={styles.bottomBar}>
-        <Button>등록하기</Button>
+        <Button disabled={isSubmitDisabled}>등록하기</Button>
       </View>
     </View>
   );
