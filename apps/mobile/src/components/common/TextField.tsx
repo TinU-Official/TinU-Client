@@ -48,7 +48,7 @@ function TextField({
   ];
 
   return (
-    <>
+    <View>
       <View style={wrapperStyle}>
         <TextInput
           {...inputProps}
@@ -67,7 +67,7 @@ function TextField({
           {helperText}
         </Text>
       )}
-    </>
+    </View>
   );
 }
 
@@ -119,6 +119,7 @@ const styles = StyleSheet.create({
     paddingLeft: 7,
     fontSize: 10,
     fontWeight: "500",
+    lineHeight: 12,
   },
   helperTextError: {
     color: "#f65e5e",
