@@ -118,6 +118,7 @@ export function CreatePostScreen() {
           </TouchableOpacity>
         }
       />
+      <Divider />
       <KeyboardAwareScrollView
         style={styles.container}
         keyboardShouldPersistTaps="handled"
