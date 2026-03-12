@@ -5,6 +5,7 @@ import { Image, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View 
 import { KeyboardAwareScrollView } from "react-native-keyboard-controller";
 
 import { IcCamera, IcChevronLeft, IcMoreVertical, IcSwap, IcXGreyBig, IcXGreySmall } from "../assets/icons";
+import Button from "../components/common/Button";
 import { Divider } from "../components/common/Divider";
 import { Header } from "../components/common/Header";
 import OptionButton from "../components/common/OptionButton";
@@ -76,130 +77,168 @@ export function CreatePostScreen() {
   };
 
   return (
-    <KeyboardAwareScrollView style={styles.container} keyboardShouldPersistTaps="handled">
-      <Header
-        left={
-          <TouchableOpacity onPress={() => navigation.goBack()} style={styles.headerButton}>
-            <IcChevronLeft />
-          </TouchableOpacity>
-        }
-        center={<Text style={styles.headerTitle}>판매하기</Text>}
-        right={
-          <TouchableOpacity style={styles.headerButton}>
-            <IcMoreVertical />
-          </TouchableOpacity>
-        }
-      />
-      <View style={styles.pageContent}>
-        <View>
-          <Text style={styles.sectionText}>사진을 등록해 주세요</Text>
-          <ScrollView
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            contentContainerStyle={styles.imageSectionContainer}
-          >
-            <TouchableOpacity style={styles.cameraButton} onPress={handlePickImages}>
-              <IcCamera />
-              <Text style={styles.imageCount}>{images.length}/10</Text>
-            </TouchableOpacity>
-            {images.map((uri) => (
-              <View key={uri} style={styles.previewWrapper}>
-                <Image source={{ uri }} style={styles.previewImage} />
-                <TouchableOpacity
-                  style={styles.deleteButton}
-                  onPress={() => setImages((prev) => prev.filter((img) => img !== uri))}
-                >
-                  <IcSwap />
-                </TouchableOpacity>
-              </View>
-            ))}
-          </ScrollView>
-        </View>
-        <Divider />
-        <View style={styles.infoSectionContainer}>
-          <Text style={styles.sectionText}>상품 정보를 입력해 주세요</Text>
-          <TextField placeholder="상품명" />
-          <TextField placeholder="가격" rightAddOn={<Text>원</Text>} />
-          <Select placeholder="해당하는 내용을 선택하세요">
-            <Select.Trigger />
-            <Select.Main>
-              <Select.Option value={"카테고리1"}>{"카테고리 1"}</Select.Option>
-              <Select.Option value={"카테고리2"}>{"카테고리 2"}</Select.Option>
-              <Select.Option value={"카테고리3"}>{"카테고리 3"}</Select.Option>
-            </Select.Main>
-          </Select>
-          <TextArea height={190} placeholder="내용을 입력하세요" />
-          <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.tagListContainer}>
-            <TouchableOpacity style={styles.openAddTagTopSheetButton} onPress={() => setTagSheetVisible(true)}>
-              <Text style={styles.openAddTagTopSheetButtonText}># 태그 입력(최대 5개)</Text>
-            </TouchableOpacity>
-            {tags.map((tagText) => (
-              <Tag key={tagText} text={tagText} onRemove={() => setTags((prev) => prev.filter((t) => t !== tagText))} />
-            ))}
-          </ScrollView>
-        </View>
-        <Divider />
-        <View style={styles.optionSelectSection}>
-          <Text style={styles.sectionText}>거래방식</Text>
-          <View style={styles.optionButtonWrapper}>
-            <OptionButton isSelected={tradeMethod === "direct"} onPress={() => setTradeMethod("direct")}>
-              직접 거래
-            </OptionButton>
-            <OptionButton isSelected={tradeMethod === "delivery"} onPress={() => setTradeMethod("delivery")}>
-              택배 거래
-            </OptionButton>
-          </View>
-        </View>
-        <View style={styles.optionSelectSection}>
-          <Text style={styles.sectionText}>결제수단</Text>
-          <View style={styles.optionButtonWrapper}>
-            <OptionButton isSelected={paymentMethod === "cash"} onPress={() => setPaymentMethod("cash")}>
-              현금
-            </OptionButton>
-            <OptionButton isSelected={paymentMethod === "transfer"} onPress={() => setPaymentMethod("transfer")}>
-              계좌이체
-            </OptionButton>
-          </View>
-        </View>
-      </View>
-      <TopSheet visible={tagSheetVisible} onClose={() => setTagSheetVisible(false)}>
+    <View style={styles.screen}>
+      <KeyboardAwareScrollView
+        style={styles.container}
+        keyboardShouldPersistTaps="handled"
+        contentContainerStyle={styles.scrollContent}
+      >
         <Header
-          center={<Text style={styles.headerTitle}>태그 편집</Text>}
+          left={
+            <TouchableOpacity onPress={() => navigation.goBack()} style={styles.headerButton}>
+              <IcChevronLeft />
+            </TouchableOpacity>
+          }
+          center={<Text style={styles.headerTitle}>판매하기</Text>}
           right={
-            <TouchableOpacity style={styles.headerButton} onPress={() => setTagSheetVisible(false)}>
-              <Text style={styles.confirmText}>확인</Text>
+            <TouchableOpacity style={styles.headerButton}>
+              <IcMoreVertical />
             </TouchableOpacity>
           }
         />
-        <View style={styles.tagInputRow}>
-          <TextInput
-            placeholderTextColor="9b9b9b"
-            placeholder="태그 입력(최대 5개)"
-            value={tagInputText}
-            onChangeText={handleChangeTagInput}
-            style={styles.tagInput}
+        <View style={styles.pageContent}>
+          <View>
+            <Text style={styles.sectionText}>사진을 등록해 주세요</Text>
+            <ScrollView
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              contentContainerStyle={styles.imageSectionContainer}
+            >
+              <TouchableOpacity style={styles.cameraButton} onPress={handlePickImages}>
+                <IcCamera />
+                <Text style={styles.imageCount}>{images.length}/10</Text>
+              </TouchableOpacity>
+              {images.map((uri) => (
+                <View key={uri} style={styles.previewWrapper}>
+                  <Image source={{ uri }} style={styles.previewImage} />
+                  <TouchableOpacity
+                    style={styles.deleteButton}
+                    onPress={() => setImages((prev) => prev.filter((img) => img !== uri))}
+                  >
+                    <IcSwap />
+                  </TouchableOpacity>
+                </View>
+              ))}
+            </ScrollView>
+          </View>
+          <Divider />
+          <View style={styles.infoSectionContainer}>
+            <Text style={styles.sectionText}>상품 정보를 입력해 주세요</Text>
+            <TextField placeholder="상품명" />
+            <TextField placeholder="가격" rightAddOn={<Text>원</Text>} />
+            <Select placeholder="해당하는 내용을 선택하세요">
+              <Select.Trigger />
+              <Select.Main>
+                <Select.Option value={"카테고리1"}>{"카테고리 1"}</Select.Option>
+                <Select.Option value={"카테고리2"}>{"카테고리 2"}</Select.Option>
+                <Select.Option value={"카테고리3"}>{"카테고리 3"}</Select.Option>
+              </Select.Main>
+            </Select>
+            <TextArea height={190} placeholder="내용을 입력하세요" />
+            <ScrollView
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              contentContainerStyle={styles.tagListContainer}
+            >
+              <TouchableOpacity style={styles.openAddTagTopSheetButton} onPress={() => setTagSheetVisible(true)}>
+                <Text style={styles.openAddTagTopSheetButtonText}># 태그 입력(최대 5개)</Text>
+              </TouchableOpacity>
+              {tags.map((tagText) => (
+                <Tag
+                  key={tagText}
+                  text={tagText}
+                  onRemove={() => setTags((prev) => prev.filter((t) => t !== tagText))}
+                />
+              ))}
+            </ScrollView>
+          </View>
+          <Divider />
+          <View style={styles.optionSelectSection}>
+            <Text style={styles.sectionText}>거래방식</Text>
+            <View style={styles.optionButtonWrapper}>
+              <OptionButton isSelected={tradeMethod === "direct"} onPress={() => setTradeMethod("direct")}>
+                직접 거래
+              </OptionButton>
+              <OptionButton isSelected={tradeMethod === "delivery"} onPress={() => setTradeMethod("delivery")}>
+                택배 거래
+              </OptionButton>
+            </View>
+          </View>
+          <View style={styles.optionSelectSection}>
+            <Text style={styles.sectionText}>결제수단</Text>
+            <View style={styles.optionButtonWrapper}>
+              <OptionButton isSelected={paymentMethod === "cash"} onPress={() => setPaymentMethod("cash")}>
+                현금
+              </OptionButton>
+              <OptionButton isSelected={paymentMethod === "transfer"} onPress={() => setPaymentMethod("transfer")}>
+                계좌이체
+              </OptionButton>
+            </View>
+          </View>
+        </View>
+        <TopSheet visible={tagSheetVisible} onClose={() => setTagSheetVisible(false)}>
+          <Header
+            center={<Text style={styles.headerTitle}>태그 편집</Text>}
+            right={
+              <TouchableOpacity style={styles.headerButton} onPress={() => setTagSheetVisible(false)}>
+                <Text style={styles.confirmText}>확인</Text>
+              </TouchableOpacity>
+            }
           />
-          <TouchableOpacity>
-            <IcXGreyBig onPress={clearTagInput} />
-          </TouchableOpacity>
-          <TouchableOpacity onPress={handleAddTag} disabled={!tagInputText.trim()}>
-            <Text style={[styles.addTagButtonText, { color: tagInputText ? "#14c3bc" : "#9b9b9b" }]}>+추가</Text>
-          </TouchableOpacity>
-        </View>
-        <View style={styles.tagContainer}>
-          {tags.map((tagText) => (
-            <Tag key={tagText} text={tagText} onRemove={() => setTags((prev) => prev.filter((t) => t !== tagText))} />
-          ))}
-        </View>
-      </TopSheet>
-    </KeyboardAwareScrollView>
+          <View style={styles.tagInputRow}>
+            <TextInput
+              placeholderTextColor="9b9b9b"
+              placeholder="태그 입력(최대 5개)"
+              value={tagInputText}
+              onChangeText={handleChangeTagInput}
+              style={styles.tagInput}
+            />
+            <TouchableOpacity>
+              <IcXGreyBig onPress={clearTagInput} />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={handleAddTag} disabled={!tagInputText.trim()}>
+              <Text style={[styles.addTagButtonText, { color: tagInputText ? "#14c3bc" : "#9b9b9b" }]}>+추가</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.tagContainer}>
+            {tags.map((tagText) => (
+              <Tag key={tagText} text={tagText} onRemove={() => setTags((prev) => prev.filter((t) => t !== tagText))} />
+            ))}
+          </View>
+        </TopSheet>
+      </KeyboardAwareScrollView>
+      <View style={styles.bottomBar}>
+        <Button>등록하기</Button>
+      </View>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  screen: {
     flex: 1,
     backgroundColor: "white",
+  },
+  container: {
+    flex: 1,
+  },
+  scrollContent: {
+    paddingBottom: 120,
+  },
+  bottomBar: {
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    right: 0,
+    height: 85,
+    backgroundColor: "white",
+    paddingHorizontal: 23,
+    justifyContent: "center",
+    shadowColor: "#686868",
+    shadowOffset: { width: 0, height: -4 },
+    shadowOpacity: 0.15,
+    shadowRadius: 4.2,
+    elevation: 8,
   },
   headerButton: {
     width: 44,
