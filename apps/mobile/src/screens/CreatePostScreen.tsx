@@ -78,24 +78,24 @@ export function CreatePostScreen() {
 
   return (
     <View style={styles.screen}>
+      <Header
+        left={
+          <TouchableOpacity onPress={() => navigation.goBack()} style={styles.headerButton}>
+            <IcChevronLeft />
+          </TouchableOpacity>
+        }
+        center={<Text style={styles.headerTitle}>판매하기</Text>}
+        right={
+          <TouchableOpacity style={styles.headerButton}>
+            <IcMoreVertical />
+          </TouchableOpacity>
+        }
+      />
       <KeyboardAwareScrollView
         style={styles.container}
         keyboardShouldPersistTaps="handled"
         contentContainerStyle={styles.scrollContent}
       >
-        <Header
-          left={
-            <TouchableOpacity onPress={() => navigation.goBack()} style={styles.headerButton}>
-              <IcChevronLeft />
-            </TouchableOpacity>
-          }
-          center={<Text style={styles.headerTitle}>판매하기</Text>}
-          right={
-            <TouchableOpacity style={styles.headerButton}>
-              <IcMoreVertical />
-            </TouchableOpacity>
-          }
-        />
         <View style={styles.pageContent}>
           <View>
             <Text style={styles.sectionText}>사진을 등록해 주세요</Text>
