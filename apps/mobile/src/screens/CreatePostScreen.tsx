@@ -77,13 +77,33 @@ export function CreatePostScreen() {
     setTagInputText("");
   };
 
+  const handleGoBack = () => navigation.goBack();
+
+  const handleRemoveImage = (uri: string) => () => {
+    setImages((prev) => prev.filter((img) => img !== uri));
+  };
+
+  const handleChangePrice = (text: string) => {
+    setPrice(text.replace(/,/g, ""));
+  };
+
+  const handleOpenTagSheet = () => setTagSheetVisible(true);
+  const handleCloseTagSheet = () => setTagSheetVisible(false);
+
+  const handleRemoveTag = (tagText: string) => () => {
+    setTags((prev) => prev.filter((t) => t !== tagText));
+  };
+
+  const handleSelectTradeMethod = (method: "direct" | "delivery") => () => setTradeMethod(method);
+  const handleSelectPaymentMethod = (method: "cash" | "transfer") => () => setPaymentMethod(method);
+
   const formattedPrice = price.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
   return (
     <View style={styles.screen}>
       <Header
         left={
-          <TouchableOpacity onPress={() => navigation.goBack()} style={styles.headerButton}>
+          <TouchableOpacity onPress={handleGoBack} style={styles.headerButton}>
             <IcChevronLeft />
           </TouchableOpacity>
         }
@@ -116,7 +136,7 @@ export function CreatePostScreen() {
                   <Image source={{ uri }} style={styles.previewImage} />
                   <TouchableOpacity
                     style={styles.deleteButton}
-                    onPress={() => setImages((prev) => prev.filter((img) => img !== uri))}
+                    onPress={handleRemoveImage(uri)}
                   >
                     <IcSwap />
                   </TouchableOpacity>
@@ -133,7 +153,7 @@ export function CreatePostScreen() {
               rightAddOn={<Text>원</Text>}
               keyboardType="number-pad"
               value={formattedPrice}
-              onChangeText={(text) => setPrice(text.replace(/,/g, ""))}
+              onChangeText={handleChangePrice}
             />
             <Select placeholder="해당하는 내용을 선택하세요">
               <Select.Trigger />
@@ -149,14 +169,14 @@ export function CreatePostScreen() {
               showsHorizontalScrollIndicator={false}
               contentContainerStyle={styles.tagListContainer}
             >
-              <TouchableOpacity style={styles.openAddTagTopSheetButton} onPress={() => setTagSheetVisible(true)}>
+              <TouchableOpacity style={styles.openAddTagTopSheetButton} onPress={handleOpenTagSheet}>
                 <Text style={styles.openAddTagTopSheetButtonText}># 태그 입력(최대 5개)</Text>
               </TouchableOpacity>
               {tags.map((tagText) => (
                 <Tag
                   key={tagText}
                   text={tagText}
-                  onRemove={() => setTags((prev) => prev.filter((t) => t !== tagText))}
+                  onRemove={handleRemoveTag(tagText)}
                 />
               ))}
             </ScrollView>
@@ -165,10 +185,10 @@ export function CreatePostScreen() {
           <View style={styles.optionSelectSection}>
             <Text style={styles.sectionText}>거래방식</Text>
             <View style={styles.optionButtonWrapper}>
-              <OptionButton isSelected={tradeMethod === "direct"} onPress={() => setTradeMethod("direct")}>
+              <OptionButton isSelected={tradeMethod === "direct"} onPress={handleSelectTradeMethod("direct")}>
                 직접 거래
               </OptionButton>
-              <OptionButton isSelected={tradeMethod === "delivery"} onPress={() => setTradeMethod("delivery")}>
+              <OptionButton isSelected={tradeMethod === "delivery"} onPress={handleSelectTradeMethod("delivery")}>
                 택배 거래
               </OptionButton>
             </View>
@@ -176,20 +196,20 @@ export function CreatePostScreen() {
           <View style={styles.optionSelectSection}>
             <Text style={styles.sectionText}>결제수단</Text>
             <View style={styles.optionButtonWrapper}>
-              <OptionButton isSelected={paymentMethod === "cash"} onPress={() => setPaymentMethod("cash")}>
+              <OptionButton isSelected={paymentMethod === "cash"} onPress={handleSelectPaymentMethod("cash")}>
                 현금
               </OptionButton>
-              <OptionButton isSelected={paymentMethod === "transfer"} onPress={() => setPaymentMethod("transfer")}>
+              <OptionButton isSelected={paymentMethod === "transfer"} onPress={handleSelectPaymentMethod("transfer")}>
                 계좌이체
               </OptionButton>
             </View>
           </View>
         </View>
-        <TopSheet visible={tagSheetVisible} onClose={() => setTagSheetVisible(false)}>
+        <TopSheet visible={tagSheetVisible} onClose={handleCloseTagSheet}>
           <Header
             center={<Text style={styles.headerTitle}>태그 편집</Text>}
             right={
-              <TouchableOpacity style={styles.headerButton} onPress={() => setTagSheetVisible(false)}>
+              <TouchableOpacity style={styles.headerButton} onPress={handleCloseTagSheet}>
                 <Text style={styles.confirmText}>확인</Text>
               </TouchableOpacity>
             }
@@ -211,7 +231,7 @@ export function CreatePostScreen() {
           </View>
           <View style={styles.tagContainer}>
             {tags.map((tagText) => (
-              <Tag key={tagText} text={tagText} onRemove={() => setTags((prev) => prev.filter((t) => t !== tagText))} />
+              <Tag key={tagText} text={tagText} onRemove={handleRemoveTag(tagText)} />
             ))}
           </View>
         </TopSheet>
