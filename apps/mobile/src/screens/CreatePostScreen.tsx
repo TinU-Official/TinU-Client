@@ -69,7 +69,7 @@ export function CreatePostScreen() {
     }
 
     setTags((prev) => {
-      if (prev.includes(next)) {
+      if (prev.includes(next) || prev.length >= 5) {
         return prev;
       }
       return [...prev, next];
@@ -222,8 +222,8 @@ export function CreatePostScreen() {
             <TouchableOpacity>
               <IcXGreyBig onPress={clearTagInput} />
             </TouchableOpacity>
-            <TouchableOpacity onPress={handleAddTag} disabled={!tagInputText.trim()}>
-              <Text style={[styles.addTagButtonText, { color: tagInputText ? "#14c3bc" : "#9b9b9b" }]}>+추가</Text>
+            <TouchableOpacity onPress={handleAddTag} disabled={!tagInputText.trim() || tags.length >= 5}>
+              <Text style={[styles.addTagButtonText, { color: tagInputText && tags.length < 5 ? "#14c3bc" : "#9b9b9b" }]}>+추가</Text>
             </TouchableOpacity>
           </View>
           <View style={styles.tagContainer}>
