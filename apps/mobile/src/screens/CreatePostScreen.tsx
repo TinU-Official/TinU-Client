@@ -77,7 +77,7 @@ export function CreatePostScreen() {
     setTagInputText("");
   };
 
-  const priceError = !!price && !/^\d+$/.test(price);
+  const formattedPrice = price.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
   return (
     <View style={styles.screen}>
@@ -131,11 +131,9 @@ export function CreatePostScreen() {
             <TextField
               placeholder="가격"
               rightAddOn={<Text>원</Text>}
-              keyboardType="numeric"
-              value={price}
-              onChangeText={setPrice}
-              isError={priceError}
-              helperText={priceError ? "숫자만 입력해 주세요" : undefined}
+              keyboardType="number-pad"
+              value={formattedPrice}
+              onChangeText={(text) => setPrice(text.replace(/,/g, ""))}
             />
             <Select placeholder="해당하는 내용을 선택하세요">
               <Select.Trigger />
