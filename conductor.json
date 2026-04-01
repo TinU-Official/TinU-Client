@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "setup": "cp $CONDUCTOR_ROOT_PATH/.env .env && pnpm install",
+    "run": "pnpm dev:web & pnpm dev:mobile",
+    "archive": ""
+  },
+  "runScriptMode": "nonconcurrent"
+}
