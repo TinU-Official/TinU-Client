@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "setup": "./conductor-setup.sh",
+    "run": "pnpm dev:web & pnpm dev:mobile",
+    "archive": ""
+  },
+  "runScriptMode": "nonconcurrent"
+}
