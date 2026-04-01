@@ -1,8 +1,8 @@
 {
   "scripts": {
-    "setup": "cp $CONDUCTOR_ROOT_PATH/.env .env && pnpm install && pnpm lefthook install",
+    "setup": "cp $CONDUCTOR_ROOT_PATH/.env .env && pnpm install && ln -sf $CONDUCTOR_WORKSPACE_PATH/node_modules/.bin/lefthook /usr/local/bin/lefthook",
     "run": "pnpm dev:web & pnpm dev:mobile",
-    "archive": ""
+    "archive": "rm -f /usr/local/bin/lefthook"
   },
   "runScriptMode": "nonconcurrent"
 }
