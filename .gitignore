@@ -34,3 +34,6 @@ npm-debug.log*
 
 # pnpm
 .pnpm-store
+
+# conductor worktree
+.git-hooks
