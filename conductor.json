@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "setup": "cp $CONDUCTOR_ROOT_PATH/.env .env && pnpm install",
+    "setup": "cp $CONDUCTOR_ROOT_PATH/.env .env && pnpm install && pnpm lefthook install",
     "run": "pnpm dev:web & pnpm dev:mobile",
     "archive": ""
   },
